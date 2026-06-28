@@ -14,15 +14,44 @@ def safe(v):
 with open("kombinerad.json", encoding="utf-8") as f:
     kombinerad = json.load(f)
 
+with open("fdr_data.json", encoding="utf-8") as f:
+    fdr_data = json.load(f)
+
+LAG_MAP = {
+    "malmö ff":          "Malmö FF",
+    "ik sirius":         "IK Sirius",
+    "hammarby":          "Hammarby",
+    "hammarby if":       "Hammarby",
+    "djurgården":        "Djurgården",
+    "ifk göteborg":      "IFK Göteborg",
+    "if elfsborg":       "IF Elfsborg",
+    "bk häcken":         "BK Häcken",
+    "aik":               "AIK",
+    "kalmar ff":         "Kalmar FF",
+    "mjällby aif":       "Mjällby AIF",
+    "mjällby":           "Mjällby AIF",
+    "gais":              "GAIS",
+    "halmstads bk":      "Halmstads BK",
+    "degerfors if":      "Degerfors IF",
+    "bp":                "BP",
+    "if brommapojkarna": "BP",
+    "västerås sk":       "Västerås SK",
+    "örgryte is":        "Örgryte IS",
+    "örgryte":           "Örgryte IS",
+}
+
+def hitta_fdr(lag_namn):
+    normerat = lag_namn.lower().strip()
+    fdr_namn = LAG_MAP.get(normerat, lag_namn)
+    return fdr_data.get(fdr_namn, [])
+
 print(f"Hämtar prishistorik för {len(kombinerad)} spelare...")
-print("(Detta tar några minuter)\n")
 
 dashboard_spelare = []
 
 for i, s in enumerate(kombinerad):
     fm = s.get("fotmob") or {}
 
-    # Hämta prishistorik från element-summary
     prishistorik = []
     try:
         url = f"https://fantasy.allsvenskan.se/api/element-summary/{s['id']}/"
@@ -37,7 +66,6 @@ for i, s in enumerate(kombinerad):
     except:
         pass
 
-    # Formpoäng senaste 3 omgångar
     omgangar = s.get("omgangar", [])
     senaste3 = omgangar[-3:] if len(omgangar) >= 3 else omgangar
     form3 = round(sum(g["poang"] for g in senaste3) / len(senaste3), 1) if senaste3 else 0
@@ -75,7 +103,8 @@ for i, s in enumerate(kombinerad):
             {"gw": g["omgang"], "p": g["poang"], "min": g["minuter"]}
             for g in omgangar
         ],
-        "prishistorik": prishistorik
+        "prishistorik": prishistorik,
+        "fdr":         hitta_fdr(s["lag"])
     })
 
     if (i + 1) % 50 == 0:

@@ -2,7 +2,7 @@ name: Uppdatera Fantasy Dashboard
 
 on:
   schedule:
-    - cron: '0 6 * * 1,3,5,7'  # Mån, ons, fre, sön kl 06:00 UTC
+    - cron: '0 6 * * 1,3,5,7'
   workflow_dispatch:
 
 jobs:
@@ -31,6 +31,9 @@ jobs:
       - name: Slå ihop data
         run: python scripts/sla_ihop.py
 
+      - name: Beräkna FDR
+        run: python scripts/berakna_fdr.py
+
       - name: Bygg dashboard-data
         run: python scripts/bygg_dashboard_data.py
 
@@ -38,6 +41,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add dashboard_data.json kombinerad.json spelare_komplett.json fotmob_stats.json
+          git add dashboard_data.json kombinerad.json spelare_komplett.json fotmob_stats.json fdr_data.json
           git diff --staged --quiet || git commit -m "Uppdaterad data $(date '+%Y-%m-%d')"
           git push
