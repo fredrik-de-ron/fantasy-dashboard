@@ -2,7 +2,7 @@ name: Uppdatera Fantasy Dashboard
 
 on:
   schedule:
-    - cron: '0 6 * * 2'
+    - cron: '0 6 * * 1,3,5,7'  # Mån, ons, fre, sön kl 06:00 UTC
   workflow_dispatch:
 
 jobs:
