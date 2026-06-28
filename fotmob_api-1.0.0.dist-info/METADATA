@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: fotmob-api
+Version: 1.0.0
+Summary: API wrapper for Fotmob
+Author: Christian Rønsholt
+Author-email: ronsholt32@gmail.com
+License: MIT
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: ratelimiter >=1.2.0
+Provides-Extra: examples
+Requires-Dist: pandas >=2.2 ; extra == 'examples'
+Requires-Dist: plottable >=0.1.5 ; extra == 'examples'
+Requires-Dist: matplotlib >=3.8.2 ; extra == 'examples'
+Requires-Dist: mplsoccer ; extra == 'examples'
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: python-dotenv ; extra == 'test'
+
+# FotMob API
+
+The **fotmob-api** Python package gives an easy way to interact with the unofficial [FotMob](https://www.fotmob.com/) API.
+It enbales you to extract shots and xG values for matches and aggregated stats such as xG, xA and all other stats you can find on FotMob.
+
+## Installation
+
+The package is availbale on PyPi to be installed using `pip`:
+
+```bash
+pip install fotmob-api
+```
+
+Or install the latest development version:
+
+```bash
+pip install git+git@github.com:C-Roensholt/fotmob-api.git
+```
+
+## Usage
+
+See [examples](./examples/) for basic usage of the API wrapper.
+
+## Documentation
+
+ToDo!
+
+## Contributing
+
+ToDo!

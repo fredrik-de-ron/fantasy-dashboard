@@ -1,0 +1,43 @@
+name: Uppdatera Fantasy Dashboard
+
+on:
+  schedule:
+    - cron: '0 6 * * 2'
+  workflow_dispatch:
+
+jobs:
+  uppdatera:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hämta koden
+        uses: actions/checkout@v4
+
+      - name: Sätt upp Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Installera paket
+        run: |
+          pip install httpx rapidfuzz openpyxl python-dotenv
+
+      - name: Hämta Fantasy-data
+        run: python scripts/hamta_data.py
+
+      - name: Hämta FotMob-data
+        run: python scripts/hamta_fotmob.py
+
+      - name: Slå ihop data
+        run: python scripts/sla_ihop.py
+
+      - name: Bygg dashboard-data
+        run: python scripts/bygg_dashboard_data.py
+
+      - name: Spara uppdaterad data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dashboard_data.json kombinerad.json spelare_komplett.json fotmob_stats.json
+          git diff --staged --quiet || git commit -m "Uppdaterad data $(date '+%Y-%m-%d')"
+          git push
