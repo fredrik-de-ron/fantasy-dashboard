@@ -187,21 +187,20 @@
     {
       "gw": 19,
       "dgw": true,
-      "matcher": [
-        {
-          "mot": "Djurgården",
-          "hemma": false,
-          "fdr": 5.0
-        },
-        {
-          "mot": "Djurgården",
-          "hemma": true,
-          "fdr": 4.0
-        }
-      ],
-      "fdr": 4.5,
-      "mot": "Djurgården (B) + Djurgården (H)",
+      "dgw_match": 1,
+      "dgw_total": 2,
+      "fdr": 5.0,
+      "mot": "Djurgården",
       "hemma": false
+    },
+    {
+      "gw": 19,
+      "dgw": true,
+      "dgw_match": 2,
+      "dgw_total": 2,
+      "fdr": 4.0,
+      "mot": "Djurgården",
+      "hemma": true
     },
     {
       "gw": 20,
@@ -213,20 +212,19 @@
     {
       "gw": 21,
       "dgw": true,
-      "matcher": [
-        {
-          "mot": "BK Häcken",
-          "hemma": false,
-          "fdr": 5.7
-        },
-        {
-          "mot": "AIK",
-          "hemma": false,
-          "fdr": 3.4
-        }
-      ],
-      "fdr": 4.5,
-      "mot": "BK Häcken (B) + AIK (B)",
+      "dgw_match": 1,
+      "dgw_total": 2,
+      "fdr": 5.7,
+      "mot": "BK Häcken",
+      "hemma": false
+    },
+    {
+      "gw": 21,
+      "dgw": true,
+      "dgw_match": 2,
+      "dgw_total": 2,
+      "fdr": 3.4,
+      "mot": "AIK",
       "hemma": false
     },
     {
@@ -1070,20 +1068,19 @@
     {
       "gw": 21,
       "dgw": true,
-      "matcher": [
-        {
-          "mot": "Västerås SK",
-          "hemma": true,
-          "fdr": 2.2
-        },
-        {
-          "mot": "Mjällby AIF",
-          "hemma": true,
-          "fdr": 3.9
-        }
-      ],
-      "fdr": 3.0,
-      "mot": "Västerås SK (H) + Mjällby AIF (H)",
+      "dgw_match": 1,
+      "dgw_total": 2,
+      "fdr": 2.2,
+      "mot": "Västerås SK",
+      "hemma": true
+    },
+    {
+      "gw": 21,
+      "dgw": true,
+      "dgw_match": 2,
+      "dgw_total": 2,
+      "fdr": 3.9,
+      "mot": "Mjällby AIF",
       "hemma": true
     },
     {
@@ -1906,21 +1903,20 @@
     {
       "gw": 19,
       "dgw": true,
-      "matcher": [
-        {
-          "mot": "Mjällby AIF",
-          "hemma": true,
-          "fdr": 3.9
-        },
-        {
-          "mot": "Mjällby AIF",
-          "hemma": false,
-          "fdr": 4.9
-        }
-      ],
-      "fdr": 4.4,
-      "mot": "Mjällby AIF (H) + Mjällby AIF (B)",
+      "dgw_match": 1,
+      "dgw_total": 2,
+      "fdr": 3.9,
+      "mot": "Mjällby AIF",
       "hemma": true
+    },
+    {
+      "gw": 19,
+      "dgw": true,
+      "dgw_match": 2,
+      "dgw_total": 2,
+      "fdr": 4.9,
+      "mot": "Mjällby AIF",
+      "hemma": false
     },
     {
       "gw": 20,

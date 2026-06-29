@@ -83,20 +83,31 @@
   .priskurva-wrap { margin-bottom: 24px; }
   .priskurva-svg { width: 100%; height: 120px; overflow: visible; }
 
+  .fdr-fixtures-wrap { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .fdr-fixture-box { border-radius: 8px; padding: 10px 14px; text-align: center; min-width: 70px; }
+  .fdr-fixture-box.dgw { background: #2a1a4a; border: 2px solid #9060d0; }
+  .fdr-fixture-mot { font-size: 11px; font-weight: 600; }
+  .fdr-fixture-num { font-size: 20px; font-weight: 700; margin: 2px 0; }
+  .fdr-fixture-sub { font-size: 10px; opacity: 0.8; }
+  .fdr-expand-btn { background: none; border: 1px solid #2a2d3a; color: #666; padding: 6px 14px; border-radius: 6px; font-size: 12px; cursor: pointer; margin-top: 4px; margin-bottom: 24px; display: block; }
+  .fdr-expand-btn:hover { color: #fff; border-color: #4a90d9; }
+
   .fdr-matrix { padding: 24px; overflow-x: auto; }
-  .fdr-matrix table { border-collapse: collapse; min-width: 700px; }
+  .fdr-matrix table { border-collapse: collapse; }
   .fdr-matrix th { background: #1a1d27; color: #888; font-size: 12px; padding: 10px 8px; text-align: center; border-bottom: 1px solid #2a2d3a; white-space: nowrap; }
   .fdr-matrix th.lag-col { text-align: left; padding-left: 16px; min-width: 160px; }
-  .fdr-matrix td { padding: 6px 8px; border-bottom: 1px solid #1e2130; text-align: center; }
+  .fdr-matrix th.dgw-col { color: #c07dda; }
+  .fdr-matrix td { padding: 4px 6px; border-bottom: 1px solid #1e2130; text-align: center; }
   .fdr-matrix td.lag-namn { text-align: left; padding-left: 16px; font-weight: 500; color: #e0e0e0; white-space: nowrap; }
-  .fdr-cell { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 4px; border-radius: 6px; min-width: 52px; }
+  .fdr-cell { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 4px; border-radius: 6px; min-width: 48px; }
   .fdr-cell .fdr-mot { font-size: 10px; font-weight: 600; }
   .fdr-cell .fdr-num { font-size: 12px; font-weight: 700; }
   .fdr-cell .fdr-hb  { font-size: 9px; opacity: 0.7; }
-  .fdr-dgw-cell { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 4px; border-radius: 6px; min-width: 52px; background: #2a1a4a; border: 2px solid #9060d0; }
-  .fdr-dgw-cell .fdr-mot { font-size: 9px; font-weight: 600; color: #c07dda; }
-  .fdr-dgw-cell .fdr-num { font-size: 11px; font-weight: 700; color: #c07dda; }
+  .fdr-dgw-cell { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 4px; border-radius: 6px; min-width: 48px; background: #2a1a4a; border: 1.5px solid #9060d0; }
+  .fdr-dgw-cell .fdr-mot { font-size: 10px; font-weight: 600; color: #c07dda; }
+  .fdr-dgw-cell .fdr-num { font-size: 12px; font-weight: 700; color: #c07dda; }
   .fdr-dgw-cell .fdr-hb  { font-size: 9px; color: #c07dda; opacity: 0.8; }
+  .fdr-empty { color: #2a2d3a; }
 </style>
 </head>
 <body>
@@ -173,11 +184,11 @@
     <div style="margin-bottom:16px;">
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
         <span style="font-size:13px;color:#888;">Svårighetsgrad:</span>
-        <span style="background:#2a5c2a;color:#7dda7d;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;">1–2 Lätt</span>
-        <span style="background:#4a4a1a;color:#d4d46a;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;">3–4 Medel</span>
-        <span style="background:#5c2a2a;color:#da7d7d;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;">5–6 Svår</span>
-        <span style="background:#3d1a5c;color:#c07dda;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;">7 Tuffast</span>
-        <span style="background:#2a1a4a;border:2px solid #9060d0;color:#c07dda;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;">★ Double GW</span>
+        <span style="background:#0d3320;color:#2ecc71;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;">1 Lättast</span>
+        <span style="background:#3a4a10;color:#b8d432;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;">3 Medel</span>
+        <span style="background:#4a1a1a;color:#e05050;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;">5 Svår</span>
+        <span style="background:#2d0808;color:#ff1010;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;">7 Tuffast</span>
+        <span style="background:#2a1a4a;border:1.5px solid #9060d0;color:#c07dda;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:600;">★ Double GW</span>
       </div>
     </div>
     <table id="fdr-tabell"></table>
@@ -201,30 +212,19 @@ const POS_FARG = { "MV":"#1a3a5c","DEF":"#1a3d2a","MID":"#3d3516","ANF":"#3d1a1a
 const POS_TEXT = { "MV":"#6ab0f5","DEF":"#5dba7a","MID":"#f0c040","ANF":"#f07070" };
 
 function fdrFarg(fdr) {
-  if (fdr <= 2) return { bg: "#1a3d1a", text: "#5dba7a" };
-  if (fdr <= 4) return { bg: "#3d3516", text: "#d4c44a" };
-  if (fdr <= 6) return { bg: "#3d1a1a", text: "#da7d7d" };
-  return { bg: "#2a1040", text: "#c07dda" };
-}
-
-function fdrCellHtml(m) {
-  if (!m) return "<td>—</td>";
-  if (m.dgw) {
-    const matcher = m.matcher || [];
-    const motText = matcher.map(ma => `${ma.mot} (${ma.hemma ? "H" : "B"})`).join(" + ");
-    return `<td><div class="fdr-dgw-cell">
-      <span class="fdr-mot">★ ${motText}</span>
-      <span class="fdr-num">${m.fdr}</span>
-      <span class="fdr-hb">DGW</span>
-    </div></td>`;
-  }
-  const { bg, text } = fdrFarg(m.fdr);
-  const hb = m.hemma ? "H" : "B";
-  return `<td><div class="fdr-cell" style="background:${bg}">
-    <span class="fdr-mot" style="color:${text}">${m.mot}</span>
-    <span class="fdr-num" style="color:${text}">${m.fdr}</span>
-    <span class="fdr-hb" style="color:${text}">${hb}</span>
-  </div></td>`;
+  const r = Math.round(fdr * 2) / 2;
+  if (r <= 1)   return { bg: "#0d3320", text: "#2ecc71" };
+  if (r <= 1.5) return { bg: "#1a4a1a", text: "#4dd674" };
+  if (r <= 2)   return { bg: "#1a4a1a", text: "#5dba7a" };
+  if (r <= 2.5) return { bg: "#2a4a10", text: "#8ecf3a" };
+  if (r <= 3)   return { bg: "#3a4a10", text: "#b8d432" };
+  if (r <= 3.5) return { bg: "#4a4010", text: "#d4c44a" };
+  if (r <= 4)   return { bg: "#4a3210", text: "#d4944a" };
+  if (r <= 4.5) return { bg: "#4a2210", text: "#d4774a" };
+  if (r <= 5)   return { bg: "#4a1a1a", text: "#e05050" };
+  if (r <= 5.5) return { bg: "#4a1010", text: "#e03030" };
+  if (r <= 6)   return { bg: "#3d1010", text: "#cc2020" };
+  return             { bg: "#2d0808", text: "#ff1010" };
 }
 
 function byttVy(vy, knapp) {
@@ -289,7 +289,7 @@ function fdrNastaPill(fdr_lista) {
   if (!fdr_lista || fdr_lista.length === 0) return '<span class="ingen">—</span>';
   const nasta = fdr_lista[0];
   if (nasta.dgw) {
-    return `<span class="fdr-pill-dgw" title="${nasta.mot}">★ DGW</span>`;
+    return `<span class="fdr-pill-dgw" title="${nasta.mot} (${nasta.hemma ? 'H' : 'B'})">★ DGW</span>`;
   }
   const { bg, text } = fdrFarg(nasta.fdr);
   const hb = nasta.hemma ? "H" : "B";
@@ -372,30 +372,76 @@ document.addEventListener("keydown", e => {
 function byggFdrMatris() {
   if (!DATA.length) return;
 
+  // Samla FDR per lag — ta första spelaren per lag som har FDR-data
   const lagFdr = {};
   DATA.forEach(s => {
-    if (s.fdr && s.fdr.length > 0) {
+    if (s.fdr && s.fdr.length > 0 && !lagFdr[s.lag]) {
       lagFdr[s.lag] = s.fdr;
     }
   });
 
-  const lag     = Object.keys(lagFdr).sort();
-  const gwLista = [...new Set(Object.values(lagFdr).flat().map(f => f.gw))].sort((a,b) => a-b);
+  const lagNamn = Object.keys(lagFdr).sort();
 
+  // Hitta alla GW:s och hur många "slots" varje GW behöver (max matcher/lag)
+  // En DGW ger 2 slots
+  const gwSlots = {};
+  lagNamn.forEach(lag => {
+    const gwCount = {};
+    lagFdr[lag].forEach(m => {
+      gwCount[m.gw] = (gwCount[m.gw] || 0) + 1;
+    });
+    Object.entries(gwCount).forEach(([gw, count]) => {
+      gwSlots[Number(gw)] = Math.max(gwSlots[Number(gw)] || 1, count);
+    });
+  });
+
+  const gwLista = Object.keys(gwSlots).map(Number).sort((a, b) => a - b);
+
+  // Rubrikrad
   let html = "<thead><tr><th class='lag-col'>Lag</th>";
   gwLista.forEach(gw => {
-    html += `<th>Omg. ${gw}</th>`;
+    const slots = gwSlots[gw];
+    if (slots > 1) {
+      html += `<th colspan="${slots}" class="dgw-col">★ Omg. ${gw}</th>`;
+    } else {
+      html += `<th>Omg. ${gw}</th>`;
+    }
   });
   html += "</tr></thead><tbody>";
 
-  lag.forEach(lagNamn => {
-    const matcher = lagFdr[lagNamn] || [];
-    const gwMap   = {};
-    matcher.forEach(m => gwMap[m.gw] = m);
+  // En rad per lag
+  lagNamn.forEach(lag => {
+    // Bygg gwMap: gw -> lista av matcher (i ordning)
+    const gwMap = {};
+    lagFdr[lag].forEach(m => {
+      const gw = Number(m.gw);
+      if (!gwMap[gw]) gwMap[gw] = [];
+      gwMap[gw].push(m);
+    });
 
-    html += `<tr><td class="lag-namn">${lagNamn}</td>`;
+    html += `<tr><td class="lag-namn">${lag}</td>`;
     gwLista.forEach(gw => {
-      html += fdrCellHtml(gwMap[gw] || null);
+      const slots   = gwSlots[gw];
+      const matcher = gwMap[gw] || [];
+      for (let i = 0; i < slots; i++) {
+        const m = matcher[i];
+        if (!m) {
+          html += `<td><span class="fdr-empty">·</span></td>`;
+        } else if (m.dgw) {
+          html += `<td><div class="fdr-dgw-cell">
+            <span class="fdr-mot">★ ${m.mot}</span>
+            <span class="fdr-num">${m.fdr}</span>
+            <span class="fdr-hb">${m.hemma ? "H" : "B"}</span>
+          </div></td>`;
+        } else {
+          const { bg, text } = fdrFarg(m.fdr);
+          html += `<td><div class="fdr-cell" style="background:${bg}">
+            <span class="fdr-mot" style="color:${text}">${m.mot}</span>
+            <span class="fdr-num" style="color:${text}">${m.fdr}</span>
+            <span class="fdr-hb" style="color:${text}">${m.hemma ? "H" : "B"}</span>
+          </div></td>`;
+        }
+      }
     });
     html += "</tr>";
   });
@@ -411,26 +457,26 @@ function prisKurvaHtml(historik) {
   const minP   = Math.min(...priser) - 0.3;
   const maxP   = Math.max(...priser) + 0.3;
   const n      = historik.length;
-  const xPos = i => padX + (i / (n-1)) * (W - padX*2);
-  const yPos = v  => padY + (1 - (v-minP)/(maxP-minP)) * (H - padY*1.5);
-  const punkter = historik.map((h,i) => `${xPos(i).toFixed(1)},${yPos(h.pris).toFixed(1)}`);
+  const xPos = i => padX + (i / (n - 1)) * (W - padX * 2);
+  const yPos = v  => padY + (1 - (v - minP) / (maxP - minP)) * (H - padY * 1.5);
+  const punkter = historik.map((h, i) => `${xPos(i).toFixed(1)},${yPos(h.pris).toFixed(1)}`);
   const linjeD  = "M" + punkter.join("L");
   const areaD   = linjeD + `L${xPos(n-1).toFixed(1)},${H}L${xPos(0).toFixed(1)},${H}Z`;
-  const etiketter = historik.map((h,i) => {
+  const etiketter = historik.map((h, i) => {
     const erMin = h.pris === Math.min(...priser);
     const erMax = h.pris === Math.max(...priser);
-    if (!erMin && !erMax && i !== 0 && i !== n-1) return "";
+    if (!erMin && !erMax && i !== 0 && i !== n - 1) return "";
     const farg = erMax ? "#5dba7a" : erMin ? "#f07070" : "#aaa";
-    return `<text x="${xPos(i).toFixed(1)}" y="${(yPos(h.pris)-6).toFixed(1)}" text-anchor="middle" style="fill:${farg};font-size:11px;font-weight:600">${h.pris.toFixed(1)}</text>`;
+    return `<text x="${xPos(i).toFixed(1)}" y="${(yPos(h.pris) - 6).toFixed(1)}" text-anchor="middle" style="fill:${farg};font-size:11px;font-weight:600">${h.pris.toFixed(1)}</text>`;
   }).join("");
-  const gwLabels = historik.map((h,i) => {
-    if (i % 2 !== 0 && i !== n-1) return "";
-    return `<text x="${xPos(i).toFixed(1)}" y="${H+4}" text-anchor="middle" style="fill:#555;font-size:10px">${h.gw}</text>`;
+  const gwLabels = historik.map((h, i) => {
+    if (i % 2 !== 0 && i !== n - 1) return "";
+    return `<text x="${xPos(i).toFixed(1)}" y="${H + 4}" text-anchor="middle" style="fill:#555;font-size:10px">${h.gw}</text>`;
   }).join("");
   return `
     <div class="section-title" style="margin-top:24px;">Prisutveckling</div>
     <div class="priskurva-wrap">
-      <svg class="priskurva-svg" viewBox="0 0 ${W} ${H+14}" preserveAspectRatio="none">
+      <svg class="priskurva-svg" viewBox="0 0 ${W} ${H + 14}" preserveAspectRatio="none">
         <defs>
           <linearGradient id="prisgrad" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stop-color="#4a90d9" stop-opacity="0.25"/>
@@ -445,31 +491,48 @@ function prisKurvaHtml(historik) {
     </div>`;
 }
 
-function fdrKortHtml(fdr_lista) {
+function fdrKortHtml(fdr_lista, visaAlla) {
   if (!fdr_lista || fdr_lista.length === 0) return "";
+  const visa    = visaAlla ? fdr_lista : fdr_lista.slice(0, 5);
+  const harFler = fdr_lista.length > 5;
+
+  const matcher_html = visa.map(m => {
+    if (m.dgw) {
+      return `<div class="fdr-fixture-box dgw">
+        <div class="fdr-fixture-mot" style="color:#c07dda;">★ ${m.mot}</div>
+        <div class="fdr-fixture-num" style="color:#c07dda;">${m.fdr}</div>
+        <div class="fdr-fixture-sub" style="color:#c07dda;">GW${m.gw} ${m.hemma ? "H" : "B"} · DGW</div>
+      </div>`;
+    }
+    const { bg, text } = fdrFarg(m.fdr);
+    return `<div class="fdr-fixture-box" style="background:${bg}">
+      <div class="fdr-fixture-mot" style="color:${text}">${m.mot}</div>
+      <div class="fdr-fixture-num" style="color:${text}">${m.fdr}</div>
+      <div class="fdr-fixture-sub" style="color:${text}">GW${m.gw} ${m.hemma ? "H" : "B"}</div>
+    </div>`;
+  }).join("");
+
+  const knapp_html = harFler
+    ? visaAlla
+      ? `<button class="fdr-expand-btn" onclick="toggleFdrKort(this)">↑ Visa färre</button>`
+      : `<button class="fdr-expand-btn" onclick="toggleFdrKort(this)">↓ Visa alla ${fdr_lista.length} matcher</button>`
+    : "";
+
   return `
     <div class="section-title" style="margin-top:24px;">Kommande matcher (FDR)</div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;">
-      ${fdr_lista.map(m => {
-        if (m.dgw) {
-          const matcher = m.matcher || [];
-          return `<div style="background:#2a1a4a;border:2px solid #9060d0;border-radius:8px;padding:10px 14px;text-align:center;min-width:80px;">
-            <div style="font-size:10px;color:#c07dda;font-weight:700;margin-bottom:4px;">★ DOUBLE GW${m.gw}</div>
-            ${matcher.map(ma => {
-              const hb = ma.hemma ? "H" : "B";
-              return `<div style="font-size:11px;color:#c07dda;margin-top:2px;">${ma.mot} (${hb}) — ${ma.fdr}</div>`;
-            }).join("")}
-          </div>`;
-        }
-        const { bg, text } = fdrFarg(m.fdr);
-        const hb = m.hemma ? "H" : "B";
-        return `<div style="background:${bg};border-radius:8px;padding:10px 14px;text-align:center;min-width:70px;">
-          <div style="font-size:11px;color:${text};font-weight:600;">${m.mot}</div>
-          <div style="font-size:20px;color:${text};font-weight:700;margin:2px 0;">${m.fdr}</div>
-          <div style="font-size:10px;color:${text};opacity:0.8;">GW${m.gw} ${hb}</div>
-        </div>`;
-      }).join("")}
-    </div>`;
+    <div class="fdr-fixtures-wrap" data-fdr='${JSON.stringify(fdr_lista).replace(/'/g, "&#39;")}' data-visa-alla="${visaAlla ? '1' : '0'}">
+      ${matcher_html}
+    </div>
+    ${knapp_html}`;
+}
+
+function toggleFdrKort(knapp) {
+  const sektion   = document.getElementById("fdr-kort-sektion");
+  const wrap      = sektion.querySelector(".fdr-fixtures-wrap");
+  if (!wrap) return;
+  const fdr_lista = JSON.parse(wrap.dataset.fdr);
+  const visaAlla  = wrap.dataset.visaAlla === "1";
+  sektion.innerHTML = fdrKortHtml(fdr_lista, !visaAlla);
 }
 
 function oppnaKort(s) {
@@ -479,8 +542,8 @@ function oppnaKort(s) {
   const prisSign = s.prisand > 0 ? "+" : "";
   const prisKls  = s.prisand > 0 ? "#5dba7a" : s.prisand < 0 ? "#f07070" : "#888";
 
-  const hist   = s.historik || [];
-  const maxP   = Math.max(...hist.map(h => h.p), 1);
+  const hist  = s.historik || [];
+  const maxP  = Math.max(...hist.map(h => h.p), 1);
   const grafHtml = hist.length ? `
     <div class="section-title">Poäng per omgång</div>
     <div class="formgraf">
@@ -545,7 +608,9 @@ function oppnaKort(s) {
     </div>
     ${grafHtml}
     ${prisKurvaHtml(s.prishistorik)}
-    ${fdrKortHtml(s.fdr)}
+    <div id="fdr-kort-sektion">
+      ${fdrKortHtml(s.fdr, false)}
+    </div>
     ${advHtml}
     ${transHtml}
   `;
