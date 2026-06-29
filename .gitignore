@@ -27,4 +27,5 @@ fantasy_allsvenskan.xlsx
 
 # Behåll dessa (dashboarden behöver dem)
 !dashboard_data.json
-!dashboard.html
+!dashboard.html.env
+.env
