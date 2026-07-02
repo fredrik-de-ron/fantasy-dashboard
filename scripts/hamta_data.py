@@ -8,6 +8,16 @@ data1 = httpx.get(url1).json()
 lag_dict = {l["id"]: l["name"] for l in data1["teams"]}
 pos_dict = {p["id"]: p["singular_name"] for p in data1["element_types"]}
 
+# Statuskoder -> läsbar text
+STATUS_TEXT = {
+    "a": "Tillgänglig",
+    "i": "Skadad",
+    "u": "Lämnat klubben",
+    "n": "Ej tillgänglig",
+    "s": "Avstängd",
+    "d": "Osäker",
+}
+
 spelare_dict = {}
 for s in data1["elements"]:
     spelare_dict[s["id"]] = {
@@ -17,10 +27,12 @@ for s in data1["elements"]:
         "lag":                     lag_dict.get(s["team"], "?"),
         "lag_id":                  s["team"],
         "position":                pos_dict.get(s["element_type"], "?"),
+        # Status
         "status":                  s["status"],
+        "status_text":             STATUS_TEXT.get(s["status"], s["status"]),
+        "nyheter":                 s["news"],
         "chans_spela_nästa":       s["chance_of_playing_next_round"],
         "chans_spela_denna":       s["chance_of_playing_this_round"],
-        "nyheter":                 s["news"],
         # Pris
         "pris":                    s["now_cost"] / 10,
         "prisändring_omgång":      s["cost_change_event"] / 10,
@@ -63,6 +75,13 @@ for s in data1["elements"]:
     }
 
 print(f"  {len(spelare_dict)} spelare inladdade")
+
+# Visa statusöversikt
+status_count = {}
+for s in spelare_dict.values():
+    st = s["status_text"]
+    status_count[st] = status_count.get(st, 0) + 1
+print("  Statusöversikt:", status_count)
 
 print("Hämtar omgångsstatistik...")
 aktuell_omgang = next(e["id"] for e in data1["events"] if e.get("is_current"))
@@ -109,10 +128,12 @@ with open("spelare_komplett.json", "w", encoding="utf-8") as f:
 
 print(f"\nKlart! {len(slutlista)} spelare sparade")
 
-# Snabbanalys — bäst ep_nästa (förväntade poäng nästa omgång)
-print("\nTopp 8 förväntade poäng nästa omgång (ep_nästa):")
-sorterad = sorted(slutlista, key=lambda x: x["ep_nästa"], reverse=True)
-print(f"{'Namn':<22} {'Lag':<18} {'Pos':<12} {'Pris':<7} {'ep_nästa':<10} {'Form'}")
-print("-" * 78)
-for s in sorterad[:8]:
-    print(f"{s['namn']:<22} {s['lag']:<18} {s['position']:<12} {s['pris']:<7.1f} {s['ep_nästa']:<10} {s['form']}")
+# Visa spelare som INTE är tillgängliga
+print("\nSpelare som inte är tillgängliga nästa omgång:")
+print(f"{'Namn':<22} {'Status':<16} {'Chans %':<10} {'Nyheter'}")
+print("-" * 75)
+ej_tillg = [s for s in slutlista if s["status"] != "a"]
+for s in sorted(ej_tillg, key=lambda x: x["status"]):
+    chans = s["chans_spela_nästa"] or 0
+    nyheter = (s["nyheter"] or "")[:40]
+    print(f"{s['namn']:<22} {s['status_text']:<16} {chans:<10} {nyheter}")
