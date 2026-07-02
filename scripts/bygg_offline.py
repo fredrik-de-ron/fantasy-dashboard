@@ -17,7 +17,7 @@ inbaddad = inbaddad.replace(
     'Promise.resolve(window.DASHBOARD_DATA)\n  .then(data => {'
 )
 
-with open("dashboard_offline.html", "w", encoding="utf-8") as f:
+with open("index.html", "w", encoding="utf-8") as f:
     f.write(inbaddad)
 
-print("Klar! dashboard_offline.html är uppdaterad")
+print("Klar! index.html är uppdaterad")
