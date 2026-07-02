@@ -116,6 +116,14 @@
   .fdr-dgw-cell .fdr-num { font-size: 12px; font-weight: 700; color: #c07dda; }
   .fdr-dgw-cell .fdr-hb  { font-size: 9px; color: #c07dda; opacity: 0.8; }
   .fdr-empty { color: #2a2d3a; }
+
+  .ai-wrap { padding: 24px; max-width: 800px; }
+  .ai-omgang { font-size: 13px; color: #666; margin-bottom: 20px; }
+  .ai-sektion { background: #1a1d27; border: 1px solid #2a2d3a; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; }
+  .ai-sektion h2 { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 16px; }
+  .ai-text { font-size: 14px; color: #c0c0c0; line-height: 1.8; }
+  .ai-text p { margin-bottom: 10px; }
+  .ai-text hr { border: none; border-top: 1px solid #2a2d3a; margin: 12px 0; }
 </style>
 </head>
 <body>
@@ -128,6 +136,7 @@
 <div class="nav">
   <button class="nav-btn aktiv" onclick="byttVy('spelare', this)">Spelare</button>
   <button class="nav-btn" onclick="byttVy('fdr', this)">Fixture Difficulty</button>
+  <button class="nav-btn" onclick="byttVy('ai', this)">🤖 AI-tips</button>
 </div>
 
 <div id="vy-spelare" class="vy aktiv">
@@ -203,6 +212,14 @@
   </div>
 </div>
 
+<div id="vy-ai" class="vy">
+  <div class="ai-wrap">
+    <div id="ai-innehall">
+      <p style="color:#666;font-size:14px;">Laddar AI-analys...</p>
+    </div>
+  </div>
+</div>
+
 <div class="modal-bg" id="modal-bg">
   <div class="modal">
     <button class="modal-close" id="modal-close">✕</button>
@@ -220,25 +237,13 @@ const POS_FARG = { "MV":"#1a3a5c","DEF":"#1a3d2a","MID":"#3d3516","ANF":"#3d1a1a
 const POS_TEXT = { "MV":"#6ab0f5","DEF":"#5dba7a","MID":"#f0c040","ANF":"#f07070" };
 
 const STATUS_IKON = {
-  "a": "",
-  "i": "🤕 ",
-  "s": "🟨 ",
-  "d": "⚠️ ",
-  "u": "❌ ",
-  "n": "⛔ ",
+  "a": "", "i": "🤕 ", "s": "🟨 ", "d": "⚠️ ", "u": "❌ ", "n": "⛔ ",
 };
-
 const STATUS_KLASS = {
-  "i": "skadad",
-  "s": "avstangd",
-  "d": "osaker",
-  "u": "ej-tillg",
-  "n": "ej-tillg",
+  "i": "skadad", "s": "avstangd", "d": "osaker", "u": "ej-tillg", "n": "ej-tillg",
 };
 
-function statusIkon(status) {
-  return STATUS_IKON[status] || "";
-}
+function statusIkon(status) { return STATUS_IKON[status] || ""; }
 
 function nyhetBox(s) {
   if (s.status === "a") return "";
@@ -271,6 +276,7 @@ function byttVy(vy, knapp) {
   document.getElementById("vy-" + vy).classList.add("aktiv");
   knapp.classList.add("aktiv");
   if (vy === "fdr") byggFdrMatris();
+  if (vy === "ai")  laddaAiInsikter();
 }
 
 fetch("dashboard_data.json")
@@ -294,7 +300,6 @@ function filtrera() {
   const lag      = document.getElementById("filter-lag").value;
   const prisMax  = parseFloat(document.getElementById("filter-pris-max").value) || 99;
   const statusF  = document.getElementById("filter-status").value;
-
   return DATA.filter(s => {
     if (sok && !s.namn.toLowerCase().includes(sok) && !s.lag.toLowerCase().includes(sok)) return false;
     if (pos && s.position !== pos) return false;
@@ -373,7 +378,6 @@ function rita() {
       <td>${fdrNastaPill(s.fdr)}</td>
     </tr>`;
   }).join("");
-
   document.querySelectorAll("th").forEach(th => {
     th.classList.remove("asc","desc");
     if (th.dataset.kol === sortKol) th.classList.add(sortDir === -1 ? "desc" : "asc");
@@ -413,40 +417,28 @@ document.addEventListener("keydown", e => {
 
 function byggFdrMatris() {
   if (!DATA.length) return;
-
   const lagFdr = {};
   DATA.forEach(s => {
-    if (s.fdr && s.fdr.length > 0 && !lagFdr[s.lag]) {
-      lagFdr[s.lag] = s.fdr;
-    }
+    if (s.fdr && s.fdr.length > 0 && !lagFdr[s.lag]) lagFdr[s.lag] = s.fdr;
   });
-
   const lagNamn = Object.keys(lagFdr).sort();
-
   const gwSlots = {};
   lagNamn.forEach(lag => {
     const gwCount = {};
-    lagFdr[lag].forEach(m => {
-      gwCount[m.gw] = (gwCount[m.gw] || 0) + 1;
-    });
+    lagFdr[lag].forEach(m => { gwCount[m.gw] = (gwCount[m.gw] || 0) + 1; });
     Object.entries(gwCount).forEach(([gw, count]) => {
       gwSlots[Number(gw)] = Math.max(gwSlots[Number(gw)] || 1, count);
     });
   });
-
   const gwLista = Object.keys(gwSlots).map(Number).sort((a, b) => a - b);
-
   let html = "<thead><tr><th class='lag-col'>Lag</th>";
   gwLista.forEach(gw => {
     const slots = gwSlots[gw];
-    if (slots > 1) {
-      html += `<th colspan="${slots}" class="dgw-col">★ Omg. ${gw}</th>`;
-    } else {
-      html += `<th>Omg. ${gw}</th>`;
-    }
+    html += slots > 1
+      ? `<th colspan="${slots}" class="dgw-col">★ Omg. ${gw}</th>`
+      : `<th>Omg. ${gw}</th>`;
   });
   html += "</tr></thead><tbody>";
-
   lagNamn.forEach(lag => {
     const gwMap = {};
     lagFdr[lag].forEach(m => {
@@ -454,7 +446,6 @@ function byggFdrMatris() {
       if (!gwMap[gw]) gwMap[gw] = [];
       gwMap[gw].push(m);
     });
-
     html += `<tr><td class="lag-namn">${lag}</td>`;
     gwLista.forEach(gw => {
       const slots   = gwSlots[gw];
@@ -481,9 +472,49 @@ function byggFdrMatris() {
     });
     html += "</tr>";
   });
-
   html += "</tbody>";
   document.getElementById("fdr-tabell").innerHTML = html;
+}
+
+function laddaAiInsikter() {
+  fetch("ai_insikter.json")
+    .then(r => r.json())
+    .then(data => {
+      function formatera(text) {
+        return text
+          .split('\n')
+          .map(rad => {
+            if (rad.startsWith('# ') || rad.startsWith('## ') || rad.startsWith('### ')) {
+              const ren = rad.replace(/^#{1,3} /, '');
+              return `<p style="font-size:15px;font-weight:600;color:#4a90d9;margin-bottom:8px;">${ren}</p>`;
+            }
+            if (rad.startsWith('---')) return '<hr style="border:none;border-top:1px solid #2a2d3a;margin:12px 0;">';
+            if (rad.trim() === '') return '';
+            const ren = rad.replace(/\*\*(.*?)\*\*/g, '<strong style="color:#fff;">$1</strong>');
+            return `<p style="margin-bottom:8px;">${ren}</p>`;
+          })
+          .join('');
+      }
+      document.getElementById("ai-innehall").innerHTML = `
+        <p class="ai-omgang">Analys för omgång ${data.omgang} — genererad av Claude AI</p>
+        <div class="ai-sektion">
+          <h2>🎯 Kaptenstips omgång ${data.omgang}</h2>
+          <div class="ai-text">${formatera(data.kaptenstips)}</div>
+        </div>
+        <div class="ai-sektion">
+          <h2>💎 Differentials</h2>
+          <div class="ai-text">${formatera(data.differentials)}</div>
+        </div>
+        <div class="ai-sektion">
+          <h2>📈 Prisrörelser — köp och sälj INNAN marknaden</h2>
+          <div class="ai-text">${formatera(data.prisrorelser)}</div>
+        </div>
+      `;
+    })
+    .catch(() => {
+      document.getElementById("ai-innehall").innerHTML =
+        '<p style="color:#666;font-size:14px;">Ingen AI-analys tillgänglig. Kör scripts/ai_analys.py för att generera.</p>';
+    });
 }
 
 function prisKurvaHtml(historik) {
@@ -531,7 +562,6 @@ function fdrKortHtml(fdr_lista, visaAlla) {
   if (!fdr_lista || fdr_lista.length === 0) return "";
   const visa    = visaAlla ? fdr_lista : fdr_lista.slice(0, 5);
   const harFler = fdr_lista.length > 5;
-
   const matcher_html = visa.map(m => {
     if (m.dgw) {
       return `<div class="fdr-fixture-box dgw">
@@ -547,13 +577,11 @@ function fdrKortHtml(fdr_lista, visaAlla) {
       <div class="fdr-fixture-sub" style="color:${text}">GW${m.gw} ${m.hemma ? "H" : "B"}</div>
     </div>`;
   }).join("");
-
   const knapp_html = harFler
     ? visaAlla
       ? `<button class="fdr-expand-btn" onclick="toggleFdrKort(this)">↑ Visa färre</button>`
       : `<button class="fdr-expand-btn" onclick="toggleFdrKort(this)">↓ Visa alla ${fdr_lista.length} matcher</button>`
     : "";
-
   return `
     <div class="section-title" style="margin-top:24px;">Kommande matcher (FDR)</div>
     <div class="fdr-fixtures-wrap" data-fdr='${JSON.stringify(fdr_lista).replace(/'/g, "&#39;")}' data-visa-alla="${visaAlla ? '1' : '0'}">
@@ -563,8 +591,8 @@ function fdrKortHtml(fdr_lista, visaAlla) {
 }
 
 function toggleFdrKort(knapp) {
-  const sektion  = document.getElementById("fdr-kort-sektion");
-  const wrap     = sektion.querySelector(".fdr-fixtures-wrap");
+  const sektion   = document.getElementById("fdr-kort-sektion");
+  const wrap      = sektion.querySelector(".fdr-fixtures-wrap");
   if (!wrap) return;
   const fdr_lista = JSON.parse(wrap.dataset.fdr);
   const visaAlla  = wrap.dataset.visaAlla === "1";
@@ -577,7 +605,6 @@ function oppnaKort(s) {
   const fg       = POS_TEXT[pos] || "#fff";
   const prisSign = s.prisand > 0 ? "+" : "";
   const prisKls  = s.prisand > 0 ? "#5dba7a" : s.prisand < 0 ? "#f07070" : "#888";
-
   const hist  = s.historik || [];
   const maxP  = Math.max(...hist.map(h => h.p), 1);
   const grafHtml = hist.length ? `
@@ -593,7 +620,6 @@ function oppnaKort(s) {
         </div>`;
       }).join("")}
     </div>` : "";
-
   const harFotmob = s.xg != null;
   const advHtml = harFotmob ? `
     <div class="section-title" style="margin-top:24px;">Avancerad statistik (FotMob)</div>
@@ -612,14 +638,12 @@ function oppnaKort(s) {
         <div class="adv-row"><span class="adv-lbl">Chanser skapade</span><span class="adv-val">${s.chanser ?? "—"}</span></div>
       </div>
     </div>` : `<p style="color:#555;font-size:13px;margin-top:16px;">Ingen FotMob-data tillgänglig.</p>`;
-
   const transHtml = `
     <div class="section-title" style="margin-top:24px;">Marknadsinfo</div>
     <div class="transfer-row"><span style="color:#888;">Transfers in</span><span style="color:#5dba7a;font-weight:600;">+${s.trans_in.toLocaleString("sv")}</span></div>
     <div class="transfer-row"><span style="color:#888;">Transfers ut</span><span style="color:#f07070;font-weight:600;">-${s.trans_ut.toLocaleString("sv")}</span></div>
     <div class="transfer-row"><span style="color:#888;">Ägarskap</span><span style="font-weight:600;">${s.agarskap}%</span></div>
     <div class="transfer-row"><span style="color:#888;">Chans att spela</span><span style="font-weight:600;">${s.chans}%</span></div>`;
-
   document.getElementById("modal-innehall").innerHTML = `
     <div class="modal-header">
       <div class="modal-avatar" style="background:${bg};color:${fg}">${pos}</div>
@@ -651,7 +675,6 @@ function oppnaKort(s) {
     ${advHtml}
     ${transHtml}
   `;
-
   document.getElementById("modal-bg").classList.add("open");
 }
 </script>
