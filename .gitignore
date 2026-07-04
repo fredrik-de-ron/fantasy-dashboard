@@ -19,14 +19,14 @@ bin/
 ratelimiter-*/
 =
 
+# Känsliga filer
+.env
+
 # Stora datafiler vi inte behöver i Git
 kombinerad.json
 fotmob_stats.json
 spelare_komplett.json
 fantasy_allsvenskan.xlsx
 
-# Behåll dessa (dashboarden behöver dem)
-!dashboard_data.json
-!dashboard.html.env
-.envdashboard_offline.html
-!index.html
+# Genererade filer
+dashboard_offline.html
