@@ -61,6 +61,13 @@ def spelare_sammanfattning(s, max_fdr=3):
         f"GW{m['gw']}:{m['fdr']}({'H' if m['hemma'] else 'B'})"
         for m in fdr_lista
     )
+    fullnamn = s.get("fullnamn") or s["namn"]
+    return (
+        f"{fullnamn} ({s['lag']}, {s['position']}, {s['pris']}M) | "
+        f"Poäng/match:{s['ppg']} Form:{s['form3']} "
+        f"xG:{s.get('xg') or '-'} xA:{s.get('xa') or '-'} "
+        f"Äg:{s['agarskap']}% FDR: {fdr_text}"
+    )
     return (
         f"{s['namn']} ({s['lag']}, {s['position']}, {s['pris']}M) | "
         f"Poäng/match:{s['ppg']} Form:{s['form3']} "
