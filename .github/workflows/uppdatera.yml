@@ -2,8 +2,8 @@ name: Uppdatera Fantasy Dashboard
 
 on:
   schedule:
-    - cron: '0 6 * * *'  # Varje dag kl 06:00 UTC
-  workflow_dispatch:       # Tillåter manuell körning
+    - cron: '0 6 * * *'
+  workflow_dispatch:
 
 jobs:
   kolla_matchdag:
@@ -31,7 +31,7 @@ jobs:
             echo "spelades_matcher=nej" >> $GITHUB_OUTPUT
           fi
 
-  uppdatera:
+  uppdatera_statistik:
     runs-on: ubuntu-latest
     needs: kolla_matchdag
     if: needs.kolla_matchdag.outputs.spelades_matcher == 'ja' || github.event_name == 'workflow_dispatch'
@@ -46,8 +46,7 @@ jobs:
           python-version: '3.12'
 
       - name: Installera paket
-        run: |
-          pip install httpx rapidfuzz openpyxl python-dotenv
+        run: pip install httpx rapidfuzz openpyxl python-dotenv
 
       - name: Hämta Fantasy-data
         run: python scripts/hamta_data.py
@@ -64,18 +63,71 @@ jobs:
       - name: Bygg dashboard-data
         run: python scripts/bygg_dashboard_data.py
 
+      - name: Bygg offline-dashboard
+        run: python scripts/bygg_offline.py
+
+      - name: Spara statistik
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dashboard_data.json kombinerad.json spelare_komplett.json fotmob_stats.json fdr_data.json index.html
+          git diff --staged --quiet || git commit -m "Uppdaterad statistik $(date '+%Y-%m-%d')"
+          git push
+
+  kolla_ai_dag:
+    runs-on: ubuntu-latest
+    outputs:
+      kor_ai: ${{ steps.kolla_ai.outputs.kor_ai }}
+    steps:
+      - name: Hämta koden
+        uses: actions/checkout@v4
+
+      - name: Sätt upp Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Installera httpx
+        run: pip install httpx
+
+      - name: Kolla om imorgon är deadline
+        id: kolla_ai
+        run: |
+          if python scripts/kolla_ai_dag.py; then
+            echo "kor_ai=ja" >> $GITHUB_OUTPUT
+          else
+            echo "kor_ai=nej" >> $GITHUB_OUTPUT
+          fi
+
+  ai_analys:
+    runs-on: ubuntu-latest
+    needs: [kolla_ai_dag]
+    if: needs.kolla_ai_dag.outputs.kor_ai == 'ja' || github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Hämta koden
+        uses: actions/checkout@v4
+
+      - name: Sätt upp Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Installera paket
+        run: pip install httpx python-dotenv
+
       - name: Kör AI-analys
         run: python scripts/ai_analys.py
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
-      - name: Bygg offline-dashboard
+      - name: Bygg offline-dashboard med AI
         run: python scripts/bygg_offline.py
 
-      - name: Spara uppdaterad data
+      - name: Spara AI-insikter
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add dashboard_data.json kombinerad.json spelare_komplett.json fotmob_stats.json fdr_data.json ai_insikter.json index.html
-          git diff --staged --quiet || git commit -m "Uppdaterad data $(date '+%Y-%m-%d')"
+          git add ai_insikter.json index.html
+          git diff --staged --quiet || git commit -m "AI-analys $(date '+%Y-%m-%d')"
           git push
