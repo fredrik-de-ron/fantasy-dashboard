@@ -73,6 +73,7 @@ for i, s in enumerate(kombinerad):
     dashboard_spelare.append({
         "id":          s["id"],
         "namn":        s["namn"],
+        "fullnamn":    s["fullnamn"],
         "lag":         s["lag"],
         "position":    s["position"],
         "status":       s["status"],
