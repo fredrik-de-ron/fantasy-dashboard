@@ -2,12 +2,39 @@ name: Uppdatera Fantasy Dashboard
 
 on:
   schedule:
-    - cron: '0 6 * * 1,3,5,0'
-  workflow_dispatch:
+    - cron: '0 6 * * *'  # Varje dag kl 06:00 UTC
+  workflow_dispatch:       # Tillåter manuell körning
 
 jobs:
+  kolla_matchdag:
+    runs-on: ubuntu-latest
+    outputs:
+      spelades_matcher: ${{ steps.kolla.outputs.spelades_matcher }}
+    steps:
+      - name: Hämta koden
+        uses: actions/checkout@v4
+
+      - name: Sätt upp Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Installera httpx
+        run: pip install httpx
+
+      - name: Kolla om det spelades matcher igår
+        id: kolla
+        run: |
+          if python scripts/kolla_matchdag.py; then
+            echo "spelades_matcher=ja" >> $GITHUB_OUTPUT
+          else
+            echo "spelades_matcher=nej" >> $GITHUB_OUTPUT
+          fi
+
   uppdatera:
     runs-on: ubuntu-latest
+    needs: kolla_matchdag
+    if: needs.kolla_matchdag.outputs.spelades_matcher == 'ja' || github.event_name == 'workflow_dispatch'
 
     steps:
       - name: Hämta koden
@@ -26,14 +53,7 @@ jobs:
         run: python scripts/hamta_data.py
 
       - name: Hämta FotMob-data
-        run: |
-          DAG=$(date +%u)
-          if [ "$DAG" = "1" ] || [ "$DAG" = "5" ]; then
-            echo "Måndag eller fredag — kör FotMob-crawl"
-            python scripts/hamta_fotmob.py
-          else
-            echo "Inte matchdag för FotMob — hoppar över crawl"
-          fi
+        run: python scripts/hamta_fotmob.py
 
       - name: Slå ihop data
         run: python scripts/sla_ihop.py
