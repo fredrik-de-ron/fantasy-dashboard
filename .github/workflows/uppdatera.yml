@@ -26,7 +26,14 @@ jobs:
         run: python scripts/hamta_data.py
 
       - name: Hämta FotMob-data
-        run: python scripts/hamta_fotmob.py
+        run: |
+          DAG=$(date +%u)
+          if [ "$DAG" = "1" ] || [ "$DAG" = "5" ]; then
+            echo "Måndag eller fredag — kör FotMob-crawl"
+            python scripts/hamta_fotmob.py
+          else
+            echo "Inte matchdag för FotMob — hoppar över crawl"
+          fi
 
       - name: Slå ihop data
         run: python scripts/sla_ihop.py
