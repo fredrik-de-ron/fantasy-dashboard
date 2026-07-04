@@ -509,6 +509,11 @@ function laddaAiInsikter() {
           <h2>📈 Prisrörelser — köp och sälj INNAN marknaden</h2>
           <div class="ai-text">${formatera(data.prisrorelser)}</div>
         </div>
+        ${data.transferanalys ? `
+        <div class="ai-sektion">
+          <h2>🔄 Transferanalys — 5-omgångsperspektiv</h2>
+          <div class="ai-text">${formatera(data.transferanalys)}</div>
+        </div>` : ''}
       `;
     })
     .catch(() => {
