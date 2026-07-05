@@ -523,6 +523,11 @@ function laddaAiInsikter() {
           <h2>🔄 Transferanalys — 5-omgångsperspektiv</h2>
           <div class="ai-text">${formatera(data.transferanalys)}</div>
         </div>` : ''}
+        ${data.lardomar ? `
+        <div class="ai-sektion">
+          <h2>📚 Lärdomar från föregående omgång</h2>
+          <div class="ai-text">${formatera(data.lardomar)}</div>
+        </div>` : ''}
       `;
     })
     .catch(() => {
