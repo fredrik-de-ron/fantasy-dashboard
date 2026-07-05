@@ -15,15 +15,25 @@ if os.path.exists("ai_insikter.json"):
 else:
     print("  Ingen ai_insikter.json hittad")
 
+chip_insikter = None
+if os.path.exists("chip_insikter.json"):
+    with open("chip_insikter.json", encoding="utf-8") as f:
+        chip_insikter = json.load(f)
+    print(f"  Chip-insikter hittade för omgång {chip_insikter['omgang']}")
+else:
+    print("  Ingen chip_insikter.json hittad")
+
 with open("dashboard.html", encoding="utf-8") as f:
     html = f.read()
 
 data_json = json.dumps(data, ensure_ascii=False)
 ai_json   = json.dumps(ai_insikter, ensure_ascii=False) if ai_insikter else "null"
+chip_json = json.dumps(chip_insikter, ensure_ascii=False) if chip_insikter else "null"
 
 injekt = f"""<script>
 window.DASHBOARD_DATA = {data_json};
 window.AI_INSIKTER = {ai_json};
+window.CHIP_INSIKTER = {chip_json};
 </script>
 """
 
@@ -41,18 +51,28 @@ html = re.sub(
     html
 )
 
+html = re.sub(
+    r'fetch\("chip_insikter\.json"\)\s*\n\s*\.then\(r => r\.json\(\)\)\s*\n\s*\.then\(data =>',
+    'Promise.resolve(window.CHIP_INSIKTER || Promise.reject())\n    .then(data =>',
+    html
+)
+
 with open("index.html", "w", encoding="utf-8") as f:
     f.write(html)
 
-ok_data = "window.DASHBOARD_DATA" in html
-ok_ai   = "window.AI_INSIKTER" in html
+ok_data      = "window.DASHBOARD_DATA" in html
+ok_ai        = "window.AI_INSIKTER" in html
+ok_chip      = "window.CHIP_INSIKTER" in html
 ok_fetch_data = 'fetch("dashboard_data.json")' not in html
 ok_fetch_ai   = 'fetch("ai_insikter.json")' not in html
+ok_fetch_chip = 'fetch("chip_insikter.json")' not in html
 
-print(f"  Data inbäddad:     {'✓' if ok_data else '✗'}")
-print(f"  AI inbäddad:       {'✓' if ok_ai else '✗'}")
-print(f"  Fetch data ersatt: {'✓' if ok_fetch_data else '✗'}")
-print(f"  Fetch AI ersatt:   {'✓' if ok_fetch_ai else '✗'}")
+print(f"  Data inbäddad:        {'✓' if ok_data else '✗'}")
+print(f"  AI inbäddad:          {'✓' if ok_ai else '✗'}")
+print(f"  Chip inbäddad:        {'✓' if ok_chip else '✗'}")
+print(f"  Fetch data ersatt:    {'✓' if ok_fetch_data else '✗'}")
+print(f"  Fetch AI ersatt:      {'✓' if ok_fetch_ai else '✗'}")
+print(f"  Fetch chip ersatt:    {'✓' if ok_fetch_chip else '✗'}")
 
 storlek = os.path.getsize("index.html") / 1024
 print(f"\nKlar! index.html ({storlek:.0f} KB)")

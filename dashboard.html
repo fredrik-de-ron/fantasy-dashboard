@@ -217,6 +217,12 @@
     <div id="ai-innehall">
       <p style="color:#666;font-size:14px;">Laddar AI-analys...</p>
     </div>
+    <div class="ai-sektion" style="margin-top:16px;">
+      <h2>🎴 Chipstrategi för säsongen</h2>
+      <div id="chip-innehall">
+        <p style="color:#666;font-size:14px;">Laddar chipanalys...</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -276,7 +282,7 @@ function byttVy(vy, knapp) {
   document.getElementById("vy-" + vy).classList.add("aktiv");
   knapp.classList.add("aktiv");
   if (vy === "fdr") byggFdrMatris();
-  if (vy === "ai")  laddaAiInsikter();
+  if (vy === "ai") { laddaAiInsikter(); laddaChipInsikter(); }
 }
 
 fetch("dashboard_data.json")
@@ -521,7 +527,35 @@ function laddaAiInsikter() {
         '<p style="color:#666;font-size:14px;">Ingen AI-analys tillgänglig. Kör scripts/ai_analys.py för att generera.</p>';
     });
 }
-
+function laddaChipInsikter() {
+  fetch("chip_insikter.json")
+    .then(r => r.json())
+    .then(data => {
+      function formatera(text) {
+        return text
+          .split('\n')
+          .map(rad => {
+            if (rad.startsWith('# ') || rad.startsWith('## ') || rad.startsWith('### ')) {
+              const ren = rad.replace(/^#{1,3} /, '');
+              return `<p style="font-size:15px;font-weight:600;color:#4a90d9;margin-bottom:8px;">${ren}</p>`;
+            }
+            if (rad.startsWith('---')) return '<hr style="border:none;border-top:1px solid #2a2d3a;margin:12px 0;">';
+            if (rad.trim() === '') return '';
+            const ren = rad.replace(/\*\*(.*?)\*\*/g, '<strong style="color:#fff;">$1</strong>');
+            return `<p style="margin-bottom:8px;">${ren}</p>`;
+          })
+          .join('');
+      }
+      document.getElementById("chip-innehall").innerHTML = `
+        <p class="ai-omgang">Chipanalys för omgång ${data.omgang} — genererad av Claude AI</p>
+        <div class="ai-text">${formatera(data.chipanalys)}</div>
+      `;
+    })
+    .catch(() => {
+      document.getElementById("chip-innehall").innerHTML =
+        '<p style="color:#666;font-size:14px;">Ingen chipanalys tillgänglig. Kör scripts/chip_analys.py för att generera.</p>';
+    });
+}
 function prisKurvaHtml(historik) {
   if (!historik || historik.length < 2) return "";
   const W = 700, H = 90, padX = 10, padY = 20;
