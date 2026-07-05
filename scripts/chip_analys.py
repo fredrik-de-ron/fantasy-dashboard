@@ -87,8 +87,14 @@ for gw in sorted(alla_gw_i_schema):
     if lag_utan_match:
         blanks[gw] = lag_utan_match
 
-# Tillgängliga spelare
-tillgangliga = [s for s in spelare if s["status"] in ("a", "d") and s["chans"] >= 75]
+# Tillgängliga spelare — inkludera landslagsuttagna med hög spelchans
+tillgangliga = [
+    s for s in spelare
+    if (s["status"] in ("a", "d") or (s["status"] == "n" and s["chans"] >= 75))
+    and s["chans"] >= 75
+]
+
+print(f"  Tillgängliga spelare: {len(tillgangliga)}")
 
 # Bästa försvarare för Parkera Bussen
 forsvarare = [s for s in tillgangliga if s["position"] == "Försvarare"]
@@ -96,6 +102,14 @@ forsvarare.sort(key=lambda x: (
     lag_fdr_full.get(x["lag"], {}).get("snitt5", 5),
     -float(x["nollor"])
 ))
+
+# DGW-försvarare explicit
+dgw_forsvarare = [
+    s for s in tillgangliga
+    if s["position"] == "Försvarare"
+    and lag_fdr_full.get(s["lag"], {}).get("dgw")
+]
+dgw_forsvarare.sort(key=lambda x: float(x["ppg"]), reverse=True)
 
 # Bästa anfallare/mittfältare för Dynamisk Duo
 anfallare_mf = [s for s in tillgangliga if s["position"] in ("Anfallare", "Mittfältare")]
@@ -126,7 +140,7 @@ for gw, lag_lista in sorted(alla_dgw.items()):
     dgw_text += f"\n  ★ DGW Omgång {gw}:\n"
     for lag in lag_lista:
         dgw_text += f"    {dgw_detaljer(lag, gw)}\n"
-    dgw_text += f"    → Idealiskt för Parkera Bussen, Dynamisk Duo och Lånelaget\n"
+    dgw_text += f"    → Idealiskt för Parkera Bussen, Dynamisk Duo ELLER Lånelaget (välj ETT)\n"
 if not dgw_text:
     dgw_text = "  Inga DGW hittade i schemat"
 
@@ -137,21 +151,28 @@ blank_text = "\n".join(
     if len(lag_lista) >= 3
 ) if blanks else "  Inga stora Blank-omgångar hittade"
 
-# Lag med lättast fixtures kommande 5 omgångar
+# Lag med lättast fixtures kommande 6 omgångar
 lag_oversikt = "\n".join(
     f"  {lag}: snitt FDR {info['snitt5']} | {fdr_rad(lag)}"
     for lag, info in sorted(lag_fdr_full.items(), key=lambda x: x[1]["snitt5"])[:8]
 )
 
-# Försvarare för Parkera Bussen — markera DGW-lag
-pb_text = "\n".join(
+# Försvarare för Parkera Bussen
+pb_text = "  --- FÖRSVARARE FRÅN DGW-LAG (prioritera för Parkera Bussen) ---\n"
+pb_text += "\n".join(
+    f"  {s.get('fullnamn') or s['namn']} ({s['lag']}, {s['pris']}M) | "
+    f"Nollor:{s['nollor']} PPM:{s['ppg']} | {fdr_rad(s['lag'], 4)} ★DGW"
+    for s in dgw_forsvarare[:10]
+)
+pb_text += "\n\n  --- ÖVRIGA FÖRSVARARE MED BRA FIXTURES ---\n"
+pb_text += "\n".join(
     f"  {s.get('fullnamn') or s['namn']} ({s['lag']}, {s['pris']}M) | "
     f"Nollor:{s['nollor']} PPM:{s['ppg']} | {fdr_rad(s['lag'], 4)}"
-    + (" ★DGW" if lag_fdr_full.get(s["lag"], {}).get("dgw") else "")
-    for s in forsvarare[:12]
+    for s in forsvarare[:8]
+    if not lag_fdr_full.get(s["lag"], {}).get("dgw")
 )
 
-# Duo-kandidater — markera DGW-lag
+# Duo-kandidater
 duo_text = "\n".join(
     f"  {s.get('fullnamn') or s['namn']} ({s['lag']}, {s['pris']}M) | "
     f"PPM:{s['ppg']} Form:{s['form3']} xG:{s.get('xg') or '-'} | {fdr_rad(s['lag'], 4)}"
@@ -165,40 +186,45 @@ AKTUELL OMGÅNG: {aktuell_gw}
 NÄSTA OMGÅNG: {nasta_gw}
 ÅTERSTÅENDE OMGÅNGAR I SÄSONGEN: {aterstaende_gw} (säsongen slutar GW30)
 
-CHIPSEN I ALLSVENSKAN FANTASY:
+CHIPSEN I ALLSVENSKAN FANTASY — REGLER:
+⚠️ KRITISKT: BARA ETT CHIP KAN ANVÄNDAS PER OMGÅNG — inga undantag!
+Parkera Bussen, Lånelaget och Dynamisk Duo kan INTE kombineras med varandra.
+Inget av dessa kan heller kombineras med Frikort samma omgång.
+Varje chip kan bara användas EN gång per säsong.
 
 1. FRIKORT / WILDCARD (2 st — ett för GW2-15, ett för GW16-30)
    - Byt hela laget fritt utan transferkostnad
-   - Sparade fria transfers följer med till nästa omgång
    - KAN EJ kombineras med Parkera Bussen, Lånelaget eller Dynamisk Duo samma omgång
    - Bäst inför en period med bra fixtures eller när laget är skadat
 
 2. PARKERA BUSSEN (1 gång per säsong)
    - Alla försvarares poäng FÖRDUBBLAS
    - Ingen kapten eller vicekapten denna omgång
-   - Optimalt med 5 försvarare i formationen (t.ex. 5-3-2)
+   - Optimalt med 5 försvarare i formationen (t.ex. 3-5-2)
    - KRITISKT: MAX 3 SPELARE FRÅN SAMMA LAG — du kan inte ha 5 backar från ett DGW-lag!
-   - Välj 5 backar från 2-3 OLIKA DGW-lag för att maximera effekten
+   - Välj 5 backar från MINST 2 OLIKA DGW-lag
+   - KAN EJ kombineras med Lånelaget eller Dynamisk Duo samma omgång
    - KRAFTFULLAST VID DGW: 5 backar × 2 matcher × dubbla poäng = upp till 4x normaleffekt
-   - Bäst när DGW-lag har lätta motståndare och nollor är sannolika
 
 3. LÅNELAGET (1 gång per säsong, GW2-30)
    - Obegränsade transfers denna omgång
-   - Max 3-spelarsregeln per lag försvinner — du kan ta hur många du vill från ett lag
+   - Max 3-spelarsregeln per lag försvinner
    - Laget återställs automatiskt vid nästa deadline
    - KAN EJ avbrytas när det aktiverats
-   - ANVÄNDNINGSFALL 1 — DGW: Ladda upp maximalt med spelare från DGW-lag,
-     t.ex. 5-6 spelare från samma DGW-lag om de har lätta motståndare
-   - ANVÄNDNINGSFALL 2 — Blank-omgång: Om ditt lag har många spelare från lag
-     utan match, byt tillfälligt till spelare som faktiskt spelar
+   - KAN EJ kombineras med Parkera Bussen eller Dynamisk Duo samma omgång
+   - ANVÄNDNINGSFALL 1 — DGW: Ladda upp maximalt med spelare från DGW-lag
+   - ANVÄNDNINGSFALL 2 — Blank-omgång: Byt tillfälligt till spelare som spelar
 
 4. DYNAMISK DUO (1 gång per säsong)
-   - Kapten får 3x poäng (istället för normala 2x)
-   - Vicekapten får 2x poäng
+   - Kapten får 3x poäng, vicekapten får 2x poäng
+   - KAN EJ kombineras med Parkera Bussen eller Lånelaget samma omgång
    - KRAFTFULLAST VID DGW: Kapten spelar 2 matcher × 3x = enorm effekt
    - Bäst när dina två bästa spelare båda har DGW med lätta motståndare
 
-DOUBLE GAMEWEEKS I HELA SCHEMAT (med detaljerad matchinfo):
+DOUBLE GAMEWEEKS I HELA SCHEMAT:
+OBS: Vid DGW är ALLA spelare från DGW-lagen värda att överväga oavsett form,
+eftersom två matcher potentiellt ger dubbla poäng. Även spelare med form 3-5 PPM
+kan ge 8-12 poäng i en DGW. Inkludera ALLTID spelare från ALLA DGW-lag i analysen.
 {dgw_text}
 
 BLANK GAMEWEEKS (lag som INTE spelar):
@@ -214,16 +240,17 @@ KANDIDATER FÖR DYNAMISK DUO (★ = har DGW):
 {duo_text}
 
 Ge en detaljerad chipstrategi på svenska för resten av säsongen.
+Tänk på att BARA ETT CHIP kan spelas per omgång.
 
 ## Frikort (Wildcard)
-- Bör Frikort 1 spelas snart (löper ut GW15)? Vilket är det optimala läget?
+- Bör Frikort 1 spelas snart (löper ut GW15)?
 - När bör Frikort 2 sparas till?
 
 ## Parkera Bussen
-- Finns det en DGW som gör Parkera Bussen extremt kraftfull?
-- VIKTIGT: Föreslå 5 backar från MINST 2 olika lag (max 3 från samma lag)
+- Vilket DGW är optimalt för Parkera Bussen?
+- Föreslå 5 backar från MINST 2 olika lag (max 3 från samma)
 - Beräkna potentiell poängeffekt: 5 backar × 2 matcher × 2x poäng
-- Om ingen DGW finns nära — bör man vänta eller spela nu?
+- Inkludera backar från ALLA DGW-lag, även Mjällby AIF
 
 ## Lånelaget
 - Finns det en DGW som är idealisk för Lånelaget?
@@ -232,12 +259,13 @@ Ge en detaljerad chipstrategi på svenska för resten av säsongen.
 
 ## Dynamisk Duo
 - Finns det en DGW för toppspelarna?
-- Vilka två spelare maximerar effekten? Beräkna: kapten PPM × 3 × 2 matcher
-- Vilken omgång är optimal?
+- Vilka två spelare maximerar effekten?
+- Beräkna: kapten PPM × 3 × 2 matcher
 
 ## Prioriteringsordning
-Sammanfatta chipstrategin för resten av säsongen i en tydlig tabell.
-Rekommendera alltid att spara chips till DGW om möjligt."""
+Sammanfatta chipstrategin i en tydlig tabell.
+Påminn om att bara ETT chip kan spelas per omgång.
+Rekommendera alltid att spara chips till DGW."""
 
 print("Genererar chipanalys...")
 chip_tips = fraga_claude(chip_prompt, max_tokens=4000)
