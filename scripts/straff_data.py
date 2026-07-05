@@ -4,84 +4,84 @@
 
 STRAFF_SKYTTARE = {
     "AIK": {
-        "straff": ["Csongvai"],
+        "straff": ["Hove", "Csongvai"],
         "hornor": ["Csongvai"],
         "frisparkar": ["Csongvai"],
     },
     "BK Häcken": {
         "straff": ["Lindgren"],
-        "hornor": ["Lindgren"],
-        "frisparkar": ["Lindgren"],
+        "hornor": ["Rygaard", "Lindgren"],
+        "frisparkar": ["Rygaard", "Lindgren"],
     },
     "IF Brommapojkarna": {
         "straff": ["Berg"],
-        "hornor": ["Hansen", "Berg"],
+        "hornor": ["Berg", "Hansen"],
         "frisparkar": ["Hansen"],
     },
     "Degerfors IF": {
-        "straff": ["Okänd"],
-        "hornor": ["Okänd"],
+        "straff": ["Sundgren"],
+        "hornor": ["Netabay"],
         "frisparkar": ["Okänd"],
     },
     "Djurgården": {
         "straff": ["Lien"],
-        "hornor": ["Lien"],
-        "frisparkar": ["Lien"],
+        "hornor": ["Hegland", "Larsson"],
+        "frisparkar": ["Hegland"],
     },
     "GAIS": {
         "straff": ["Salter"],
-        "hornor": ["Salter"],
-        "frisparkar": ["Salter"],
+        "hornor": ["Frosti Thorkelsson", "de Brienne"],
+        "frisparkar": ["Frosti Thorkelsson"],
     },
     "Halmstads BK": {
         "straff": ["Okänd"],
-        "hornor": ["Okänd"],
+        "hornor": ["Allansson", "Ascone"],
         "frisparkar": ["Okänd"],
     },
     "Hammarby IF": {
         "straff": ["Besara"],
-        "hornor": ["Besara", "Lind"],
+        "hornor": ["Besara", "Madjed", "Persson"],
         "frisparkar": ["Besara"],
     },
     "IF Elfsborg": {
         "straff": ["Östman"],
-        "hornor": ["Östman", "Holmén"],
+        "hornor": ["Magnusson", "Zeneli"],
         "frisparkar": ["Östman"],
     },
     "IFK Göteborg": {
         "straff": ["Heintz"],
-        "hornor": ["Heintz", "Borén"],
+        "hornor": ["Heintz"],
         "frisparkar": ["Heintz"],
     },
     "IK Sirius": {
         "straff": ["Ure", "Bjerkebo"],
-        "hornor": ["Bjerkebo", "Ure"],
+        "hornor": ["Bjerkebo", "Krusnell", "Jönsson"],
         "frisparkar": ["Bjerkebo"],
     },
     "Kalmar FF": {
         "straff": ["Rosenquist"],
-        "hornor": ["Rosenquist"],
+        "hornor": ["Chourak", "Gojani", "Gustafsson", "Hallberg"],
         "frisparkar": ["Rosenquist"],
     },
     "Malmö FF": {
         "straff": ["Botheim"],
-        "hornor": ["Haksabanovic", "Botheim"],
+        "hornor": ["Rosengren", "Haksabanovic", "Busanello"],
         "frisparkar": ["Haksabanovic"],
     },
     "Mjällby AIF": {
         "straff": ["Bergström"],
-        "hornor": ["Bergström"],
-        "frisparkar": ["Bergström"],
+        "hornor": ["Stroud", "Malachowski Thorell"],
+        "frisparkar": ["Stroud"],
     },
     "Västerås SK": {
         "straff": ["Ladefoged"],
-        "hornor": ["Ladefoged"],
+        "hornor": ["Baggesen", "Lushaku"],
         "frisparkar": ["Ladefoged"],
     },
     "Örgryte IS": {
-        "straff": ["Okänd"],
-        "hornor": ["Okänd"],
-        "frisparkar": ["Okänd"],
+        "straff": ["Sana"],
+        "hornor": ["Hofvander", "Sana", "Andreasson"],
+        "frisparkar": ["Sana"],
     },
 }
 
