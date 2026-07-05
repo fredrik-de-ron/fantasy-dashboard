@@ -1,7 +1,11 @@
 import httpx
 import json
 import os
+import sys
 from dotenv import load_dotenv
+
+sys.path.insert(0, "scripts")
+from straff_data import STRAFF_SKYTTARE
 
 load_dotenv()
 API_KEY = os.getenv("ANTHROPIC_API_KEY")
@@ -62,17 +66,28 @@ def spelare_sammanfattning(s, max_fdr=3):
         for m in fdr_lista
     )
     fullnamn = s.get("fullnamn") or s["namn"]
+    efternamn = s["namn"]
+
+    # Kolla fasta situationer
+    lag_info = STRAFF_SKYTTARE.get(s["lag"], {})
+    fasta = []
+    if efternamn in lag_info.get("straff", []):
+        pos = lag_info["straff"].index(efternamn)
+        fasta.append("Straffskyttare" if pos == 0 else "Reservstraffskyttare")
+    if efternamn in lag_info.get("hornor", []):
+        pos = lag_info["hornor"].index(efternamn)
+        fasta.append("Hörnor (primär)" if pos == 0 else "Hörnor (reserv)")
+    if efternamn in lag_info.get("frisparkar", []):
+        pos = lag_info["frisparkar"].index(efternamn)
+        if pos == 0:
+            fasta.append("Frisparkar (primär)")
+    fasta_text = f" | Fasta: {', '.join(fasta)}" if fasta else ""
+
     return (
         f"{fullnamn} ({s['lag']}, {s['position']}, {s['pris']}M) | "
         f"Poäng/match:{s['ppg']} Form:{s['form3']} "
         f"xG:{s.get('xg') or '-'} xA:{s.get('xa') or '-'} "
-        f"Äg:{s['agarskap']}% FDR: {fdr_text}"
-    )
-    return (
-        f"{s['namn']} ({s['lag']}, {s['position']}, {s['pris']}M) | "
-        f"Poäng/match:{s['ppg']} Form:{s['form3']} "
-        f"xG:{s.get('xg') or '-'} xA:{s.get('xa') or '-'} "
-        f"Äg:{s['agarskap']}% FDR: {fdr_text}"
+        f"Äg:{s['agarskap']}%{fasta_text} FDR: {fdr_text}"
     )
 
 # === KAPTENSTIPS ===
@@ -87,13 +102,16 @@ kapten_prompt = f"""Du är expert på Allsvenskan Fantasy och analyserar inför 
 VIKTIGA REGLER FÖR KAPTENSVAL:
 - Kaptenen ger dubbla poäng så välj den med högst förväntad poäng
 - Prioritera: straffskyttare, hemmamatcher, låg FDR, hög form och xG
+- Straffskyttare har extra värde — varje straff ger 5 extra poäng
 - En spelare med FDR 1-2 är mycket bättre än en med FDR 5-7
 - Bonuspotential är viktigt i Allsvenskan
+- Fasta situationer (hörnor, frisparkar) ökar chansen för assist och mål
 
 Spelare att analysera (topp 20 på poäng/match):
 {chr(10).join(spelare_sammanfattning(s) for s in topp_kapten)}
 
 Ge dina topp 3 kaptensval med kortfattad motivering på svenska (max 2 meningar per spelare).
+Nämn alltid om spelaren är straffskyttare eller tar fasta situationer.
 Format:
 1. [Namn] - [Motivering]
 2. [Namn] - [Motivering]
@@ -121,11 +139,13 @@ En differential är en spelare som:
 - Har stark underliggande statistik (xG, xA)
 - Har bra kommande matcher (låg FDR)
 - Kan ge ett stort övertag mot motståndarna
+- Bonus om spelaren tar straffar eller fasta situationer
 
 Kandidater:
 {chr(10).join(spelare_sammanfattning(s) for s in differentials[:15])}
 
 Ge dina topp 3 differentials med motivering på svenska (max 2 meningar).
+Nämn om spelaren tar straffar eller fasta situationer.
 Format:
 1. [Namn] ([Ägarskap]%) - [Motivering]
 2. [Namn] ([Ägarskap]%) - [Motivering]
@@ -210,6 +230,7 @@ Tänk ALLTID i ett 5-omgångsperspektiv — inte bara nästa omgång.
 VIKTIGA PRINCIPER:
 - En transfer ska ge nettoövertag över 5 omgångar, inte bara nästa
 - Fixtures är viktigare än namn
+- Straffskyttare och fasta situationer ökar en spelares värde markant
 - Bonuspotential i Allsvenskan är unik — räkna in den
 - Undvik spelare med osäker speltid
 
@@ -221,6 +242,7 @@ SPELARE ATT ÖVERVÄGA KÖPA (bra form + lätta fixtures):
 
 Ge dina topp 3 transferrekommendationer på svenska.
 För varje transfer: vem du säljer, vem du köper och varför — med fokus på de kommande 5 omgångarna.
+Nämn alltid om spelaren tar straffar eller fasta situationer.
 Format:
 1. SÄLJ [Namn] → KÖP [Namn] - [Motivering]
 2. SÄLJ [Namn] → KÖP [Namn] - [Motivering]
