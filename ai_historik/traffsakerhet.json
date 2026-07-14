@@ -1,11 +1,17 @@
 {
-  "antal_omgangar": 1,
+  "antal_omgangar": 2,
   "kaptenstips": {
     "treff": 0,
     "totalt": 0,
     "historia": [
       {
         "gw": 10,
+        "treff": 0,
+        "totalt": 0,
+        "spelare": []
+      },
+      {
+        "gw": 11,
         "treff": 0,
         "totalt": 0,
         "spelare": []
@@ -21,15 +27,27 @@
         "treff": 0,
         "totalt": 0,
         "detaljer": []
+      },
+      {
+        "gw": 11,
+        "treff": 0,
+        "totalt": 0,
+        "detaljer": []
       }
     ]
   },
   "transferanalys": {
     "treff": 0,
-    "totalt": 1,
+    "totalt": 2,
     "historia": [
       {
         "gw": 10,
+        "treff": false,
+        "kop_snitt": 0,
+        "salj_snitt": 0
+      },
+      {
+        "gw": 11,
         "treff": false,
         "kop_snitt": 0,
         "salj_snitt": 0

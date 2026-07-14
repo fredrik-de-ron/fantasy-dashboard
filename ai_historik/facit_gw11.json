@@ -1,0 +1,172 @@
+{
+  "omgang": 11,
+  "skapad": "2026-07-14T11:23:55.925296",
+  "facit": "# Facit-analys — GW11 (Rekommendationer märkta GW12)\n\n> **Teknisk notering:** Rekommendationerna är märkta GW12 men granskas mot GW11-utfall. Analysen behandlar dem som identiska omgång för konsistens — troligtvis en namnkonflikt i dokumentationen.\n\n---\n\n## Kaptenstips — Träffade vi rätt?\n\n### Primärval: Mikkel Ladefoged (Västerås SK) — 12p\n\n**Utfall:** 12 poäng (1 mål, 2 assist). Hamnade på plats 6 i omgången.\n\n**Klassificering: Varians + Modellfel**\n\nLadefoged levererade ett godkänt absolut resultat — 12p är klart över genomsnittet (3.2p) — men som kaptensval är relativprestationen det relevanta måttet. Ure tog 22p i samma omgång, vilket innebär att Ladefoged-kapten kostade ungefär 10 poäng netto jämfört med optimal kaptensplacering.\n\nModellfel: FDR-viktningen överdrev Ladafoged-fördelen relativt Ure. Att Ure hade FDR 5.4 borta vägdes in som en stark nackdel, men Sirius-formdata (8.5 p/match, 13.3 form) signalerade tydligt explosiv potential. Modellen prioriterade säkert golv framför takvärde i en omgång där takvärde materialiserades.\n\nMotargumentet i ursprungsrekommendationen var korrekt formulerat — *\"FDR 5.4 på bortaplan är det klart sämsta matchupp\"* — men det följande steget att promovera Ladefoged som primärval var fel given Ures konsekvent starka individuella data.\n\n---\n\n### Alternativval: Bo Hegland (Djurgården) — ej i topp 15\n\n**Utfall:** Okänd exakt poäng, men Lien (lagkamrat Djurgården) tog 15p — Hegland nämns inte i topp 15.\n\n**Klassificering: Modellfel**\n\nMotargumentet i ursprungsrekommendationen träffade exakt: *\"om Djurgården vinner knappt eller set pieces inte konverteras landar han lätt på 2–4 poäng\"*. Lien scorade dubbelt för Djurgården, men Hegland plockar inte poäng — sannolikt ett 2–4p-utfall. Som kaptensval skulle detta ha varit katastrofalt.\n\nIdentifierad systematisk svaghet: Set piece-spelare med låg xG rankas för högt när assist-potentialen inte materialiseras i poäng om skyttarna är fel. Heglands 4.17 xA är ett strukturellt attribut, inte en per-match-garanti.\n\n---\n\n### Riskkap: Robbie Ure (IK Sirius) — 22p ✓\n\n**Utfall:** Omgångens överlägset bäste poängplockare med 22 poäng (4 mål).\n\n**Klassificering: Varians (men rimlig rekommendation undervärderades)**\n\nUre rankades sist av tre alternativ trots bäst individuell data. 4 mål på en match är ett extremt utfall — det är varians uppåt snarare än ett förutsebart resultat — men modellen borde ha viktat Ures explosivitetspotential högre än den gjorde. FDR 5.4 borta är ett legitimt bekymmer, men 6.49 xG på 11 matcher kombinerat med högst p/match och bäst form borde ha lyft honom till åtminstone delad primärstatus.\n\n**Intern konsistens-problem:** Modellen identifierade korrekt att Ure hade *bäst individuell data* men valde ändå bort honom som primärval. Det är ett rangordningsfel, inte ett identifieringsfel.\n\n---\n\n## Differentials — Levererade de?\n\n### Julius Lindberg (BK Häcken, 1.2%) — 11p ✓\n\n**Utfall:** 11p (1 mål, 1 assist) — plats 8 i omgången. **Klart över genomsnittet (3.2p).**\n\nRekommendationen träffade. FDR 1.9-argumentet materialiserades och det låga ägarskapet skapade reell differentialfördel. Noteras att korrelationsvarningen om Lindgren-risken var relevant men inte utlösande denna omgång.\n\n---\n\n### Erik Botheim (Malmö FF, 9.9%) — 8p (via Djuric-data)\n\n**Utfall:** Djuric (Malmö) tog 8p, Botheim nämns inte i topp 15. Oklart exakt utfall, men troligen under 8p.\n\n**Klassificering: Oklar — sannolikt under genomsnittet eller marginellt**\n\nBotheim-rekommendationen vilade på form (11.0) och straffskyttarstatus. Om han inte levererar i en vecka med godkänt FDR är det ett varningssignal för regressionsargumentet i motargumentet — *\"conversion-rate snarare än ren skicklighet\"* — som kan ha börjat materialiseras.\n\n---\n\n### Tobias Heintz (IFK Göteborg, 8.6%) — ej i topp 15\n\n**Utfall:** Inte synlig i topp 15. Troligen under genomsnittet.\n\n**Klassificering: Modellfel**\n\nHeintz set piece-kontroll och xA-data är strukturellt korrekt, men en omgång utan direkta leveranser är ett tydligt miss. GW-specifik osäkerhet underskattades.\n\n---\n\n**Differentials-sammanfattning:**\n\n| Spelare | Rekommendation | Utfall | Träff? |\n|---|---|---|---|\n| Lindberg | Köp | 11p ✓ | **Ja** |\n| Botheim | Köp | ~5-7p? | **Nej/marginell** |\n| Heintz | Köp | <3.2p sannolikt | **Nej** |\n\n**1 av 3 tydliga träffar.**\n\n---\n\n## Transferanalys — Var råden korrekta?\n\nInga konkreta KÖP/SÄLJ-spelare listades i transferanalysen denna omgång. Kan ej beräknas kvantitativt.\n\n**Strukturell notering:** Frånvaron av explicit transferanalys är i sig ett metodproblem — differentialrekommendationerna (Botheim, Heintz, Lindberg) fungerar implicit som köpråd men saknar en spegelbild av vad som borde säljas för att finansiera dem. Detta reducerar handlingsbarheten.\n\n---\n\n## Lärdomar — 4 konkreta punkter\n\n**1. Individuell formdata ska trumfa FDR vid extremt starka signaler**\nUre hade bäst p/match, bäst form och bäst xG i hela poolen. FDR 5.4 borta är en legitim faktor men borde inte ha degraderat honom till tredjeval. Framåt: sätt ett explicit tröskelvärde — om en spelare leder på ≥2 av 3 nyckelvariabler (form/p/match/xG) ska FDR-nackdel kräva FDR ≥ 6.0 för att motivera nedrankning till tredjeplats.\n\n**2. Set piece-spelare med låg",
+  "topp15": [
+    {
+      "id": 69,
+      "namn": "Ure",
+      "lag": "IK Sirius",
+      "poang": 22,
+      "minuter": 90,
+      "mal": 4,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 174,
+      "namn": "Lien",
+      "lag": "Djurgården",
+      "poang": 15,
+      "minuter": 90,
+      "mal": 2,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 244,
+      "namn": "Samuelsen",
+      "lag": "Mjällby AIF",
+      "poang": 15,
+      "minuter": 90,
+      "mal": 2,
+      "assist": 1,
+      "nollor": 0
+    },
+    {
+      "id": 183,
+      "namn": "Jansson",
+      "lag": "Kalmar FF",
+      "poang": 13,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 371,
+      "namn": "Taonsa",
+      "lag": "Västerås SK",
+      "poang": 13,
+      "minuter": 90,
+      "mal": 2,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 379,
+      "namn": "Ladefoged",
+      "lag": "Västerås SK",
+      "poang": 12,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 2,
+      "nollor": 0
+    },
+    {
+      "id": 47,
+      "namn": "Abraham",
+      "lag": "Hammarby",
+      "poang": 11,
+      "minuter": 83,
+      "mal": 1,
+      "assist": 1,
+      "nollor": 0
+    },
+    {
+      "id": 140,
+      "namn": "Lindberg",
+      "lag": "BK Häcken",
+      "poang": 11,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 1,
+      "nollor": 0
+    },
+    {
+      "id": 188,
+      "namn": "Sagoe Jr",
+      "lag": "Kalmar FF",
+      "poang": 11,
+      "minuter": 79,
+      "mal": 0,
+      "assist": 2,
+      "nollor": 1
+    },
+    {
+      "id": 191,
+      "namn": "Gustafsson",
+      "lag": "Kalmar FF",
+      "poang": 11,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 70,
+      "namn": "Adindu",
+      "lag": "IK Sirius",
+      "poang": 10,
+      "minuter": 89,
+      "mal": 0,
+      "assist": 2,
+      "nollor": 0
+    },
+    {
+      "id": 38,
+      "namn": "Madjed",
+      "lag": "Hammarby",
+      "poang": 9,
+      "minuter": 83,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 215,
+      "namn": "Kouame",
+      "lag": "AIK",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 218,
+      "namn": "Ayari",
+      "lag": "AIK",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 2,
+      "nollor": 0
+    },
+    {
+      "id": 10,
+      "namn": "Djuric",
+      "lag": "Malmö FF",
+      "poang": 8,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 0,
+      "nollor": 1
+    }
+  ],
+  "genomsnitt": 3.2,
+  "traffsakerhet": {
+    "kaptenstips": {
+      "treff": 0,
+      "totalt": 0
+    },
+    "differentials": {
+      "treff": 0,
+      "totalt": 0
+    },
+    "transferanalys": {
+      "treff": 0,
+      "totalt": 1
+    }
+  }
+}
