@@ -1,8 +1,8 @@
 {
-  "antal_omgangar": 3,
+  "antal_omgangar": 5,
   "kaptenstips": {
-    "treff": 0,
-    "totalt": 0,
+    "treff": 2,
+    "totalt": 6,
     "historia": [
       {
         "gw": 10,
@@ -21,12 +21,32 @@
         "treff": 0,
         "totalt": 0,
         "poang": {}
+      },
+      {
+        "gw": 12,
+        "treff": 1,
+        "totalt": 3,
+        "poang": {
+          "Ladefoged": 7,
+          "Heintz": 4,
+          "Hegland": 15
+        }
+      },
+      {
+        "gw": 12,
+        "treff": 1,
+        "totalt": 3,
+        "poang": {
+          "Ladefoged": 7,
+          "Heintz": 4,
+          "Hegland": 15
+        }
       }
     ]
   },
   "differentials": {
-    "treff": 0,
-    "totalt": 0,
+    "treff": 2,
+    "totalt": 6,
     "historia": [
       {
         "gw": 10,
@@ -45,6 +65,26 @@
         "treff": 0,
         "totalt": 0,
         "detaljer": []
+      },
+      {
+        "gw": 12,
+        "treff": 1,
+        "totalt": 3,
+        "detaljer": [
+          "Åslund: 5p (✓ vs snitt 3.2)",
+          "Thorkelsson: saknasp (✗ vs snitt 3.2)",
+          "Lindberg: 0p (✗ vs snitt 3.2)"
+        ]
+      },
+      {
+        "gw": 12,
+        "treff": 1,
+        "totalt": 3,
+        "detaljer": [
+          "Åslund: 5p (✓ vs snitt 3.2)",
+          "Thorkelsson: saknasp (✗ vs snitt 3.2)",
+          "Lindberg: 0p (✗ vs snitt 3.2)"
+        ]
       }
     ]
   },
@@ -67,14 +107,34 @@
     ]
   },
   "varningar": {
-    "treff": 0,
-    "totalt": 0,
+    "treff": 6,
+    "totalt": 6,
     "historia": [
       {
         "gw": 12,
         "treff": 0,
         "totalt": 0,
         "poang": {}
+      },
+      {
+        "gw": 12,
+        "treff": 3,
+        "totalt": 3,
+        "poang": {
+          "Hult": 0,
+          "Eriksson": 0,
+          "Isherwood": 3
+        }
+      },
+      {
+        "gw": 12,
+        "treff": 3,
+        "totalt": 3,
+        "poang": {
+          "Hult": 0,
+          "Eriksson": 0,
+          "Isherwood": 3
+        }
       }
     ]
   }
