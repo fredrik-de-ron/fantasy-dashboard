@@ -513,10 +513,10 @@ function laddaAiInsikter() {
           <h2>📈 Prisrörelser — köp och sälj INNAN marknaden</h2>
           <div class="ai-text">${formatera(data.prisrorelser)}</div>
         </div>
-        ${data.transferanalys ? `
+        ${data.varningar ? `
         <div class="ai-sektion">
-          <h2>🔄 Transferanalys — 5-omgångsperspektiv</h2>
-          <div class="ai-text">${formatera(data.transferanalys)}</div>
+          <h2>⚠️ Spelarvarningar — överväg att sälja</h2>
+          <div class="ai-text">${formatera(data.varningar)}</div>
         </div>` : ''}
         ${data.lardomar ? `
         <div class="ai-sektion">

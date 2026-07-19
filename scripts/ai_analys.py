@@ -37,7 +37,38 @@ def fraga_claude(prompt, max_tokens=3000):
         if block["type"] == "text"
     )
 
-# Beräkna blankomgångar per lag
+def extrahera_spelare(text, instruktion, max_tokens=200):
+    prompt = f"""{instruktion}
+
+TEXT ATT ANALYSERA:
+{text}
+
+Svara ENDAST med en JSON-lista med efternamn, t.ex: ["Heintz", "Botheim", "Lind"]
+Inga förklaringar, ingen annan text — bara JSON-listan."""
+    svar = httpx.post(
+        "https://api.anthropic.com/v1/messages",
+        headers={
+            "x-api-key": API_KEY,
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+        },
+        json={
+            "model": "claude-sonnet-4-6",
+            "max_tokens": max_tokens,
+            "messages": [{"role": "user", "content": prompt}]
+        },
+        timeout=30
+    )
+    data = svar.json()
+    text_svar = "\n".join(
+        block["text"] for block in data["content"]
+        if block["type"] == "text"
+    )
+    try:
+        return json.loads(text_svar.strip())
+    except:
+        return []
+
 def hitta_blanks():
     try:
         with open("fdr_data.json", encoding="utf-8") as f:
@@ -60,14 +91,12 @@ def hitta_blanks():
 
 BLANKS = hitta_blanks()
 
-# Ladda data
 with open("dashboard_data.json", encoding="utf-8") as f:
     spelare = json.load(f)
 
 with open("fdr_data.json", encoding="utf-8") as f:
     fdr = json.load(f)
 
-# Hitta aktuell och nästa omgång
 bootstrap = httpx.get("https://fantasy.allsvenskan.se/api/bootstrap-static/").json()
 aktuell_gw = next(e["id"] for e in bootstrap["events"] if e.get("is_current"))
 nasta_gw = aktuell_gw + 1
@@ -91,7 +120,7 @@ if os.path.exists("ai_insikter.json"):
                 json.dump(gamla, f, ensure_ascii=False, indent=2)
             print(f"Arkiverade GW{gamla_gw} insikter till {arkiv_fil}")
 
-# Läs in senaste facit om det finns
+# Läs in senaste facit
 lardomar = ""
 if os.path.exists("ai_historik"):
     facit_filer = sorted([
@@ -107,6 +136,22 @@ if os.path.exists("ai_historik"):
 lardomar_sektion = f"""LÄRDOMAR FRÅN FÖREGÅENDE OMGÅNG (ta hänsyn till dessa i din analys):
 {lardomar}
 """ if lardomar else ""
+
+# Läs in rullande träffsäkerhet
+traffsakerhet_text = ""
+traffsakerhet_fil = "ai_historik/traffsakerhet.json"
+if os.path.exists(traffsakerhet_fil):
+    with open(traffsakerhet_fil, encoding="utf-8") as f:
+        ts = json.load(f)
+    kapten_treff = ts.get("kaptenstips", {})
+    diff_treff   = ts.get("differentials", {})
+    antal_gw     = ts.get("antal_omgangar", 0)
+    if antal_gw > 0:
+        traffsakerhet_text = f"""RULLANDE TRÄFFSÄKERHET (baserat på {antal_gw} omgångar):
+- Kaptenstips: {kapten_treff.get('treff', 0)}/{kapten_treff.get('totalt', 0)} rekommendationer bland topp-3 poängplockare
+- Differentials: {diff_treff.get('treff', 0)}/{diff_treff.get('totalt', 0)} levererade över genomsnittspoängen
+Använd denna information för att kalibrera din konfidens.
+"""
 
 # Filtrera tillgängliga spelare
 tillgangliga = [
@@ -125,10 +170,9 @@ def spelare_sammanfattning(s, max_fdr=3):
         f"GW{m['gw']}:{m['fdr']}({'H' if m['hemma'] else 'B'})"
         for m in fdr_lista
     )
-    fullnamn = s.get("fullnamn") or s["namn"]
+    fullnamn  = s.get("fullnamn") or s["namn"]
     efternamn = s["namn"]
 
-    # Fasta situationer
     lag_info = STRAFF_SKYTTARE.get(s["lag"], {})
     fasta = []
     if efternamn in lag_info.get("straff", []):
@@ -143,12 +187,10 @@ def spelare_sammanfattning(s, max_fdr=3):
             fasta.append("Frisparkar (primär)")
     fasta_text = f" | Fasta: {', '.join(fasta)}" if fasta else ""
 
-    # Blankomgångar
     lag_blanks = BLANKS.get(s["lag"], [])
     blank_text = f" | ⚠ BLANK GW{lag_blanks}" if lag_blanks else ""
 
-    # Sample-size
-    n_matcher = antal_matcher(s)
+    n_matcher  = antal_matcher(s)
     sample_text = f" | Underlag: {n_matcher} matcher"
 
     return (
@@ -158,23 +200,17 @@ def spelare_sammanfattning(s, max_fdr=3):
         f"Äg:{s['agarskap']}%{fasta_text}{blank_text}{sample_text} FDR: {fdr_text}"
     )
 
-# Blank-sammanfattning
 blank_sammanfattning = "\n".join(
     f"  {lag}: spelar INTE GW {gw_lista}"
     for lag, gw_lista in BLANKS.items()
 ) if BLANKS else "  Inga blankomgångar hittade"
 
-# Ägarskaps-trend
 def agarskaps_trend(s):
     netto = s["trans_in"] - s["trans_ut"]
-    if netto > 100:
-        return "↑ Stigande"
-    elif netto < -100:
-        return "↓ Sjunkande"
-    else:
-        return "→ Stabil"
+    if netto > 100:   return "↑ Stigande"
+    elif netto < -100: return "↓ Sjunkande"
+    else:              return "→ Stabil"
 
-# Stacking-analys
 def kolla_stacking(spelare_lista):
     lag_count = {}
     for s in spelare_lista:
@@ -189,18 +225,17 @@ anfallare_mf.sort(key=lambda x: float(x["ppg"]), reverse=True)
 topp_kapten = anfallare_mf[:20]
 
 kapten_prompt = f"""Du är en kvantitativ analytiker för Allsvenskan Fantasy inför omgång {nasta_gw}.
-Ditt uppdrag är att ge precisa kaptensrekommendationer med explicit osäkerhet och motargument.
 
-{lardomar_sektion}
-KONFIDENSNIVÅER — använd konsekvent:
+{lardomar_sektion}{traffsakerhet_text}
+KONFIDENSNIVÅER:
 - Stark rekommendation: bekräftad roll, stort dataunderlag (8+ matcher), samstämmiga signaler
-- Rimlig rekommendation: god data men någon osäkerhetsfaktor (minutrisk, oklar form)
+- Rimlig rekommendation: god data men någon osäkerhetsfaktor
 - Spekulativ/Bevaka: litet underlag, hög varians eller motstridiga signaler
 
 KAPTENSKLASSIFICERING:
-- Säkert kap: hög "golv" — säker start, säker payoff, låg varians
+- Säkert kap: hög golv — säker start, säker payoff, låg varians
 - Risk-kap: hög uppsida men osäker leverans
-- Differential-kap: lågt ägarskap, kan ge stort övertag om det slår in
+- Differential-kap: lågt ägarskap, kan ge stort övertag
 
 BLANKOMGÅNGAR — 0 poäng dessa omgångar:
 {blank_sammanfattning}
@@ -213,18 +248,10 @@ Ge dina topp 3 kaptensrekommendationer på svenska. För varje spelare:
 1. Klassificera som Säkert kap / Risk-kap / Differential-kap
 2. Ange konfidensnivå (Stark/Rimlig/Spekulativ)
 3. Motivering (max 2 meningar) — inkludera fasta situationer om relevanta
-4. ETT konkret motargument — vad skulle göra detta till ett dåligt val?
+4. ETT konkret motargument
 
 Format:
 1. [Namn] — [Klassificering] | Konfidens: [nivå]
-   Motivering: [text]
-   Motargument: [text]
-
-2. [Namn] — [Klassificering] | Konfidens: [nivå]
-   Motivering: [text]
-   Motargument: [text]
-
-3. [Namn] — [Klassificering] | Konfidens: [nivå]
    Motivering: [text]
    Motargument: [text]"""
 
@@ -242,24 +269,18 @@ differentials = [
     and float(s.get("xg") or 0) > 1.5
 ]
 differentials.sort(key=lambda x: float(x.get("xg") or 0), reverse=True)
-
 diff_stacking = kolla_stacking(differentials[:10])
 
 diff_prompt = f"""Du är en kvantitativ analytiker för Allsvenskan Fantasy inför omgång {nasta_gw}.
-Hitta de bästa differentials — spelare som kan ge ett avgörande övertag mot motståndare.
 
-{lardomar_sektion}
+{lardomar_sektion}{traffsakerhet_text}
 KONFIDENSNIVÅER:
-- Stark rekommendation: tydlig statistisk fördel, stort underlag, bra fixtures
-- Rimlig rekommendation: god potential men någon osäkerhetsfaktor
+- Stark: tydlig statistisk fördel, stort underlag, bra fixtures
+- Rimlig: god potential men någon osäkerhetsfaktor
 - Spekulativ/Bevaka: litet underlag eller hög varians
 
-ÄGARSKAPS-TREND är viktigt:
-- En spelare med lågt ägarskap som stiger snabbt "closar" snart — agera nu
-- En spelare som legat stabil på lågt ägarskap hela säsongen är en annan typ
-
-KORRELATIONSRISK — dessa lag har flera differentials i listan:
-{chr(10).join(f"  ⚠ {lag}: {count} differentials — korrelerade, slår mot alla om laget underpresterar" for lag, count in diff_stacking.items()) if diff_stacking else "  Ingen uppenbar korrelationsrisk"}
+KORRELATIONSRISK:
+{chr(10).join(f"  ⚠ {lag}: {count} differentials — korrelerade" for lag, count in diff_stacking.items()) if diff_stacking else "  Ingen uppenbar korrelationsrisk"}
 
 BLANKOMGÅNGAR:
 {blank_sammanfattning}
@@ -309,7 +330,7 @@ for s in spelare:
 stigande  = sorted([p for p in pris_kandidater if p["kvot"] > 3],  key=lambda x: -x["kvot"])[:8]
 sjunkande = sorted([p for p in pris_kandidater if p["kvot"] < -4], key=lambda x:  x["kvot"])[:8]
 
-pris_prompt = f"""Du är en kvantitativ analytiker för Allsvenskan Fantasy — prisrörelsespecialist inför omgång {nasta_gw}.
+pris_prompt = f"""Du är en kvantitativ analytiker för Allsvenskan Fantasy inför omgång {nasta_gw}.
 
 {lardomar_sektion}
 Totalt {TOTAL_MANAGERS} managers spelar.
@@ -317,16 +338,15 @@ Prisstegrings-tröskel: ~3-5% nettoinflöde av ägarskapsbasen
 Prissänknings-tröskel: ~-4-5% nettoutflöde av ägarskapsbasen
 
 TRÖSKELKÄNSLIGHET:
-- Spelare långt över tröskeln (8%+): nästan säker prisrörelse
-- Spelare precis på tröskeln (3-4%): känslig för daglig volym — kan gå åt båda håll
-- Ange alltid hur nära/långt från tröskeln varje spelare är
+- 8%+: nästan säker prisrörelse
+- 3-4%: känslig för daglig volym
+- Ange alltid avstånd från tröskeln
 
 FALSK SIGNAL-VARNING:
-- Nettotransfers direkt efter en enskild stormatsch kan vara övergångsreaktion, inte stabil trend
-- En stabil trend över 3+ dagar är mer tillförlitlig än en dagssiffra
+- Spike efter enskild match vs stabil trend 3+ dagar
 - Flagga misstänkta spikes separat
 
-BLANKOMGÅNGAR — spelare från blankande lag kan sjunka:
+BLANKOMGÅNGAR:
 {blank_sammanfattning}
 
 SPELARE SOM KAN STIGA I PRIS:
@@ -335,89 +355,98 @@ SPELARE SOM KAN STIGA I PRIS:
 SPELARE SOM KAN SJUNKA I PRIS:
 {chr(10).join(f"{p['namn']} ({p['lag']}, {p['pris']}M, äg:{p['agarskap']}%) | Netto: {p['netto']} ({p['kvot']}% av ägarbas)" for p in sjunkande)}
 
-Ge en strukturerad prisanalys på svenska:
-
-## Köp INNAN prisstegring (max 3 spelare)
-För varje spelare: hur långt över tröskeln, stabil trend eller spike, en mening motivering.
-
-## Sälj INNAN prissänkning (max 3 spelare)
-För varje spelare: hur långt under tröskeln, en mening motivering.
-
-## Varningar
-Falska signaler eller spelare nära tröskeln som kräver bevakning?"""
+## Köp INNAN prisstegring (max 3)
+## Sälj INNAN prissänkning (max 3)
+## Varningar"""
 
 pris_tips = fraga_claude(pris_prompt)
 print("\n=== PRISRÖRELSER ===")
 print(pris_tips)
 
-# === TRANSFERANALYS ===
-print("\nGenererar transferanalys...")
+# === SPELARVARNINGAR ===
+print("\nGenererar spelarvarningar...")
 
-salj_kandidater = [
-    s for s in tillgangliga
-    if float(s["agarskap"]) > 10
-    and float(s["form3"]) < 4
-    and s.get("fdr") and s["fdr"][0]["fdr"] >= 4
-]
-salj_kandidater.sort(key=lambda x: float(x["form3"]))
+# Kandidater: dålig form, svåra fixtures, högt ägarskap eller blankomgång
+varnings_kandidater = []
+for s in tillgangliga:
+    skäl = []
+    if float(s["form3"]) < 3:
+        skäl.append(f"Svag form ({s['form3']})")
+    if s.get("fdr") and s["fdr"][0]["fdr"] >= 5:
+        skäl.append(f"Svår fixture GW{s['fdr'][0]['gw']} (FDR {s['fdr'][0]['fdr']})")
+    lag_blanks = BLANKS.get(s["lag"], [])
+    if lag_blanks:
+        skäl.append(f"Blank GW{lag_blanks}")
+    if float(s["agarskap"]) > 15 and float(s["form3"]) < 4:
+        skäl.append(f"Högt ägarskap ({s['agarskap']}%) trots svag form")
+    if skäl:
+        varnings_kandidater.append((s, skäl))
 
-kop_kandidater = [
-    s for s in tillgangliga
-    if float(s["form3"]) > 5
-    and s.get("fdr") and s["fdr"][0]["fdr"] <= 3
-]
-kop_kandidater.sort(key=lambda x: float(x["form3"]), reverse=True)
+varnings_kandidater.sort(key=lambda x: (
+    -float(x[0]["agarskap"]),
+    float(x[0]["form3"])
+))
 
-print(f"  Säljkandidater: {len(salj_kandidater)}")
-print(f"  Köpkandidater: {len(kop_kandidater)}")
-
-transfer_prompt = f"""Du är en kvantitativ analytiker för Allsvenskan Fantasy och transferstrategi inför omgång {nasta_gw}.
+varning_prompt = f"""Du är en kvantitativ analytiker för Allsvenskan Fantasy inför omgång {nasta_gw}.
+Identifiera spelare som managers BÖR ÖVERVÄGA ATT SÄLJA eller vara försiktiga med.
 
 {lardomar_sektion}
-Tänk i ett 5-omgångsperspektiv. En transfer ska ge mätbart nettoövertag — inte bara kännas rätt.
-
-VIKTIGA PRINCIPER:
-- Räkna alltid in blankomgångar i 5-omgångsperspektivet (en blank = -1 match av 5)
-- Straffskyttare och fasta situationer ökar värdet markant
-- Timing: gör bytet nu eller vänta en omgång?
-- Alternativkostnad: varför valdes inte näst bästa köp-alternativet?
+VIKTIGT: Detta är VARNINGAR — inte transferrekommendationer. Användaren gör sin egen transferanalys.
+Fokus på spelare med högt ägarskap som riskerar att kosta poäng.
 
 BLANKOMGÅNGAR:
 {blank_sammanfattning}
 
-SPELARE ATT ÖVERVÄGA SÄLJA:
-{chr(10).join(spelare_sammanfattning(s, max_fdr=5) for s in salj_kandidater[:8]) if salj_kandidater else "Inga uppenbara säljkandidater."}
+VARNINGSKANDIDATER (sorterade efter ägarskap):
+{chr(10).join(f"{s.get('fullnamn') or s['namn']} ({s['lag']}, {s['position']}, {s['pris']}M, äg:{s['agarskap']}%) | Form:{s['form3']} | Skäl: {', '.join(skal)}" for s, skal in varnings_kandidater[:12])}
 
-SPELARE ATT ÖVERVÄGA KÖPA:
-{chr(10).join(spelare_sammanfattning(s, max_fdr=5) for s in kop_kandidater[:8]) if kop_kandidater else "Inga uppenbara köpkandidater."}
-
-Ge dina topp 3 transferrekommendationer på svenska. För varje transfer:
-1. SÄLJ → KÖP
-2. Nettoövertag: beräknad poängskillnad över 5 omgångar (ta hänsyn till blankar)
-3. Timing: nu eller vänta? Motivera.
-4. Alternativkostnad: näst bästa KÖP och varför det valdes bort
-5. Motargument: vad skulle göra detta till ett dåligt byte?
-6. Konfidens: Stark/Rimlig/Spekulativ
+Ge dina topp 5 spelarvarningar på svenska. För varje spelare:
+1. Varningsnivå: 🔴 Sälj nu / 🟡 Bevaka / 🟠 Överväg att sälja
+2. Konkrekt anledning (1 mening)
+3. Vad som skulle ändra bedömningen (1 mening)
 
 Format:
-## Transfer 1: SÄLJ [Namn] → KÖP [Namn] | Konfidens: [nivå]
-**Nettoövertag:** [beräkning]
-**Timing:** [nu/vänta + motivering]
-**Alternativkostnad:** [text]
-**Motargument:** [text]"""
+🔴/🟡/🟠 [Namn] ([Äg%]) — [Varningsnivå]
+Anledning: [text]
+Ändras om: [text]"""
 
-transfer_tips = fraga_claude(transfer_prompt, max_tokens=4000)
-print("\n=== TRANSFERANALYS ===")
-print(transfer_tips)
+varningar = fraga_claude(varning_prompt, max_tokens=2000)
+print("\n=== SPELARVARNINGAR ===")
+print(varningar)
 
-# Spara alla insikter
+# === EXTRAHERA STRUKTURERADE SPELARLISTOR ===
+print("\nExtraherar strukturerade spelarlistor...")
+
+kaptenstips_spelare = extrahera_spelare(
+    kaptenstips,
+    "Extrahera efternamnen på de tre rekommenderade kaptensalternativen."
+)
+differentials_spelare = extrahera_spelare(
+    diff_tips,
+    "Extrahera efternamnen på de tre rekommenderade differential-spelarna."
+)
+varningar_spelare = extrahera_spelare(
+    varningar,
+    "Extrahera efternamnen på de spelare som varnas för (max 5)."
+)
+
+print(f"  Kaptenstips: {kaptenstips_spelare}")
+print(f"  Differentials: {differentials_spelare}")
+print(f"  Varningar: {varningar_spelare}")
+
+# Spara
 insikter = {
-    "omgang":         nasta_gw,
-    "kaptenstips":    kaptenstips,
-    "differentials":  diff_tips,
-    "prisrorelser":   pris_tips,
-    "transferanalys": transfer_tips,
-    "lardomar":       lardomar,
+    "omgang":                nasta_gw,
+    "kaptenstips":           kaptenstips,
+    "differentials":         diff_tips,
+    "prisrorelser":          pris_tips,
+    "varningar":             varningar,
+    "lardomar":              lardomar,
+    "kaptenstips_spelare":   kaptenstips_spelare,
+    "differentials_spelare": differentials_spelare,
+    "varningar_spelare":     varningar_spelare,
+    "transfer_salj":         varningar_spelare,
+    "transfer_kop":          [],
 }
 
 with open("ai_insikter.json", "w", encoding="utf-8") as f:

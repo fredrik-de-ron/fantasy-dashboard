@@ -128,10 +128,11 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
-      - name: Kör chipanalys
-        run: python scripts/chip_analys.py
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # PAUSAD: Chipanalys körs inte tills vidare
+      # - name: Kör chipanalys
+      #   run: python scripts/chip_analys.py
+      #   env:
+      #     ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - name: Bygg offline-dashboard med AI
         run: python scripts/bygg_offline.py
@@ -140,7 +141,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add ai_insikter.json chip_insikter.json index.html
+          git add ai_insikter.json index.html
           git add ai_historik/ 2>/dev/null || true
           git diff --staged --quiet || git commit -m "AI-analys $(date '+%Y-%m-%d')"
           git pull --rebase
