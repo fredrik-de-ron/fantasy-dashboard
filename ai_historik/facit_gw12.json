@@ -1,0 +1,172 @@
+{
+  "omgang": 12,
+  "skapad": "2026-07-19T14:06:34.950947",
+  "facit": "# Facit-analys GW12\n\n> **Metodnotering:** Verkliga poäng för rekommenderade spelare saknas i rådata (tomma dictionaries). Analysen baseras på topp 30-listan och rekonstruerar utfall för samtliga nämnda spelare.\n\n---\n\n## Kaptenstips — Träffade vi rätt?\n\n### Rekonstruerade utfall\n\n| Spelare | Rekommenderad som | Faktiska poäng | Topp 3? |\n|---|---|---|---|\n| Mikkel Ladefoged | #1 Säkert kap | **Ej i topp 30** | ❌ |\n| Tobias Heintz | #2 Risk-kap | **Ej i topp 30** | ❌ |\n| Bo Hegland | #3 Differential-kap | **15p** | ✅ |\n\n---\n\n### Ladefoged — #1-rekommendation\n\n**Faktiskt utfall:** Ej i topp 30 (sannolikt ≤6p)\n**Avvikelse:** Massiv. FDR 1.5 hemma + form 8.3 + straffskyttarstatus → under genomsnittet 3.2p.\n\n**Klassificering:** `Varians + Modellfel (partiellt)`\n\n- Detta är **andra omgången i rad** där Ladefoged underperformar identisk analysram. GW10-facit identifierade detta som \"individuell varians\" — det är nu ett mönster snarare än en engångshändelse.\n- Notera: Västerås-lagkamrater levererade starkt (Baggesen 14p, Gunnarsson 9p, Jäger 8p, H. Magnusson 8p). Laget vann/presterade — Ladefoged var individuellt frånkopplad trots lagsuccess.\n- **Kritisk insikt:** Modellen identifierar rätt lag men fel individ inom laget. Baggesen (14p) och Gunnarsson (9p) överbryggade Ladefoged trots lägre förväntningar. Detta är ett systematiskt identifieringsproblem, inte ren varians.\n\n---\n\n### Heintz — #2-rekommendation\n\n**Faktiskt utfall:** Ej i topp 30 (sannolikt ≤6p)\n**Avvikelse:** Stor. Form 10.3 + straffskyttare + set piece-kontroll → levererade under snitt.\n\n**Klassificering:** `Varians`\n\n- FDR 4.0 borta angavs som genuint hinder i motargumentet — och det realiserades.\n- GW10:s 23-poängarsleverans var statistiskt extremvärde som modellen explicit flaggade för regression. Regressionen infann sig.\n- Ingen strukturell modellsvaghet — varningslogiken var korrekt, men rekommendationen rankas ändå som #2 trots känd FDR-risk. **Inkonsistens mellan motargument och rankning.**\n\n---\n\n### Hegland — #3-rekommendation (spekulativ)\n\n**Faktiskt utfall:** 15p (2 mål, 0 ast, 90 min) — **Omgångens delad bäste spelare**\n**Avvikelse:** Massiv positiv. Rankas #3 med klassificeringen \"spekulativ\" och \"svag individuell profil.\"\n\n**Klassificering:** `Modellfel`\n\n- xG-underlaget (2.15 på 10 matcher) tolkades som för lågt för kaptensval. GW12 levererar 2 mål — exakt det scenario modellen bedömde som osannolikt.\n- Djurgårdslagkamrater bekräftade lagsystemet: Johansson 13p, Rinne 8p, Larsson 7p. Det var inte slump — Djurgården dominerade hemma mot FDR 2.1-motstånd.\n- **Kritisk insikt:** Modellen straffar assistprofiler korrekt som kaptensunderlag i genomsnitt, men 2-målsleveransen visar att Hegland har mål-ceiling som underskattats. xG-mättet (2.15/10 matcher = 0.215 xG/match) är inte extremt lågt — det är medelmåttigt. Modellen har möjligen övertolkat GW10-facitets Hegland-varning.\n\n---\n\n## Differentials — Levererade de?\n\n### Patric Åslund — #1 Differential\n\n**Faktiskt utfall:** Ej i topp 30\n**Leverans:** ❌ Under snitt (3.2p)\n\n**Klassificering:** `Modellfel`\n\n- Form 2.0 identifierades som \"risken\" men köpet rekommenderades ändå på FDR-styrka. Låg form realiserades som låg produktion.\n- Västerås levererade som lag (Baggesen, Gunnarsson, Jäger, Magnusson alla i topp 30) — återigen rätt lag, fel individ.\n\n---\n\n### Róbert Frosti Thorkelsson — #2 Differential\n\n**Faktiskt utfall:** 9p (1 mål, 0 ast, 90 min) — Plats 16 i topp 30\n**Leverans:** ✅ Över snitt (9p vs 3.2p genomsnitt)\n\n**Klassificering:** `Korrekt`\n\n- Primär set piece-roll levererade via direktmål snarare än assist — rätt mekanismen, rätt utfall.\n- 9p mot FDR 2.5H är exakt vad modellen förväntade (inte extremt, men konsekvent).\n- BLANK GW15-varningen kvarstår som strukturell begränsning för långsiktigt värde.\n\n---\n\n### Julius Lindberg — #3 Differential (spekulativ)\n\n**Faktiskt utfall:** 15p (1 mål, 2 ast, 82 min) — **Omgångens delad bäste spelare**\n**Leverans:** ✅✅ Massivt över snitt\n\n**Klassificering:** `Korrekt identifiering, för låg konfidens`\n\n- Stigande ägarskapsrörelse (1.2% → 1.4%) tolkades rätt som marknadssignal. xA 2.63 realiserades i 2 assists.\n- Rankades #3 med \"spekulativ\" konfidens och \"agera tidigt\"-rekommendation. Utfallet motiverar klar uppjustering av Lindbergs modellvikt.\n- Motargumentet (\"missade topp 15 GW10 trots gynnsamt matchup\") var tekniskt korrekt historiskt men tillämpades för hårt — form och ägarskapsrörelse borde ha vägt tyngre.\n\n---\n\n## Spelarvarningar — Bekräftades varningarna?\n\n**Data saknas** — inga spelarvarningar utfärdades GW12.\n\n**Strukturell observation:** Ladefoged och Heintz borde retrospektivt ha haft en intern varningsflagga. Att modellen inte utfärdade varningar för spelare med känd varians-historia (Ladefoged, GW10-mönster) är en process-svaghet.\n\n---\n\n## Lärdomar\n\n### 1. Ladefoged-mönstret är nu systematiskt — ej slump\nTvå omgångar i rad: rätt lag (Västerås levererar), fel individ (Ladefoged levererar inte). xG/xA-underlaget mäter sannolikhet korrekt men Ladefoged verkar ha högre",
+  "topp15": [
+    {
+      "id": 22,
+      "namn": "Botheim",
+      "lag": "Malmö FF",
+      "poang": 15,
+      "minuter": 67,
+      "mal": 2,
+      "assist": 1,
+      "nollor": 1
+    },
+    {
+      "id": 140,
+      "namn": "Lindberg",
+      "lag": "BK Häcken",
+      "poang": 15,
+      "minuter": 82,
+      "mal": 1,
+      "assist": 2,
+      "nollor": 0
+    },
+    {
+      "id": 167,
+      "namn": "Hegland",
+      "lag": "Djurgården",
+      "poang": 15,
+      "minuter": 90,
+      "mal": 2,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 365,
+      "namn": "Baggesen",
+      "lag": "Västerås SK",
+      "poang": 14,
+      "minuter": 62,
+      "mal": 0,
+      "assist": 2,
+      "nollor": 1
+    },
+    {
+      "id": 160,
+      "namn": "Johansson",
+      "lag": "Djurgården",
+      "poang": 13,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 2,
+      "nollor": 1
+    },
+    {
+      "id": 354,
+      "namn": "Christoffersson",
+      "lag": "Örgryte IS",
+      "poang": 13,
+      "minuter": 89,
+      "mal": 2,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 10,
+      "namn": "Djuric",
+      "lag": "Malmö FF",
+      "poang": 12,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 441,
+      "namn": "A. Andersson",
+      "lag": "Örgryte IS",
+      "poang": 11,
+      "minuter": 83,
+      "mal": 1,
+      "assist": 1,
+      "nollor": 0
+    },
+    {
+      "id": 350,
+      "namn": "Parker-Price",
+      "lag": "Örgryte IS",
+      "poang": 10,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 2,
+      "nollor": 0
+    },
+    {
+      "id": 1,
+      "namn": "Olsen",
+      "lag": "Malmö FF",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 147,
+      "namn": "Doumbia",
+      "lag": "BK Häcken",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 219,
+      "namn": "Andersson",
+      "lag": "AIK",
+      "poang": 9,
+      "minuter": 23,
+      "mal": 1,
+      "assist": 1,
+      "nollor": 0
+    },
+    {
+      "id": 356,
+      "namn": "Tibbling Ugwo",
+      "lag": "Örgryte IS",
+      "poang": 9,
+      "minuter": 25,
+      "mal": 1,
+      "assist": 1,
+      "nollor": 0
+    },
+    {
+      "id": 373,
+      "namn": "Gunnarsson",
+      "lag": "Västerås SK",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 382,
+      "namn": "Krasniqi",
+      "lag": "GAIS",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 0,
+      "nollor": 1
+    }
+  ],
+  "genomsnitt": 3.2,
+  "traffsakerhet": {
+    "kaptenstips": {
+      "treff": 0,
+      "totalt": 0
+    },
+    "differentials": {
+      "treff": 0,
+      "totalt": 0
+    },
+    "varningar": {
+      "treff": 0,
+      "totalt": 0
+    }
+  }
+}

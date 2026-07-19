@@ -1,5 +1,5 @@
 {
-  "antal_omgangar": 2,
+  "antal_omgangar": 3,
   "kaptenstips": {
     "treff": 0,
     "totalt": 0,
@@ -15,6 +15,12 @@
         "treff": 0,
         "totalt": 0,
         "spelare": []
+      },
+      {
+        "gw": 12,
+        "treff": 0,
+        "totalt": 0,
+        "poang": {}
       }
     ]
   },
@@ -30,6 +36,12 @@
       },
       {
         "gw": 11,
+        "treff": 0,
+        "totalt": 0,
+        "detaljer": []
+      },
+      {
+        "gw": 12,
         "treff": 0,
         "totalt": 0,
         "detaljer": []
@@ -51,6 +63,18 @@
         "treff": false,
         "kop_snitt": 0,
         "salj_snitt": 0
+      }
+    ]
+  },
+  "varningar": {
+    "treff": 0,
+    "totalt": 0,
+    "historia": [
+      {
+        "gw": 12,
+        "treff": 0,
+        "totalt": 0,
+        "poang": {}
       }
     ]
   }
