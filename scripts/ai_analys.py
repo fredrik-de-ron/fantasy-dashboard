@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 sys.path.insert(0, "scripts")
 from straff_data import STRAFF_SKYTTARE
+from trend_analys import berakna_trender
 
 load_dotenv()
 API_KEY = os.getenv("ANTHROPIC_API_KEY")
@@ -91,6 +92,22 @@ def hitta_blanks():
 
 BLANKS = hitta_blanks()
 
+# Beräkna trender
+print("Beräknar trender...")
+try:
+    bs_trend = httpx.get("https://fantasy.allsvenskan.se/api/bootstrap-static/").json()
+    lag_dict_trend = {l["id"]: l["name"] for l in bs_trend["teams"]}
+    fixtures_trend = httpx.get("https://fantasy.allsvenskan.se/api/fixtures/").json()
+    with open("spelare_komplett.json", encoding="utf-8") as f:
+        spelare_komplett = json.load(f)
+    lag_styrka_trend = {l["name"]: 4.0 for l in bs_trend["teams"]}
+    TRENDER = berakna_trender(spelare_komplett, fixtures_trend, lag_dict_trend, lag_styrka_trend)
+    print(f"  Trender hittade för {len(TRENDER)} spelare")
+except Exception as e:
+    print(f"  Trendberäkning misslyckades: {e}")
+    TRENDER = {}
+
+# Ladda data
 with open("dashboard_data.json", encoding="utf-8") as f:
     spelare = json.load(f)
 
@@ -173,6 +190,7 @@ def spelare_sammanfattning(s, max_fdr=3):
     fullnamn  = s.get("fullnamn") or s["namn"]
     efternamn = s["namn"]
 
+    # Fasta situationer
     lag_info = STRAFF_SKYTTARE.get(s["lag"], {})
     fasta = []
     if efternamn in lag_info.get("straff", []):
@@ -187,27 +205,50 @@ def spelare_sammanfattning(s, max_fdr=3):
             fasta.append("Frisparkar (primär)")
     fasta_text = f" | Fasta: {', '.join(fasta)}" if fasta else ""
 
+    # Blankomgångar
     lag_blanks = BLANKS.get(s["lag"], [])
     blank_text = f" | ⚠ BLANK GW{lag_blanks}" if lag_blanks else ""
 
-    n_matcher  = antal_matcher(s)
+    # Sample-size
+    n_matcher   = antal_matcher(s)
     sample_text = f" | Underlag: {n_matcher} matcher"
+
+    # Trender
+    trend_info   = TRENDER.get(efternamn, {})
+    trend_flaggor = trend_info.get("flaggor", [])
+    trend_text   = ""
+    if trend_flaggor:
+        starka   = [f["text"] for f in trend_flaggor if f["styrka"] == "stark"]
+        mattliga = [f["text"] for f in trend_flaggor if f["styrka"] == "måttlig"]
+        if starka:
+            trend_text = f" | 🔎 TREND: {'; '.join(starka[:2])}"
+        elif mattliga:
+            trend_text = f" | 🔎 Trend: {mattliga[0]}"
 
     return (
         f"{fullnamn} ({s['lag']}, {s['position']}, {s['pris']}M) | "
         f"Poäng/match:{s['ppg']} Form:{s['form3']} "
         f"xG:{s.get('xg') or '-'} xA:{s.get('xa') or '-'} "
-        f"Äg:{s['agarskap']}%{fasta_text}{blank_text}{sample_text} FDR: {fdr_text}"
+        f"Äg:{s['agarskap']}%{fasta_text}{blank_text}{sample_text}{trend_text} FDR: {fdr_text}"
     )
 
+# Blank-sammanfattning
 blank_sammanfattning = "\n".join(
     f"  {lag}: spelar INTE GW {gw_lista}"
     for lag, gw_lista in BLANKS.items()
 ) if BLANKS else "  Inga blankomgångar hittade"
 
+# Starka trender — skickas till alla prompts
+starka_trender_text = "\n".join(
+    f"  🔎 {namn} ({data['lag']}, {data['position']}): "
+    + "; ".join(f['text'] for f in data['flaggor'] if f['styrka'] == 'stark')
+    for namn, data in TRENDER.items()
+    if any(f['styrka'] == 'stark' for f in data['flaggor'])
+)[:2000] or "  Inga starka trender identifierade"
+
 def agarskaps_trend(s):
     netto = s["trans_in"] - s["trans_ut"]
-    if netto > 100:   return "↑ Stigande"
+    if netto > 100:    return "↑ Stigande"
     elif netto < -100: return "↓ Sjunkande"
     else:              return "→ Stabil"
 
@@ -241,13 +282,17 @@ BLANKOMGÅNGAR — 0 poäng dessa omgångar:
 {blank_sammanfattning}
 ⚠ Rekommendera ALDRIG kapten från blankande lag den omgången!
 
-Spelare att analysera (topp 20 på poäng/match):
+IDENTIFIERADE TRENDER (minst 5 matcher, statistiskt underlag):
+{starka_trender_text}
+OBS: Ange alltid underlagets storlek när du refererar till en trend.
+
+Spelare att analysera (topp 20 på poäng/match, trender inkluderade):
 {chr(10).join(spelare_sammanfattning(s) for s in topp_kapten)}
 
 Ge dina topp 3 kaptensrekommendationer på svenska. För varje spelare:
 1. Klassificera som Säkert kap / Risk-kap / Differential-kap
 2. Ange konfidensnivå (Stark/Rimlig/Spekulativ)
-3. Motivering (max 2 meningar) — inkludera fasta situationer om relevanta
+3. Motivering (max 2 meningar) — nämn relevanta trender med underlagets storlek
 4. ETT konkret motargument
 
 Format:
@@ -285,13 +330,16 @@ KORRELATIONSRISK:
 BLANKOMGÅNGAR:
 {blank_sammanfattning}
 
+IDENTIFIERADE TRENDER:
+{starka_trender_text}
+
 Kandidater:
 {chr(10).join(spelare_sammanfattning(s) + f" | Trend: {agarskaps_trend(s)}" for s in differentials[:15])}
 
 Ge dina topp 3 differentials på svenska. För varje spelare:
 1. Konfidensnivå (Stark/Rimlig/Spekulativ)
 2. Ägarskaps-trend och om spelaren bör köpas nu eller bevakas
-3. Motivering (max 2 meningar)
+3. Motivering (max 2 meningar) — nämn relevanta trender
 4. ETT konkret motargument
 5. Klassificering: Köp nu / Bevaka / Spekulativt kort
 
@@ -366,21 +414,25 @@ print(pris_tips)
 # === SPELARVARNINGAR ===
 print("\nGenererar spelarvarningar...")
 
-# Kandidater: dålig form, svåra fixtures, högt ägarskap eller blankomgång
 varnings_kandidater = []
 for s in tillgangliga:
-    skäl = []
+    skal = []
     if float(s["form3"]) < 3:
-        skäl.append(f"Svag form ({s['form3']})")
+        skal.append(f"Svag form ({s['form3']})")
     if s.get("fdr") and s["fdr"][0]["fdr"] >= 5:
-        skäl.append(f"Svår fixture GW{s['fdr'][0]['gw']} (FDR {s['fdr'][0]['fdr']})")
+        skal.append(f"Svår fixture GW{s['fdr'][0]['gw']} (FDR {s['fdr'][0]['fdr']})")
     lag_blanks = BLANKS.get(s["lag"], [])
     if lag_blanks:
-        skäl.append(f"Blank GW{lag_blanks}")
+        skal.append(f"Blank GW{lag_blanks}")
     if float(s["agarskap"]) > 15 and float(s["form3"]) < 4:
-        skäl.append(f"Högt ägarskap ({s['agarskap']}%) trots svag form")
-    if skäl:
-        varnings_kandidater.append((s, skäl))
+        skal.append(f"Högt ägarskap ({s['agarskap']}%) trots svag form")
+    # Formnedgång från trender
+    trend_info = TRENDER.get(s["namn"], {})
+    for f in trend_info.get("flaggor", []):
+        if f["typ"] == "form_nedgång" and f["styrka"] == "stark":
+            skal.append(f"Stark formnedgång (trend, {f['underlag']} matcher)")
+    if skal:
+        varnings_kandidater.append((s, skal))
 
 varnings_kandidater.sort(key=lambda x: (
     -float(x[0]["agarskap"]),
@@ -391,18 +443,18 @@ varning_prompt = f"""Du är en kvantitativ analytiker för Allsvenskan Fantasy i
 Identifiera spelare som managers BÖR ÖVERVÄGA ATT SÄLJA eller vara försiktiga med.
 
 {lardomar_sektion}
-VIKTIGT: Detta är VARNINGAR — inte transferrekommendationer. Användaren gör sin egen transferanalys.
+VIKTIGT: Detta är VARNINGAR — inte transferrekommendationer.
 Fokus på spelare med högt ägarskap som riskerar att kosta poäng.
 
 BLANKOMGÅNGAR:
 {blank_sammanfattning}
 
-VARNINGSKANDIDATER (sorterade efter ägarskap):
+VARNINGSKANDIDATER:
 {chr(10).join(f"{s.get('fullnamn') or s['namn']} ({s['lag']}, {s['position']}, {s['pris']}M, äg:{s['agarskap']}%) | Form:{s['form3']} | Skäl: {', '.join(skal)}" for s, skal in varnings_kandidater[:12])}
 
 Ge dina topp 5 spelarvarningar på svenska. För varje spelare:
 1. Varningsnivå: 🔴 Sälj nu / 🟡 Bevaka / 🟠 Överväg att sälja
-2. Konkrekt anledning (1 mening)
+2. Konkret anledning (1 mening)
 3. Vad som skulle ändra bedömningen (1 mening)
 
 Format:
