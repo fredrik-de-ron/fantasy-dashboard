@@ -1,286 +1,639 @@
 {
-  "IFK Göteborg": [
-    {
-      "gw": 13,
-      "dgw": false,
-      "fdr": 3.7,
-      "mot": "BP",
-      "hemma": true
-    },
+  "Västerås SK": [
     {
       "gw": 14,
       "dgw": false,
-      "fdr": 6.6,
-      "mot": "IK Sirius",
-      "hemma": false
+      "fdr": 2.4,
+      "mot": "Örgryte IS",
+      "hemma": true
     },
     {
       "gw": 15,
       "dgw": false,
-      "fdr": 1.6,
-      "mot": "Degerfors IF",
-      "hemma": true
+      "fdr": 4.7,
+      "mot": "Djurgården",
+      "hemma": false
     },
     {
       "gw": 16,
       "dgw": false,
-      "fdr": 2.9,
-      "mot": "Kalmar FF",
+      "fdr": 3.7,
+      "mot": "Djurgården",
       "hemma": true
     },
     {
       "gw": 17,
       "dgw": false,
       "fdr": 2.6,
-      "mot": "Degerfors IF",
+      "mot": "IF Elfsborg",
       "hemma": false
     },
     {
       "gw": 18,
       "dgw": false,
-      "fdr": 2.1,
-      "mot": "IF Elfsborg",
+      "fdr": 3.3,
+      "mot": "Kalmar FF",
       "hemma": true
     },
     {
       "gw": 19,
       "dgw": false,
-      "fdr": 2.1,
-      "mot": "Örgryte IS",
-      "hemma": true
-    },
-    {
-      "gw": 20,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "Mjällby AIF",
-      "hemma": false
-    },
-    {
-      "gw": 21,
-      "dgw": false,
-      "fdr": 2.0,
-      "mot": "Halmstads BK",
-      "hemma": true
-    },
-    {
-      "gw": 22,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "BP",
-      "hemma": false
-    },
-    {
-      "gw": 23,
-      "dgw": false,
-      "fdr": 4.6,
-      "mot": "Västerås SK",
-      "hemma": true
-    },
-    {
-      "gw": 24,
-      "dgw": false,
-      "fdr": 5.2,
-      "mot": "AIK",
-      "hemma": false
-    },
-    {
-      "gw": 25,
-      "dgw": false,
-      "fdr": 5.7,
-      "mot": "GAIS",
-      "hemma": false
-    },
-    {
-      "gw": 26,
-      "dgw": false,
       "fdr": 4.4,
-      "mot": "Djurgården",
-      "hemma": true
-    },
-    {
-      "gw": 27,
-      "dgw": false,
-      "fdr": 4.3,
       "mot": "BK Häcken",
       "hemma": false
     },
     {
-      "gw": 28,
+      "gw": 20,
       "dgw": false,
-      "fdr": 4.3,
+      "fdr": 5.7,
+      "mot": "IK Sirius",
+      "hemma": true
+    },
+    {
+      "gw": 21,
+      "dgw": false,
+      "fdr": 5.9,
+      "mot": "AIK",
+      "hemma": false
+    },
+    {
+      "gw": 22,
+      "dgw": false,
+      "fdr": 4.9,
       "mot": "Malmö FF",
       "hemma": true
     },
     {
-      "gw": 29,
-      "dgw": false,
-      "fdr": 4.0,
-      "mot": "Hammarby",
-      "hemma": false
-    },
-    {
-      "gw": 30,
-      "dgw": false,
-      "fdr": 5.6,
-      "mot": "IK Sirius",
-      "hemma": true
-    }
-  ],
-  "BP": [
-    {
-      "gw": 13,
+      "gw": 23,
       "dgw": false,
       "fdr": 4.1,
       "mot": "IFK Göteborg",
       "hemma": false
     },
     {
-      "gw": 14,
-      "dgw": false,
-      "fdr": 3.0,
-      "mot": "Hammarby",
-      "hemma": true
-    },
-    {
-      "gw": 15,
-      "dgw": false,
-      "fdr": 4.3,
-      "mot": "Malmö FF",
-      "hemma": true
-    },
-    {
-      "gw": 16,
-      "dgw": false,
-      "fdr": 6.6,
-      "mot": "IK Sirius",
-      "hemma": false
-    },
-    {
-      "gw": 17,
-      "dgw": false,
-      "fdr": 2.1,
-      "mot": "Örgryte IS",
-      "hemma": true
-    },
-    {
-      "gw": 18,
-      "dgw": false,
-      "fdr": 1.6,
-      "mot": "Degerfors IF",
-      "hemma": true
-    },
-    {
-      "gw": 19,
-      "dgw": false,
-      "fdr": 5.7,
-      "mot": "GAIS",
-      "hemma": false
-    },
-    {
-      "gw": 20,
-      "dgw": false,
-      "fdr": 2.1,
-      "mot": "IF Elfsborg",
-      "hemma": true
-    },
-    {
-      "gw": 21,
-      "dgw": false,
-      "fdr": 4.0,
-      "mot": "Hammarby",
-      "hemma": false
-    },
-    {
-      "gw": 22,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "IFK Göteborg",
-      "hemma": true
-    },
-    {
-      "gw": 23,
-      "dgw": false,
-      "fdr": 5.2,
-      "mot": "AIK",
-      "hemma": false
-    },
-    {
       "gw": 24,
       "dgw": false,
-      "fdr": 4.4,
-      "mot": "Djurgården",
+      "fdr": 2.5,
+      "mot": "Mjällby AIF",
       "hemma": true
     },
     {
       "gw": 25,
       "dgw": false,
-      "fdr": 3.9,
-      "mot": "Kalmar FF",
-      "hemma": false
+      "fdr": 1.5,
+      "mot": "Halmstads BK",
+      "hemma": true
     },
     {
       "gw": 26,
       "dgw": false,
-      "fdr": 3.3,
-      "mot": "BK Häcken",
-      "hemma": true
+      "fdr": 2.0,
+      "mot": "Degerfors IF",
+      "hemma": false
     },
     {
       "gw": 27,
+      "dgw": false,
+      "fdr": 2.7,
+      "mot": "BP",
+      "hemma": true
+    },
+    {
+      "gw": 28,
+      "dgw": false,
+      "fdr": 3.4,
+      "mot": "Örgryte IS",
+      "hemma": false
+    },
+    {
+      "gw": 29,
+      "dgw": false,
+      "fdr": 4.5,
+      "mot": "GAIS",
+      "hemma": false
+    },
+    {
+      "gw": 30,
+      "dgw": false,
+      "fdr": 4.4,
+      "mot": "Hammarby",
+      "hemma": true
+    }
+  ],
+  "Örgryte IS": [
+    {
+      "gw": 14,
       "dgw": false,
       "fdr": 5.6,
       "mot": "Västerås SK",
       "hemma": false
     },
     {
+      "gw": 15,
+      "dgw": false,
+      "fdr": 5.9,
+      "mot": "AIK",
+      "hemma": false
+    },
+    {
+      "gw": 16,
+      "dgw": false,
+      "fdr": 4.9,
+      "mot": "AIK",
+      "hemma": true
+    },
+    {
+      "gw": 17,
+      "dgw": false,
+      "fdr": 3.7,
+      "mot": "BP",
+      "hemma": false
+    },
+    {
+      "gw": 18,
+      "dgw": false,
+      "fdr": 1.5,
+      "mot": "Halmstads BK",
+      "hemma": true
+    },
+    {
+      "gw": 19,
+      "dgw": false,
+      "fdr": 4.1,
+      "mot": "IFK Göteborg",
+      "hemma": false
+    },
+    {
+      "gw": 20,
+      "dgw": false,
+      "fdr": 4.4,
+      "mot": "Hammarby",
+      "hemma": true
+    },
+    {
+      "gw": 21,
+      "dgw": false,
+      "fdr": 5.9,
+      "mot": "Malmö FF",
+      "hemma": false
+    },
+    {
+      "gw": 22,
+      "dgw": false,
+      "fdr": 5.7,
+      "mot": "IK Sirius",
+      "hemma": true
+    },
+    {
+      "gw": 23,
+      "dgw": false,
+      "fdr": 4.4,
+      "mot": "BK Häcken",
+      "hemma": false
+    },
+    {
+      "gw": 24,
+      "dgw": false,
+      "fdr": 3.5,
+      "mot": "GAIS",
+      "hemma": true
+    },
+    {
+      "gw": 25,
+      "dgw": false,
+      "fdr": 4.7,
+      "mot": "Djurgården",
+      "hemma": false
+    },
+    {
+      "gw": 26,
+      "dgw": false,
+      "fdr": 2.5,
+      "mot": "Mjällby AIF",
+      "hemma": true
+    },
+    {
+      "gw": 27,
+      "dgw": false,
+      "fdr": 2.6,
+      "mot": "IF Elfsborg",
+      "hemma": false
+    },
+    {
       "gw": 28,
       "dgw": false,
-      "fdr": 2.1,
-      "mot": "Mjällby AIF",
+      "fdr": 4.6,
+      "mot": "Västerås SK",
       "hemma": true
     },
     {
       "gw": 29,
       "dgw": false,
-      "fdr": 2.0,
-      "mot": "Halmstads BK",
+      "fdr": 3.3,
+      "mot": "Kalmar FF",
       "hemma": true
     },
     {
       "gw": 30,
       "dgw": false,
-      "fdr": 5.3,
+      "fdr": 2.0,
+      "mot": "Degerfors IF",
+      "hemma": false
+    }
+  ],
+  "Degerfors IF": [
+    {
+      "gw": 14,
+      "dgw": false,
+      "fdr": 3.7,
+      "mot": "Djurgården",
+      "hemma": true
+    },
+    {
+      "gw": 15,
+      "dgw": false,
+      "fdr": 4.1,
+      "mot": "IFK Göteborg",
+      "hemma": false
+    },
+    {
+      "gw": 16,
+      "dgw": false,
+      "fdr": 5.9,
       "mot": "Malmö FF",
       "hemma": false
+    },
+    {
+      "gw": 17,
+      "dgw": false,
+      "fdr": 3.1,
+      "mot": "IFK Göteborg",
+      "hemma": true
+    },
+    {
+      "gw": 18,
+      "dgw": false,
+      "fdr": 3.7,
+      "mot": "BP",
+      "hemma": false
+    },
+    {
+      "gw": 19,
+      "dgw": false,
+      "fdr": 2.6,
+      "mot": "IF Elfsborg",
+      "hemma": false
+    },
+    {
+      "gw": 20,
+      "dgw": false,
+      "fdr": 1.5,
+      "mot": "Halmstads BK",
+      "hemma": true
+    },
+    {
+      "gw": 21,
+      "dgw": false,
+      "fdr": 6.7,
+      "mot": "IK Sirius",
+      "hemma": false
+    },
+    {
+      "gw": 22,
+      "dgw": false,
+      "fdr": 4.4,
+      "mot": "Hammarby",
+      "hemma": true
+    },
+    {
+      "gw": 23,
+      "dgw": false,
+      "fdr": 3.5,
+      "mot": "Mjällby AIF",
+      "hemma": false
+    },
+    {
+      "gw": 24,
+      "dgw": false,
+      "fdr": 3.3,
+      "mot": "Kalmar FF",
+      "hemma": true
+    },
+    {
+      "gw": 25,
+      "dgw": false,
+      "fdr": 4.4,
+      "mot": "BK Häcken",
+      "hemma": false
+    },
+    {
+      "gw": 26,
+      "dgw": false,
+      "fdr": 4.6,
+      "mot": "Västerås SK",
+      "hemma": true
+    },
+    {
+      "gw": 27,
+      "dgw": false,
+      "fdr": 4.7,
+      "mot": "Djurgården",
+      "hemma": false
+    },
+    {
+      "gw": 28,
+      "dgw": false,
+      "fdr": 3.5,
+      "mot": "GAIS",
+      "hemma": true
+    },
+    {
+      "gw": 29,
+      "dgw": false,
+      "fdr": 5.9,
+      "mot": "AIK",
+      "hemma": false
+    },
+    {
+      "gw": 30,
+      "dgw": false,
+      "fdr": 2.4,
+      "mot": "Örgryte IS",
+      "hemma": true
+    }
+  ],
+  "Djurgården": [
+    {
+      "gw": 14,
+      "dgw": false,
+      "fdr": 2.0,
+      "mot": "Degerfors IF",
+      "hemma": false
+    },
+    {
+      "gw": 15,
+      "dgw": false,
+      "fdr": 4.6,
+      "mot": "Västerås SK",
+      "hemma": true
+    },
+    {
+      "gw": 16,
+      "dgw": false,
+      "fdr": 5.6,
+      "mot": "Västerås SK",
+      "hemma": false
+    },
+    {
+      "gw": 17,
+      "dgw": false,
+      "fdr": 4.9,
+      "mot": "AIK",
+      "hemma": true
+    },
+    {
+      "gw": 18,
+      "dgw": false,
+      "fdr": 5.9,
+      "mot": "Malmö FF",
+      "hemma": false
+    },
+    {
+      "gw": 19,
+      "dgw": true,
+      "dgw_match": 1,
+      "dgw_total": 2,
+      "fdr": 2.5,
+      "mot": "Mjällby AIF",
+      "hemma": true
+    },
+    {
+      "gw": 19,
+      "dgw": true,
+      "dgw_match": 2,
+      "dgw_total": 2,
+      "fdr": 3.5,
+      "mot": "Mjällby AIF",
+      "hemma": false
+    },
+    {
+      "gw": 20,
+      "dgw": false,
+      "fdr": 4.3,
+      "mot": "Kalmar FF",
+      "hemma": false
+    },
+    {
+      "gw": 21,
+      "dgw": false,
+      "fdr": 3.5,
+      "mot": "GAIS",
+      "hemma": true
+    },
+    {
+      "gw": 22,
+      "dgw": false,
+      "fdr": 1.6,
+      "mot": "IF Elfsborg",
+      "hemma": true
+    },
+    {
+      "gw": 23,
+      "dgw": false,
+      "fdr": 5.4,
+      "mot": "Hammarby",
+      "hemma": false
+    },
+    {
+      "gw": 24,
+      "dgw": false,
+      "fdr": 3.7,
+      "mot": "BP",
+      "hemma": false
+    },
+    {
+      "gw": 25,
+      "dgw": false,
+      "fdr": 2.4,
+      "mot": "Örgryte IS",
+      "hemma": true
+    },
+    {
+      "gw": 26,
+      "dgw": false,
+      "fdr": 4.1,
+      "mot": "IFK Göteborg",
+      "hemma": false
+    },
+    {
+      "gw": 27,
+      "dgw": false,
+      "fdr": 1,
+      "mot": "Degerfors IF",
+      "hemma": true
+    },
+    {
+      "gw": 28,
+      "dgw": false,
+      "fdr": 2.5,
+      "mot": "Halmstads BK",
+      "hemma": false
+    },
+    {
+      "gw": 29,
+      "dgw": false,
+      "fdr": 6.7,
+      "mot": "IK Sirius",
+      "hemma": false
+    },
+    {
+      "gw": 30,
+      "dgw": false,
+      "fdr": 3.4,
+      "mot": "BK Häcken",
+      "hemma": true
+    }
+  ],
+  "Kalmar FF": [
+    {
+      "gw": 14,
+      "dgw": false,
+      "fdr": 2.5,
+      "mot": "Mjällby AIF",
+      "hemma": true
+    },
+    {
+      "gw": 15,
+      "dgw": false,
+      "fdr": 4.4,
+      "mot": "BK Häcken",
+      "hemma": false
+    },
+    {
+      "gw": 16,
+      "dgw": false,
+      "fdr": 4.1,
+      "mot": "IFK Göteborg",
+      "hemma": false
+    },
+    {
+      "gw": 17,
+      "dgw": false,
+      "fdr": 4.4,
+      "mot": "Hammarby",
+      "hemma": true
+    },
+    {
+      "gw": 18,
+      "dgw": false,
+      "fdr": 5.6,
+      "mot": "Västerås SK",
+      "hemma": false
+    },
+    {
+      "gw": 19,
+      "dgw": false,
+      "fdr": 2.5,
+      "mot": "Halmstads BK",
+      "hemma": false
+    },
+    {
+      "gw": 20,
+      "dgw": false,
+      "fdr": 3.7,
+      "mot": "Djurgården",
+      "hemma": true
+    },
+    {
+      "gw": 21,
+      "dgw": false,
+      "fdr": 2.6,
+      "mot": "IF Elfsborg",
+      "hemma": false
+    },
+    {
+      "gw": 22,
+      "dgw": false,
+      "fdr": 3.4,
+      "mot": "BK Häcken",
+      "hemma": true
+    },
+    {
+      "gw": 23,
+      "dgw": false,
+      "fdr": 5.9,
+      "mot": "Malmö FF",
+      "hemma": false
+    },
+    {
+      "gw": 24,
+      "dgw": false,
+      "fdr": 2.0,
+      "mot": "Degerfors IF",
+      "hemma": false
+    },
+    {
+      "gw": 25,
+      "dgw": false,
+      "fdr": 2.7,
+      "mot": "BP",
+      "hemma": true
+    },
+    {
+      "gw": 26,
+      "dgw": false,
+      "fdr": 3.5,
+      "mot": "GAIS",
+      "hemma": true
+    },
+    {
+      "gw": 27,
+      "dgw": false,
+      "fdr": 3.5,
+      "mot": "Mjällby AIF",
+      "hemma": false
+    },
+    {
+      "gw": 28,
+      "dgw": false,
+      "fdr": 5.7,
+      "mot": "IK Sirius",
+      "hemma": true
+    },
+    {
+      "gw": 29,
+      "dgw": false,
+      "fdr": 3.4,
+      "mot": "Örgryte IS",
+      "hemma": false
+    },
+    {
+      "gw": 30,
+      "dgw": false,
+      "fdr": 4.9,
+      "mot": "AIK",
+      "hemma": true
     }
   ],
   "Mjällby AIF": [
     {
-      "gw": 13,
-      "dgw": false,
-      "fdr": 4.6,
-      "mot": "Västerås SK",
-      "hemma": true
-    },
-    {
       "gw": 14,
       "dgw": false,
-      "fdr": 3.9,
+      "fdr": 4.3,
       "mot": "Kalmar FF",
       "hemma": false
     },
     {
       "gw": 16,
       "dgw": false,
-      "fdr": 2.1,
+      "fdr": 1.6,
       "mot": "IF Elfsborg",
       "hemma": true
     },
     {
       "gw": 17,
       "dgw": false,
-      "fdr": 5.6,
+      "fdr": 5.7,
       "mot": "IK Sirius",
       "hemma": true
     },
@@ -289,7 +642,7 @@
       "dgw": true,
       "dgw_match": 1,
       "dgw_total": 2,
-      "fdr": 5.4,
+      "fdr": 4.7,
       "mot": "Djurgården",
       "hemma": false
     },
@@ -298,7 +651,7 @@
       "dgw": true,
       "dgw_match": 2,
       "dgw_total": 2,
-      "fdr": 4.4,
+      "fdr": 3.7,
       "mot": "Djurgården",
       "hemma": true
     },
@@ -314,7 +667,7 @@
       "dgw": true,
       "dgw_match": 1,
       "dgw_total": 2,
-      "fdr": 4.3,
+      "fdr": 4.4,
       "mot": "BK Häcken",
       "hemma": false
     },
@@ -323,21 +676,21 @@
       "dgw": true,
       "dgw_match": 2,
       "dgw_total": 2,
-      "fdr": 5.2,
+      "fdr": 5.9,
       "mot": "AIK",
       "hemma": false
     },
     {
       "gw": 22,
       "dgw": false,
-      "fdr": 4.7,
+      "fdr": 3.5,
       "mot": "GAIS",
       "hemma": true
     },
     {
       "gw": 23,
       "dgw": false,
-      "fdr": 1.6,
+      "fdr": 1,
       "mot": "Degerfors IF",
       "hemma": true
     },
@@ -351,381 +704,591 @@
     {
       "gw": 25,
       "dgw": false,
-      "fdr": 3.0,
+      "fdr": 4.4,
       "mot": "Hammarby",
       "hemma": true
     },
     {
       "gw": 26,
       "dgw": false,
-      "fdr": 3.1,
+      "fdr": 3.4,
       "mot": "Örgryte IS",
       "hemma": false
     },
     {
       "gw": 27,
       "dgw": false,
-      "fdr": 2.9,
+      "fdr": 3.3,
       "mot": "Kalmar FF",
       "hemma": true
     },
     {
       "gw": 28,
       "dgw": false,
-      "fdr": 4.7,
+      "fdr": 3.7,
       "mot": "BP",
       "hemma": false
     },
     {
       "gw": 29,
       "dgw": false,
-      "fdr": 4.3,
+      "fdr": 4.9,
       "mot": "Malmö FF",
       "hemma": true
     },
     {
       "gw": 30,
       "dgw": false,
-      "fdr": 3.0,
+      "fdr": 2.5,
       "mot": "Halmstads BK",
       "hemma": false
     }
   ],
-  "Västerås SK": [
-    {
-      "gw": 13,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "Mjällby AIF",
-      "hemma": false
-    },
+  "BP": [
     {
       "gw": 14,
       "dgw": false,
-      "fdr": 2.1,
-      "mot": "Örgryte IS",
+      "fdr": 4.4,
+      "mot": "Hammarby",
       "hemma": true
     },
     {
       "gw": 15,
       "dgw": false,
-      "fdr": 5.4,
-      "mot": "Djurgården",
-      "hemma": false
+      "fdr": 4.9,
+      "mot": "Malmö FF",
+      "hemma": true
     },
     {
       "gw": 16,
       "dgw": false,
-      "fdr": 4.4,
-      "mot": "Djurgården",
-      "hemma": true
+      "fdr": 6.7,
+      "mot": "IK Sirius",
+      "hemma": false
     },
     {
       "gw": 17,
       "dgw": false,
-      "fdr": 3.1,
-      "mot": "IF Elfsborg",
-      "hemma": false
+      "fdr": 2.4,
+      "mot": "Örgryte IS",
+      "hemma": true
     },
     {
       "gw": 18,
       "dgw": false,
-      "fdr": 2.9,
-      "mot": "Kalmar FF",
+      "fdr": 1,
+      "mot": "Degerfors IF",
       "hemma": true
     },
     {
       "gw": 19,
       "dgw": false,
-      "fdr": 4.3,
-      "mot": "BK Häcken",
+      "fdr": 4.5,
+      "mot": "GAIS",
       "hemma": false
     },
     {
       "gw": 20,
       "dgw": false,
-      "fdr": 5.6,
-      "mot": "IK Sirius",
+      "fdr": 1.6,
+      "mot": "IF Elfsborg",
       "hemma": true
     },
     {
       "gw": 21,
       "dgw": false,
-      "fdr": 5.2,
-      "mot": "AIK",
+      "fdr": 5.4,
+      "mot": "Hammarby",
       "hemma": false
     },
     {
       "gw": 22,
       "dgw": false,
-      "fdr": 4.3,
-      "mot": "Malmö FF",
+      "fdr": 3.1,
+      "mot": "IFK Göteborg",
       "hemma": true
     },
     {
       "gw": 23,
+      "dgw": false,
+      "fdr": 5.9,
+      "mot": "AIK",
+      "hemma": false
+    },
+    {
+      "gw": 24,
+      "dgw": false,
+      "fdr": 3.7,
+      "mot": "Djurgården",
+      "hemma": true
+    },
+    {
+      "gw": 25,
+      "dgw": false,
+      "fdr": 4.3,
+      "mot": "Kalmar FF",
+      "hemma": false
+    },
+    {
+      "gw": 26,
+      "dgw": false,
+      "fdr": 3.4,
+      "mot": "BK Häcken",
+      "hemma": true
+    },
+    {
+      "gw": 27,
+      "dgw": false,
+      "fdr": 5.6,
+      "mot": "Västerås SK",
+      "hemma": false
+    },
+    {
+      "gw": 28,
+      "dgw": false,
+      "fdr": 2.5,
+      "mot": "Mjällby AIF",
+      "hemma": true
+    },
+    {
+      "gw": 29,
+      "dgw": false,
+      "fdr": 1.5,
+      "mot": "Halmstads BK",
+      "hemma": true
+    },
+    {
+      "gw": 30,
+      "dgw": false,
+      "fdr": 5.9,
+      "mot": "Malmö FF",
+      "hemma": false
+    }
+  ],
+  "Hammarby": [
+    {
+      "gw": 14,
+      "dgw": false,
+      "fdr": 3.7,
+      "mot": "BP",
+      "hemma": false
+    },
+    {
+      "gw": 16,
+      "dgw": false,
+      "fdr": 3.4,
+      "mot": "BK Häcken",
+      "hemma": true
+    },
+    {
+      "gw": 17,
+      "dgw": false,
+      "fdr": 4.3,
+      "mot": "Kalmar FF",
+      "hemma": false
+    },
+    {
+      "gw": 18,
+      "dgw": false,
+      "fdr": 3.5,
+      "mot": "GAIS",
+      "hemma": true
+    },
+    {
+      "gw": 19,
+      "dgw": false,
+      "fdr": 5.9,
+      "mot": "AIK",
+      "hemma": false
+    },
+    {
+      "gw": 20,
+      "dgw": false,
+      "fdr": 3.4,
+      "mot": "Örgryte IS",
+      "hemma": false
+    },
+    {
+      "gw": 21,
+      "dgw": false,
+      "fdr": 2.7,
+      "mot": "BP",
+      "hemma": true
+    },
+    {
+      "gw": 22,
+      "dgw": false,
+      "fdr": 2.0,
+      "mot": "Degerfors IF",
+      "hemma": false
+    },
+    {
+      "gw": 23,
+      "dgw": false,
+      "fdr": 3.7,
+      "mot": "Djurgården",
+      "hemma": true
+    },
+    {
+      "gw": 24,
+      "dgw": false,
+      "fdr": 2.5,
+      "mot": "Halmstads BK",
+      "hemma": false
+    },
+    {
+      "gw": 25,
+      "dgw": false,
+      "fdr": 3.5,
+      "mot": "Mjällby AIF",
+      "hemma": false
+    },
+    {
+      "gw": 26,
+      "dgw": false,
+      "fdr": 5.7,
+      "mot": "IK Sirius",
+      "hemma": true
+    },
+    {
+      "gw": 27,
+      "dgw": false,
+      "fdr": 5.9,
+      "mot": "Malmö FF",
+      "hemma": false
+    },
+    {
+      "gw": 28,
+      "dgw": false,
+      "fdr": 1.6,
+      "mot": "IF Elfsborg",
+      "hemma": true
+    },
+    {
+      "gw": 29,
+      "dgw": false,
+      "fdr": 3.1,
+      "mot": "IFK Göteborg",
+      "hemma": true
+    },
+    {
+      "gw": 30,
+      "dgw": false,
+      "fdr": 5.6,
+      "mot": "Västerås SK",
+      "hemma": false
+    }
+  ],
+  "IK Sirius": [
+    {
+      "gw": 14,
+      "dgw": false,
+      "fdr": 3.1,
+      "mot": "IFK Göteborg",
+      "hemma": true
+    },
+    {
+      "gw": 15,
+      "dgw": false,
+      "fdr": 2.5,
+      "mot": "Halmstads BK",
+      "hemma": false
+    },
+    {
+      "gw": 16,
+      "dgw": false,
+      "fdr": 2.7,
+      "mot": "BP",
+      "hemma": true
+    },
+    {
+      "gw": 17,
+      "dgw": false,
+      "fdr": 3.5,
+      "mot": "Mjällby AIF",
+      "hemma": false
+    },
+    {
+      "gw": 18,
+      "dgw": false,
+      "fdr": 3.4,
+      "mot": "BK Häcken",
+      "hemma": true
+    },
+    {
+      "gw": 19,
+      "dgw": false,
+      "fdr": 4.9,
+      "mot": "Malmö FF",
+      "hemma": true
+    },
+    {
+      "gw": 20,
+      "dgw": false,
+      "fdr": 5.6,
+      "mot": "Västerås SK",
+      "hemma": false
+    },
+    {
+      "gw": 21,
+      "dgw": false,
+      "fdr": 1,
+      "mot": "Degerfors IF",
+      "hemma": true
+    },
+    {
+      "gw": 22,
+      "dgw": false,
+      "fdr": 3.4,
+      "mot": "Örgryte IS",
+      "hemma": false
+    },
+    {
+      "gw": 23,
+      "dgw": false,
+      "fdr": 4.5,
+      "mot": "GAIS",
+      "hemma": false
+    },
+    {
+      "gw": 24,
+      "dgw": false,
+      "fdr": 1.6,
+      "mot": "IF Elfsborg",
+      "hemma": true
+    },
+    {
+      "gw": 25,
+      "dgw": false,
+      "fdr": 4.9,
+      "mot": "AIK",
+      "hemma": true
+    },
+    {
+      "gw": 26,
+      "dgw": false,
+      "fdr": 5.4,
+      "mot": "Hammarby",
+      "hemma": false
+    },
+    {
+      "gw": 27,
+      "dgw": false,
+      "fdr": 1.5,
+      "mot": "Halmstads BK",
+      "hemma": true
+    },
+    {
+      "gw": 28,
+      "dgw": false,
+      "fdr": 4.3,
+      "mot": "Kalmar FF",
+      "hemma": false
+    },
+    {
+      "gw": 29,
+      "dgw": false,
+      "fdr": 3.7,
+      "mot": "Djurgården",
+      "hemma": true
+    },
+    {
+      "gw": 30,
       "dgw": false,
       "fdr": 4.1,
       "mot": "IFK Göteborg",
       "hemma": false
-    },
-    {
-      "gw": 24,
-      "dgw": false,
-      "fdr": 2.1,
-      "mot": "Mjällby AIF",
-      "hemma": true
-    },
-    {
-      "gw": 25,
-      "dgw": false,
-      "fdr": 2.0,
-      "mot": "Halmstads BK",
-      "hemma": true
-    },
-    {
-      "gw": 26,
-      "dgw": false,
-      "fdr": 2.6,
-      "mot": "Degerfors IF",
-      "hemma": false
-    },
-    {
-      "gw": 27,
-      "dgw": false,
-      "fdr": 3.7,
-      "mot": "BP",
-      "hemma": true
-    },
-    {
-      "gw": 28,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "Örgryte IS",
-      "hemma": false
-    },
-    {
-      "gw": 29,
-      "dgw": false,
-      "fdr": 5.7,
-      "mot": "GAIS",
-      "hemma": false
-    },
-    {
-      "gw": 30,
-      "dgw": false,
-      "fdr": 3.0,
-      "mot": "Hammarby",
-      "hemma": true
     }
   ],
-  "AIK": [
-    {
-      "gw": 13,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "GAIS",
-      "hemma": true
-    },
+  "IFK Göteborg": [
     {
       "gw": 14,
       "dgw": false,
-      "fdr": 4.3,
-      "mot": "BK Häcken",
+      "fdr": 6.7,
+      "mot": "IK Sirius",
       "hemma": false
     },
     {
       "gw": 15,
       "dgw": false,
-      "fdr": 2.1,
-      "mot": "Örgryte IS",
+      "fdr": 1,
+      "mot": "Degerfors IF",
       "hemma": true
     },
     {
       "gw": 16,
       "dgw": false,
-      "fdr": 3.1,
-      "mot": "Örgryte IS",
-      "hemma": false
+      "fdr": 3.3,
+      "mot": "Kalmar FF",
+      "hemma": true
     },
     {
       "gw": 17,
       "dgw": false,
-      "fdr": 5.4,
-      "mot": "Djurgården",
+      "fdr": 2.0,
+      "mot": "Degerfors IF",
       "hemma": false
+    },
+    {
+      "gw": 18,
+      "dgw": false,
+      "fdr": 1.6,
+      "mot": "IF Elfsborg",
+      "hemma": true
     },
     {
       "gw": 19,
       "dgw": false,
-      "fdr": 3.0,
-      "mot": "Hammarby",
+      "fdr": 2.4,
+      "mot": "Örgryte IS",
       "hemma": true
     },
     {
       "gw": 20,
       "dgw": false,
-      "fdr": 5.3,
-      "mot": "Malmö FF",
+      "fdr": 3.5,
+      "mot": "Mjällby AIF",
       "hemma": false
     },
     {
       "gw": 21,
-      "dgw": true,
-      "dgw_match": 1,
-      "dgw_total": 2,
-      "fdr": 4.6,
-      "mot": "Västerås SK",
-      "hemma": true
-    },
-    {
-      "gw": 21,
-      "dgw": true,
-      "dgw_match": 2,
-      "dgw_total": 2,
-      "fdr": 2.1,
-      "mot": "Mjällby AIF",
+      "dgw": false,
+      "fdr": 1.5,
+      "mot": "Halmstads BK",
       "hemma": true
     },
     {
       "gw": 22,
       "dgw": false,
-      "fdr": 3.0,
-      "mot": "Halmstads BK",
+      "fdr": 3.7,
+      "mot": "BP",
       "hemma": false
     },
     {
       "gw": 23,
       "dgw": false,
-      "fdr": 3.7,
-      "mot": "BP",
+      "fdr": 4.6,
+      "mot": "Västerås SK",
       "hemma": true
     },
     {
       "gw": 24,
       "dgw": false,
-      "fdr": 3.1,
-      "mot": "IFK Göteborg",
-      "hemma": true
+      "fdr": 5.9,
+      "mot": "AIK",
+      "hemma": false
     },
     {
       "gw": 25,
       "dgw": false,
-      "fdr": 6.6,
-      "mot": "IK Sirius",
+      "fdr": 4.5,
+      "mot": "GAIS",
       "hemma": false
     },
     {
       "gw": 26,
       "dgw": false,
-      "fdr": 2.1,
-      "mot": "IF Elfsborg",
+      "fdr": 3.7,
+      "mot": "Djurgården",
       "hemma": true
     },
     {
       "gw": 27,
       "dgw": false,
-      "fdr": 5.7,
-      "mot": "GAIS",
+      "fdr": 4.4,
+      "mot": "BK Häcken",
       "hemma": false
     },
     {
       "gw": 28,
       "dgw": false,
-      "fdr": 3.3,
-      "mot": "BK Häcken",
+      "fdr": 4.9,
+      "mot": "Malmö FF",
       "hemma": true
     },
     {
       "gw": 29,
       "dgw": false,
-      "fdr": 1.6,
-      "mot": "Degerfors IF",
-      "hemma": true
+      "fdr": 5.4,
+      "mot": "Hammarby",
+      "hemma": false
     },
     {
       "gw": 30,
       "dgw": false,
-      "fdr": 3.9,
-      "mot": "Kalmar FF",
-      "hemma": false
+      "fdr": 5.7,
+      "mot": "IK Sirius",
+      "hemma": true
     }
   ],
   "GAIS": [
     {
-      "gw": 13,
-      "dgw": false,
-      "fdr": 5.2,
-      "mot": "AIK",
-      "hemma": false
-    },
-    {
       "gw": 14,
       "dgw": false,
-      "fdr": 2.0,
+      "fdr": 1.5,
       "mot": "Halmstads BK",
       "hemma": true
     },
     {
       "gw": 16,
       "dgw": false,
-      "fdr": 3.0,
+      "fdr": 2.5,
       "mot": "Halmstads BK",
       "hemma": false
     },
     {
       "gw": 17,
       "dgw": false,
-      "fdr": 4.3,
+      "fdr": 4.9,
       "mot": "Malmö FF",
       "hemma": true
     },
     {
       "gw": 18,
       "dgw": false,
-      "fdr": 4.0,
+      "fdr": 5.4,
       "mot": "Hammarby",
       "hemma": false
     },
     {
       "gw": 19,
       "dgw": false,
-      "fdr": 3.7,
+      "fdr": 2.7,
       "mot": "BP",
       "hemma": true
     },
     {
       "gw": 20,
       "dgw": false,
-      "fdr": 3.3,
+      "fdr": 3.4,
       "mot": "BK Häcken",
       "hemma": true
     },
     {
       "gw": 21,
       "dgw": false,
-      "fdr": 5.4,
+      "fdr": 4.7,
       "mot": "Djurgården",
       "hemma": false
     },
     {
       "gw": 22,
       "dgw": false,
-      "fdr": 3.1,
+      "fdr": 3.5,
       "mot": "Mjällby AIF",
       "hemma": false
     },
     {
       "gw": 23,
       "dgw": false,
-      "fdr": 5.6,
+      "fdr": 5.7,
       "mot": "IK Sirius",
       "hemma": true
     },
     {
       "gw": 24,
       "dgw": false,
-      "fdr": 3.1,
+      "fdr": 3.4,
       "mot": "Örgryte IS",
       "hemma": false
     },
@@ -739,21 +1302,21 @@
     {
       "gw": 26,
       "dgw": false,
-      "fdr": 3.9,
+      "fdr": 4.3,
       "mot": "Kalmar FF",
       "hemma": false
     },
     {
       "gw": 27,
       "dgw": false,
-      "fdr": 4.2,
+      "fdr": 4.9,
       "mot": "AIK",
       "hemma": true
     },
     {
       "gw": 28,
       "dgw": false,
-      "fdr": 2.6,
+      "fdr": 2.0,
       "mot": "Degerfors IF",
       "hemma": false
     },
@@ -767,65 +1330,58 @@
     {
       "gw": 30,
       "dgw": false,
-      "fdr": 3.1,
+      "fdr": 2.6,
       "mot": "IF Elfsborg",
       "hemma": false
     }
   ],
   "Halmstads BK": [
     {
-      "gw": 13,
-      "dgw": false,
-      "fdr": 3.3,
-      "mot": "BK Häcken",
-      "hemma": true
-    },
-    {
       "gw": 14,
       "dgw": false,
-      "fdr": 5.7,
+      "fdr": 4.5,
       "mot": "GAIS",
       "hemma": false
     },
     {
       "gw": 15,
       "dgw": false,
-      "fdr": 5.6,
+      "fdr": 5.7,
       "mot": "IK Sirius",
       "hemma": true
     },
     {
       "gw": 16,
       "dgw": false,
-      "fdr": 4.7,
+      "fdr": 3.5,
       "mot": "GAIS",
       "hemma": true
     },
     {
       "gw": 17,
       "dgw": false,
-      "fdr": 4.3,
+      "fdr": 4.4,
       "mot": "BK Häcken",
       "hemma": false
     },
     {
       "gw": 18,
       "dgw": false,
-      "fdr": 3.1,
+      "fdr": 3.4,
       "mot": "Örgryte IS",
       "hemma": false
     },
     {
       "gw": 19,
       "dgw": false,
-      "fdr": 2.9,
+      "fdr": 3.3,
       "mot": "Kalmar FF",
       "hemma": true
     },
     {
       "gw": 20,
       "dgw": false,
-      "fdr": 2.6,
+      "fdr": 2.0,
       "mot": "Degerfors IF",
       "hemma": false
     },
@@ -839,21 +1395,21 @@
     {
       "gw": 22,
       "dgw": false,
-      "fdr": 4.2,
+      "fdr": 4.9,
       "mot": "AIK",
       "hemma": true
     },
     {
       "gw": 23,
       "dgw": false,
-      "fdr": 3.1,
+      "fdr": 2.6,
       "mot": "IF Elfsborg",
       "hemma": false
     },
     {
       "gw": 24,
       "dgw": false,
-      "fdr": 3.0,
+      "fdr": 4.4,
       "mot": "Hammarby",
       "hemma": true
     },
@@ -867,1186 +1423,518 @@
     {
       "gw": 26,
       "dgw": false,
-      "fdr": 4.3,
+      "fdr": 4.9,
       "mot": "Malmö FF",
       "hemma": true
     },
     {
       "gw": 27,
       "dgw": false,
-      "fdr": 6.6,
+      "fdr": 6.7,
       "mot": "IK Sirius",
       "hemma": false
     },
     {
       "gw": 28,
       "dgw": false,
-      "fdr": 4.4,
+      "fdr": 3.7,
       "mot": "Djurgården",
       "hemma": true
     },
     {
       "gw": 29,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "BP",
-      "hemma": false
-    },
-    {
-      "gw": 30,
-      "dgw": false,
-      "fdr": 2.1,
-      "mot": "Mjällby AIF",
-      "hemma": true
-    }
-  ],
-  "BK Häcken": [
-    {
-      "gw": 13,
-      "dgw": false,
-      "fdr": 3.0,
-      "mot": "Halmstads BK",
-      "hemma": false
-    },
-    {
-      "gw": 14,
-      "dgw": false,
-      "fdr": 4.2,
-      "mot": "AIK",
-      "hemma": true
-    },
-    {
-      "gw": 15,
-      "dgw": false,
-      "fdr": 2.9,
-      "mot": "Kalmar FF",
-      "hemma": true
-    },
-    {
-      "gw": 16,
-      "dgw": false,
-      "fdr": 4.0,
-      "mot": "Hammarby",
-      "hemma": false
-    },
-    {
-      "gw": 17,
-      "dgw": false,
-      "fdr": 2.0,
-      "mot": "Halmstads BK",
-      "hemma": true
-    },
-    {
-      "gw": 18,
-      "dgw": false,
-      "fdr": 6.6,
-      "mot": "IK Sirius",
-      "hemma": false
-    },
-    {
-      "gw": 19,
-      "dgw": false,
-      "fdr": 4.6,
-      "mot": "Västerås SK",
-      "hemma": true
-    },
-    {
-      "gw": 20,
-      "dgw": false,
-      "fdr": 5.7,
-      "mot": "GAIS",
-      "hemma": false
-    },
-    {
-      "gw": 21,
-      "dgw": false,
-      "fdr": 2.1,
-      "mot": "Mjällby AIF",
-      "hemma": true
-    },
-    {
-      "gw": 22,
-      "dgw": false,
-      "fdr": 3.9,
-      "mot": "Kalmar FF",
-      "hemma": false
-    },
-    {
-      "gw": 23,
-      "dgw": false,
-      "fdr": 2.1,
-      "mot": "Örgryte IS",
-      "hemma": true
-    },
-    {
-      "gw": 24,
-      "dgw": false,
-      "fdr": 5.3,
-      "mot": "Malmö FF",
-      "hemma": false
-    },
-    {
-      "gw": 25,
-      "dgw": false,
-      "fdr": 1.6,
-      "mot": "Degerfors IF",
-      "hemma": true
-    },
-    {
-      "gw": 26,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "BP",
-      "hemma": false
-    },
-    {
-      "gw": 27,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "IFK Göteborg",
-      "hemma": true
-    },
-    {
-      "gw": 28,
-      "dgw": false,
-      "fdr": 5.2,
-      "mot": "AIK",
-      "hemma": false
-    },
-    {
-      "gw": 29,
-      "dgw": false,
-      "fdr": 2.1,
-      "mot": "IF Elfsborg",
-      "hemma": true
-    },
-    {
-      "gw": 30,
-      "dgw": false,
-      "fdr": 5.4,
-      "mot": "Djurgården",
-      "hemma": false
-    }
-  ],
-  "Hammarby": [
-    {
-      "gw": 13,
-      "dgw": false,
-      "fdr": 1.6,
-      "mot": "Degerfors IF",
-      "hemma": true
-    },
-    {
-      "gw": 14,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "BP",
-      "hemma": false
-    },
-    {
-      "gw": 16,
-      "dgw": false,
-      "fdr": 3.3,
-      "mot": "BK Häcken",
-      "hemma": true
-    },
-    {
-      "gw": 17,
-      "dgw": false,
-      "fdr": 3.9,
-      "mot": "Kalmar FF",
-      "hemma": false
-    },
-    {
-      "gw": 18,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "GAIS",
-      "hemma": true
-    },
-    {
-      "gw": 19,
-      "dgw": false,
-      "fdr": 5.2,
-      "mot": "AIK",
-      "hemma": false
-    },
-    {
-      "gw": 20,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "Örgryte IS",
-      "hemma": false
-    },
-    {
-      "gw": 21,
       "dgw": false,
       "fdr": 3.7,
       "mot": "BP",
-      "hemma": true
-    },
-    {
-      "gw": 22,
-      "dgw": false,
-      "fdr": 2.6,
-      "mot": "Degerfors IF",
-      "hemma": false
-    },
-    {
-      "gw": 23,
-      "dgw": false,
-      "fdr": 4.4,
-      "mot": "Djurgården",
-      "hemma": true
-    },
-    {
-      "gw": 24,
-      "dgw": false,
-      "fdr": 3.0,
-      "mot": "Halmstads BK",
-      "hemma": false
-    },
-    {
-      "gw": 25,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "Mjällby AIF",
-      "hemma": false
-    },
-    {
-      "gw": 26,
-      "dgw": false,
-      "fdr": 5.6,
-      "mot": "IK Sirius",
-      "hemma": true
-    },
-    {
-      "gw": 27,
-      "dgw": false,
-      "fdr": 5.3,
-      "mot": "Malmö FF",
-      "hemma": false
-    },
-    {
-      "gw": 28,
-      "dgw": false,
-      "fdr": 2.1,
-      "mot": "IF Elfsborg",
-      "hemma": true
-    },
-    {
-      "gw": 29,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "IFK Göteborg",
-      "hemma": true
-    },
-    {
-      "gw": 30,
-      "dgw": false,
-      "fdr": 5.6,
-      "mot": "Västerås SK",
-      "hemma": false
-    }
-  ],
-  "Degerfors IF": [
-    {
-      "gw": 13,
-      "dgw": false,
-      "fdr": 4.0,
-      "mot": "Hammarby",
-      "hemma": false
-    },
-    {
-      "gw": 14,
-      "dgw": false,
-      "fdr": 4.4,
-      "mot": "Djurgården",
-      "hemma": true
-    },
-    {
-      "gw": 15,
-      "dgw": false,
-      "fdr": 4.1,
-      "mot": "IFK Göteborg",
-      "hemma": false
-    },
-    {
-      "gw": 16,
-      "dgw": false,
-      "fdr": 5.3,
-      "mot": "Malmö FF",
-      "hemma": false
-    },
-    {
-      "gw": 17,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "IFK Göteborg",
-      "hemma": true
-    },
-    {
-      "gw": 18,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "BP",
-      "hemma": false
-    },
-    {
-      "gw": 19,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "IF Elfsborg",
-      "hemma": false
-    },
-    {
-      "gw": 20,
-      "dgw": false,
-      "fdr": 2.0,
-      "mot": "Halmstads BK",
-      "hemma": true
-    },
-    {
-      "gw": 21,
-      "dgw": false,
-      "fdr": 6.6,
-      "mot": "IK Sirius",
-      "hemma": false
-    },
-    {
-      "gw": 22,
-      "dgw": false,
-      "fdr": 3.0,
-      "mot": "Hammarby",
-      "hemma": true
-    },
-    {
-      "gw": 23,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "Mjällby AIF",
-      "hemma": false
-    },
-    {
-      "gw": 24,
-      "dgw": false,
-      "fdr": 2.9,
-      "mot": "Kalmar FF",
-      "hemma": true
-    },
-    {
-      "gw": 25,
-      "dgw": false,
-      "fdr": 4.3,
-      "mot": "BK Häcken",
-      "hemma": false
-    },
-    {
-      "gw": 26,
-      "dgw": false,
-      "fdr": 4.6,
-      "mot": "Västerås SK",
-      "hemma": true
-    },
-    {
-      "gw": 27,
-      "dgw": false,
-      "fdr": 5.4,
-      "mot": "Djurgården",
-      "hemma": false
-    },
-    {
-      "gw": 28,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "GAIS",
-      "hemma": true
-    },
-    {
-      "gw": 29,
-      "dgw": false,
-      "fdr": 5.2,
-      "mot": "AIK",
       "hemma": false
     },
     {
       "gw": 30,
       "dgw": false,
-      "fdr": 2.1,
-      "mot": "Örgryte IS",
-      "hemma": true
-    }
-  ],
-  "IF Elfsborg": [
-    {
-      "gw": 13,
-      "dgw": false,
-      "fdr": 5.6,
-      "mot": "IK Sirius",
-      "hemma": true
-    },
-    {
-      "gw": 14,
-      "dgw": false,
-      "fdr": 5.3,
-      "mot": "Malmö FF",
-      "hemma": false
-    },
-    {
-      "gw": 16,
-      "dgw": false,
-      "fdr": 3.1,
+      "fdr": 2.5,
       "mot": "Mjällby AIF",
-      "hemma": false
-    },
-    {
-      "gw": 17,
-      "dgw": false,
-      "fdr": 4.6,
-      "mot": "Västerås SK",
-      "hemma": true
-    },
-    {
-      "gw": 18,
-      "dgw": false,
-      "fdr": 4.1,
-      "mot": "IFK Göteborg",
-      "hemma": false
-    },
-    {
-      "gw": 19,
-      "dgw": false,
-      "fdr": 1.6,
-      "mot": "Degerfors IF",
-      "hemma": true
-    },
-    {
-      "gw": 20,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "BP",
-      "hemma": false
-    },
-    {
-      "gw": 21,
-      "dgw": false,
-      "fdr": 2.9,
-      "mot": "Kalmar FF",
-      "hemma": true
-    },
-    {
-      "gw": 22,
-      "dgw": false,
-      "fdr": 5.4,
-      "mot": "Djurgården",
-      "hemma": false
-    },
-    {
-      "gw": 23,
-      "dgw": false,
-      "fdr": 2.0,
-      "mot": "Halmstads BK",
-      "hemma": true
-    },
-    {
-      "gw": 24,
-      "dgw": false,
-      "fdr": 6.6,
-      "mot": "IK Sirius",
-      "hemma": false
-    },
-    {
-      "gw": 25,
-      "dgw": false,
-      "fdr": 4.3,
-      "mot": "Malmö FF",
-      "hemma": true
-    },
-    {
-      "gw": 26,
-      "dgw": false,
-      "fdr": 5.2,
-      "mot": "AIK",
-      "hemma": false
-    },
-    {
-      "gw": 27,
-      "dgw": false,
-      "fdr": 2.1,
-      "mot": "Örgryte IS",
-      "hemma": true
-    },
-    {
-      "gw": 28,
-      "dgw": false,
-      "fdr": 4.0,
-      "mot": "Hammarby",
-      "hemma": false
-    },
-    {
-      "gw": 29,
-      "dgw": false,
-      "fdr": 4.3,
-      "mot": "BK Häcken",
-      "hemma": false
-    },
-    {
-      "gw": 30,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "GAIS",
-      "hemma": true
-    }
-  ],
-  "IK Sirius": [
-    {
-      "gw": 13,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "IF Elfsborg",
-      "hemma": false
-    },
-    {
-      "gw": 14,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "IFK Göteborg",
-      "hemma": true
-    },
-    {
-      "gw": 15,
-      "dgw": false,
-      "fdr": 3.0,
-      "mot": "Halmstads BK",
-      "hemma": false
-    },
-    {
-      "gw": 16,
-      "dgw": false,
-      "fdr": 3.7,
-      "mot": "BP",
-      "hemma": true
-    },
-    {
-      "gw": 17,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "Mjällby AIF",
-      "hemma": false
-    },
-    {
-      "gw": 18,
-      "dgw": false,
-      "fdr": 3.3,
-      "mot": "BK Häcken",
-      "hemma": true
-    },
-    {
-      "gw": 19,
-      "dgw": false,
-      "fdr": 4.3,
-      "mot": "Malmö FF",
-      "hemma": true
-    },
-    {
-      "gw": 20,
-      "dgw": false,
-      "fdr": 5.6,
-      "mot": "Västerås SK",
-      "hemma": false
-    },
-    {
-      "gw": 21,
-      "dgw": false,
-      "fdr": 1.6,
-      "mot": "Degerfors IF",
-      "hemma": true
-    },
-    {
-      "gw": 22,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "Örgryte IS",
-      "hemma": false
-    },
-    {
-      "gw": 23,
-      "dgw": false,
-      "fdr": 5.7,
-      "mot": "GAIS",
-      "hemma": false
-    },
-    {
-      "gw": 24,
-      "dgw": false,
-      "fdr": 2.1,
-      "mot": "IF Elfsborg",
-      "hemma": true
-    },
-    {
-      "gw": 25,
-      "dgw": false,
-      "fdr": 4.2,
-      "mot": "AIK",
-      "hemma": true
-    },
-    {
-      "gw": 26,
-      "dgw": false,
-      "fdr": 4.0,
-      "mot": "Hammarby",
-      "hemma": false
-    },
-    {
-      "gw": 27,
-      "dgw": false,
-      "fdr": 2.0,
-      "mot": "Halmstads BK",
-      "hemma": true
-    },
-    {
-      "gw": 28,
-      "dgw": false,
-      "fdr": 3.9,
-      "mot": "Kalmar FF",
-      "hemma": false
-    },
-    {
-      "gw": 29,
-      "dgw": false,
-      "fdr": 4.4,
-      "mot": "Djurgården",
-      "hemma": true
-    },
-    {
-      "gw": 30,
-      "dgw": false,
-      "fdr": 4.1,
-      "mot": "IFK Göteborg",
-      "hemma": false
-    }
-  ],
-  "Kalmar FF": [
-    {
-      "gw": 13,
-      "dgw": false,
-      "fdr": 4.3,
-      "mot": "Malmö FF",
-      "hemma": true
-    },
-    {
-      "gw": 14,
-      "dgw": false,
-      "fdr": 2.1,
-      "mot": "Mjällby AIF",
-      "hemma": true
-    },
-    {
-      "gw": 15,
-      "dgw": false,
-      "fdr": 4.3,
-      "mot": "BK Häcken",
-      "hemma": false
-    },
-    {
-      "gw": 16,
-      "dgw": false,
-      "fdr": 4.1,
-      "mot": "IFK Göteborg",
-      "hemma": false
-    },
-    {
-      "gw": 17,
-      "dgw": false,
-      "fdr": 3.0,
-      "mot": "Hammarby",
-      "hemma": true
-    },
-    {
-      "gw": 18,
-      "dgw": false,
-      "fdr": 5.6,
-      "mot": "Västerås SK",
-      "hemma": false
-    },
-    {
-      "gw": 19,
-      "dgw": false,
-      "fdr": 3.0,
-      "mot": "Halmstads BK",
-      "hemma": false
-    },
-    {
-      "gw": 20,
-      "dgw": false,
-      "fdr": 4.4,
-      "mot": "Djurgården",
-      "hemma": true
-    },
-    {
-      "gw": 21,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "IF Elfsborg",
-      "hemma": false
-    },
-    {
-      "gw": 22,
-      "dgw": false,
-      "fdr": 3.3,
-      "mot": "BK Häcken",
-      "hemma": true
-    },
-    {
-      "gw": 23,
-      "dgw": false,
-      "fdr": 5.3,
-      "mot": "Malmö FF",
-      "hemma": false
-    },
-    {
-      "gw": 24,
-      "dgw": false,
-      "fdr": 2.6,
-      "mot": "Degerfors IF",
-      "hemma": false
-    },
-    {
-      "gw": 25,
-      "dgw": false,
-      "fdr": 3.7,
-      "mot": "BP",
-      "hemma": true
-    },
-    {
-      "gw": 26,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "GAIS",
-      "hemma": true
-    },
-    {
-      "gw": 27,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "Mjällby AIF",
-      "hemma": false
-    },
-    {
-      "gw": 28,
-      "dgw": false,
-      "fdr": 5.6,
-      "mot": "IK Sirius",
-      "hemma": true
-    },
-    {
-      "gw": 29,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "Örgryte IS",
-      "hemma": false
-    },
-    {
-      "gw": 30,
-      "dgw": false,
-      "fdr": 4.2,
-      "mot": "AIK",
       "hemma": true
     }
   ],
   "Malmö FF": [
     {
-      "gw": 13,
-      "dgw": false,
-      "fdr": 3.9,
-      "mot": "Kalmar FF",
-      "hemma": false
-    },
-    {
       "gw": 14,
       "dgw": false,
-      "fdr": 2.1,
+      "fdr": 1.6,
       "mot": "IF Elfsborg",
       "hemma": true
     },
     {
       "gw": 15,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "BP",
-      "hemma": false
-    },
-    {
-      "gw": 16,
-      "dgw": false,
-      "fdr": 1.6,
-      "mot": "Degerfors IF",
-      "hemma": true
-    },
-    {
-      "gw": 17,
-      "dgw": false,
-      "fdr": 5.7,
-      "mot": "GAIS",
-      "hemma": false
-    },
-    {
-      "gw": 18,
-      "dgw": false,
-      "fdr": 4.4,
-      "mot": "Djurgården",
-      "hemma": true
-    },
-    {
-      "gw": 19,
-      "dgw": false,
-      "fdr": 6.6,
-      "mot": "IK Sirius",
-      "hemma": false
-    },
-    {
-      "gw": 20,
-      "dgw": false,
-      "fdr": 4.2,
-      "mot": "AIK",
-      "hemma": true
-    },
-    {
-      "gw": 21,
-      "dgw": false,
-      "fdr": 2.1,
-      "mot": "Örgryte IS",
-      "hemma": true
-    },
-    {
-      "gw": 22,
-      "dgw": false,
-      "fdr": 5.6,
-      "mot": "Västerås SK",
-      "hemma": false
-    },
-    {
-      "gw": 23,
-      "dgw": false,
-      "fdr": 2.9,
-      "mot": "Kalmar FF",
-      "hemma": true
-    },
-    {
-      "gw": 24,
-      "dgw": false,
-      "fdr": 3.3,
-      "mot": "BK Häcken",
-      "hemma": true
-    },
-    {
-      "gw": 25,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "IF Elfsborg",
-      "hemma": false
-    },
-    {
-      "gw": 26,
-      "dgw": false,
-      "fdr": 3.0,
-      "mot": "Halmstads BK",
-      "hemma": false
-    },
-    {
-      "gw": 27,
-      "dgw": false,
-      "fdr": 3.0,
-      "mot": "Hammarby",
-      "hemma": true
-    },
-    {
-      "gw": 28,
-      "dgw": false,
-      "fdr": 4.1,
-      "mot": "IFK Göteborg",
-      "hemma": false
-    },
-    {
-      "gw": 29,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "Mjällby AIF",
-      "hemma": false
-    },
-    {
-      "gw": 30,
       "dgw": false,
       "fdr": 3.7,
       "mot": "BP",
-      "hemma": true
-    }
-  ],
-  "Örgryte IS": [
+      "hemma": false
+    },
     {
-      "gw": 13,
+      "gw": 16,
       "dgw": false,
-      "fdr": 4.4,
+      "fdr": 1,
+      "mot": "Degerfors IF",
+      "hemma": true
+    },
+    {
+      "gw": 17,
+      "dgw": false,
+      "fdr": 4.5,
+      "mot": "GAIS",
+      "hemma": false
+    },
+    {
+      "gw": 18,
+      "dgw": false,
+      "fdr": 3.7,
       "mot": "Djurgården",
       "hemma": true
     },
     {
-      "gw": 14,
+      "gw": 19,
+      "dgw": false,
+      "fdr": 6.7,
+      "mot": "IK Sirius",
+      "hemma": false
+    },
+    {
+      "gw": 20,
+      "dgw": false,
+      "fdr": 4.9,
+      "mot": "AIK",
+      "hemma": true
+    },
+    {
+      "gw": 21,
+      "dgw": false,
+      "fdr": 2.4,
+      "mot": "Örgryte IS",
+      "hemma": true
+    },
+    {
+      "gw": 22,
       "dgw": false,
       "fdr": 5.6,
       "mot": "Västerås SK",
       "hemma": false
     },
     {
-      "gw": 15,
+      "gw": 23,
       "dgw": false,
-      "fdr": 5.2,
-      "mot": "AIK",
-      "hemma": false
-    },
-    {
-      "gw": 16,
-      "dgw": false,
-      "fdr": 4.2,
-      "mot": "AIK",
+      "fdr": 3.3,
+      "mot": "Kalmar FF",
       "hemma": true
     },
     {
-      "gw": 17,
+      "gw": 24,
       "dgw": false,
-      "fdr": 4.7,
-      "mot": "BP",
+      "fdr": 3.4,
+      "mot": "BK Häcken",
+      "hemma": true
+    },
+    {
+      "gw": 25,
+      "dgw": false,
+      "fdr": 2.6,
+      "mot": "IF Elfsborg",
       "hemma": false
     },
     {
-      "gw": 18,
+      "gw": 26,
       "dgw": false,
-      "fdr": 2.0,
+      "fdr": 2.5,
       "mot": "Halmstads BK",
+      "hemma": false
+    },
+    {
+      "gw": 27,
+      "dgw": false,
+      "fdr": 4.4,
+      "mot": "Hammarby",
       "hemma": true
     },
     {
-      "gw": 19,
+      "gw": 28,
       "dgw": false,
       "fdr": 4.1,
       "mot": "IFK Göteborg",
       "hemma": false
     },
     {
-      "gw": 20,
-      "dgw": false,
-      "fdr": 3.0,
-      "mot": "Hammarby",
-      "hemma": true
-    },
-    {
-      "gw": 21,
-      "dgw": false,
-      "fdr": 5.3,
-      "mot": "Malmö FF",
-      "hemma": false
-    },
-    {
-      "gw": 22,
-      "dgw": false,
-      "fdr": 5.6,
-      "mot": "IK Sirius",
-      "hemma": true
-    },
-    {
-      "gw": 23,
-      "dgw": false,
-      "fdr": 4.3,
-      "mot": "BK Häcken",
-      "hemma": false
-    },
-    {
-      "gw": 24,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "GAIS",
-      "hemma": true
-    },
-    {
-      "gw": 25,
-      "dgw": false,
-      "fdr": 5.4,
-      "mot": "Djurgården",
-      "hemma": false
-    },
-    {
-      "gw": 26,
-      "dgw": false,
-      "fdr": 2.1,
-      "mot": "Mjällby AIF",
-      "hemma": true
-    },
-    {
-      "gw": 27,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "IF Elfsborg",
-      "hemma": false
-    },
-    {
-      "gw": 28,
-      "dgw": false,
-      "fdr": 4.6,
-      "mot": "Västerås SK",
-      "hemma": true
-    },
-    {
       "gw": 29,
       "dgw": false,
-      "fdr": 2.9,
-      "mot": "Kalmar FF",
-      "hemma": true
+      "fdr": 3.5,
+      "mot": "Mjällby AIF",
+      "hemma": false
     },
     {
       "gw": 30,
       "dgw": false,
-      "fdr": 2.6,
-      "mot": "Degerfors IF",
-      "hemma": false
+      "fdr": 2.7,
+      "mot": "BP",
+      "hemma": true
     }
   ],
-  "Djurgården": [
-    {
-      "gw": 13,
-      "dgw": false,
-      "fdr": 3.1,
-      "mot": "Örgryte IS",
-      "hemma": false
-    },
+  "IF Elfsborg": [
     {
       "gw": 14,
       "dgw": false,
-      "fdr": 2.6,
-      "mot": "Degerfors IF",
+      "fdr": 5.9,
+      "mot": "Malmö FF",
       "hemma": false
-    },
-    {
-      "gw": 15,
-      "dgw": false,
-      "fdr": 4.6,
-      "mot": "Västerås SK",
-      "hemma": true
     },
     {
       "gw": 16,
       "dgw": false,
-      "fdr": 5.6,
-      "mot": "Västerås SK",
+      "fdr": 3.5,
+      "mot": "Mjällby AIF",
       "hemma": false
     },
     {
       "gw": 17,
       "dgw": false,
-      "fdr": 4.2,
-      "mot": "AIK",
+      "fdr": 4.6,
+      "mot": "Västerås SK",
       "hemma": true
     },
     {
       "gw": 18,
       "dgw": false,
-      "fdr": 5.3,
-      "mot": "Malmö FF",
+      "fdr": 4.1,
+      "mot": "IFK Göteborg",
       "hemma": false
     },
     {
       "gw": 19,
+      "dgw": false,
+      "fdr": 1,
+      "mot": "Degerfors IF",
+      "hemma": true
+    },
+    {
+      "gw": 20,
+      "dgw": false,
+      "fdr": 3.7,
+      "mot": "BP",
+      "hemma": false
+    },
+    {
+      "gw": 21,
+      "dgw": false,
+      "fdr": 3.3,
+      "mot": "Kalmar FF",
+      "hemma": true
+    },
+    {
+      "gw": 22,
+      "dgw": false,
+      "fdr": 4.7,
+      "mot": "Djurgården",
+      "hemma": false
+    },
+    {
+      "gw": 23,
+      "dgw": false,
+      "fdr": 1.5,
+      "mot": "Halmstads BK",
+      "hemma": true
+    },
+    {
+      "gw": 24,
+      "dgw": false,
+      "fdr": 6.7,
+      "mot": "IK Sirius",
+      "hemma": false
+    },
+    {
+      "gw": 25,
+      "dgw": false,
+      "fdr": 4.9,
+      "mot": "Malmö FF",
+      "hemma": true
+    },
+    {
+      "gw": 26,
+      "dgw": false,
+      "fdr": 5.9,
+      "mot": "AIK",
+      "hemma": false
+    },
+    {
+      "gw": 27,
+      "dgw": false,
+      "fdr": 2.4,
+      "mot": "Örgryte IS",
+      "hemma": true
+    },
+    {
+      "gw": 28,
+      "dgw": false,
+      "fdr": 5.4,
+      "mot": "Hammarby",
+      "hemma": false
+    },
+    {
+      "gw": 29,
+      "dgw": false,
+      "fdr": 4.4,
+      "mot": "BK Häcken",
+      "hemma": false
+    },
+    {
+      "gw": 30,
+      "dgw": false,
+      "fdr": 3.5,
+      "mot": "GAIS",
+      "hemma": true
+    }
+  ],
+  "BK Häcken": [
+    {
+      "gw": 14,
+      "dgw": false,
+      "fdr": 4.9,
+      "mot": "AIK",
+      "hemma": true
+    },
+    {
+      "gw": 15,
+      "dgw": false,
+      "fdr": 3.3,
+      "mot": "Kalmar FF",
+      "hemma": true
+    },
+    {
+      "gw": 16,
+      "dgw": false,
+      "fdr": 5.4,
+      "mot": "Hammarby",
+      "hemma": false
+    },
+    {
+      "gw": 17,
+      "dgw": false,
+      "fdr": 1.5,
+      "mot": "Halmstads BK",
+      "hemma": true
+    },
+    {
+      "gw": 18,
+      "dgw": false,
+      "fdr": 6.7,
+      "mot": "IK Sirius",
+      "hemma": false
+    },
+    {
+      "gw": 19,
+      "dgw": false,
+      "fdr": 4.6,
+      "mot": "Västerås SK",
+      "hemma": true
+    },
+    {
+      "gw": 20,
+      "dgw": false,
+      "fdr": 4.5,
+      "mot": "GAIS",
+      "hemma": false
+    },
+    {
+      "gw": 21,
+      "dgw": false,
+      "fdr": 2.5,
+      "mot": "Mjällby AIF",
+      "hemma": true
+    },
+    {
+      "gw": 22,
+      "dgw": false,
+      "fdr": 4.3,
+      "mot": "Kalmar FF",
+      "hemma": false
+    },
+    {
+      "gw": 23,
+      "dgw": false,
+      "fdr": 2.4,
+      "mot": "Örgryte IS",
+      "hemma": true
+    },
+    {
+      "gw": 24,
+      "dgw": false,
+      "fdr": 5.9,
+      "mot": "Malmö FF",
+      "hemma": false
+    },
+    {
+      "gw": 25,
+      "dgw": false,
+      "fdr": 1,
+      "mot": "Degerfors IF",
+      "hemma": true
+    },
+    {
+      "gw": 26,
+      "dgw": false,
+      "fdr": 3.7,
+      "mot": "BP",
+      "hemma": false
+    },
+    {
+      "gw": 27,
+      "dgw": false,
+      "fdr": 3.1,
+      "mot": "IFK Göteborg",
+      "hemma": true
+    },
+    {
+      "gw": 28,
+      "dgw": false,
+      "fdr": 5.9,
+      "mot": "AIK",
+      "hemma": false
+    },
+    {
+      "gw": 29,
+      "dgw": false,
+      "fdr": 1.6,
+      "mot": "IF Elfsborg",
+      "hemma": true
+    },
+    {
+      "gw": 30,
+      "dgw": false,
+      "fdr": 4.7,
+      "mot": "Djurgården",
+      "hemma": false
+    }
+  ],
+  "AIK": [
+    {
+      "gw": 14,
+      "dgw": false,
+      "fdr": 4.4,
+      "mot": "BK Häcken",
+      "hemma": false
+    },
+    {
+      "gw": 15,
+      "dgw": false,
+      "fdr": 2.4,
+      "mot": "Örgryte IS",
+      "hemma": true
+    },
+    {
+      "gw": 16,
+      "dgw": false,
+      "fdr": 3.4,
+      "mot": "Örgryte IS",
+      "hemma": false
+    },
+    {
+      "gw": 17,
+      "dgw": false,
+      "fdr": 4.7,
+      "mot": "Djurgården",
+      "hemma": false
+    },
+    {
+      "gw": 19,
+      "dgw": false,
+      "fdr": 4.4,
+      "mot": "Hammarby",
+      "hemma": true
+    },
+    {
+      "gw": 20,
+      "dgw": false,
+      "fdr": 5.9,
+      "mot": "Malmö FF",
+      "hemma": false
+    },
+    {
+      "gw": 21,
       "dgw": true,
       "dgw_match": 1,
       "dgw_total": 2,
-      "fdr": 2.1,
-      "mot": "Mjällby AIF",
+      "fdr": 4.6,
+      "mot": "Västerås SK",
       "hemma": true
     },
     {
-      "gw": 19,
+      "gw": 21,
       "dgw": true,
       "dgw_match": 2,
       "dgw_total": 2,
-      "fdr": 3.1,
+      "fdr": 2.5,
       "mot": "Mjällby AIF",
-      "hemma": false
-    },
-    {
-      "gw": 20,
-      "dgw": false,
-      "fdr": 3.9,
-      "mot": "Kalmar FF",
-      "hemma": false
-    },
-    {
-      "gw": 21,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "GAIS",
       "hemma": true
     },
     {
       "gw": 22,
       "dgw": false,
-      "fdr": 2.1,
-      "mot": "IF Elfsborg",
-      "hemma": true
-    },
-    {
-      "gw": 23,
-      "dgw": false,
-      "fdr": 4.0,
-      "mot": "Hammarby",
-      "hemma": false
-    },
-    {
-      "gw": 24,
-      "dgw": false,
-      "fdr": 4.7,
-      "mot": "BP",
-      "hemma": false
-    },
-    {
-      "gw": 25,
-      "dgw": false,
-      "fdr": 2.1,
-      "mot": "Örgryte IS",
-      "hemma": true
-    },
-    {
-      "gw": 26,
-      "dgw": false,
-      "fdr": 4.1,
-      "mot": "IFK Göteborg",
-      "hemma": false
-    },
-    {
-      "gw": 27,
-      "dgw": false,
-      "fdr": 1.6,
-      "mot": "Degerfors IF",
-      "hemma": true
-    },
-    {
-      "gw": 28,
-      "dgw": false,
-      "fdr": 3.0,
+      "fdr": 2.5,
       "mot": "Halmstads BK",
       "hemma": false
     },
     {
-      "gw": 29,
+      "gw": 23,
       "dgw": false,
-      "fdr": 6.6,
+      "fdr": 2.7,
+      "mot": "BP",
+      "hemma": true
+    },
+    {
+      "gw": 24,
+      "dgw": false,
+      "fdr": 3.1,
+      "mot": "IFK Göteborg",
+      "hemma": true
+    },
+    {
+      "gw": 25,
+      "dgw": false,
+      "fdr": 6.7,
       "mot": "IK Sirius",
       "hemma": false
     },
     {
-      "gw": 30,
+      "gw": 26,
       "dgw": false,
-      "fdr": 3.3,
+      "fdr": 1.6,
+      "mot": "IF Elfsborg",
+      "hemma": true
+    },
+    {
+      "gw": 27,
+      "dgw": false,
+      "fdr": 4.5,
+      "mot": "GAIS",
+      "hemma": false
+    },
+    {
+      "gw": 28,
+      "dgw": false,
+      "fdr": 3.4,
       "mot": "BK Häcken",
       "hemma": true
+    },
+    {
+      "gw": 29,
+      "dgw": false,
+      "fdr": 1,
+      "mot": "Degerfors IF",
+      "hemma": true
+    },
+    {
+      "gw": 30,
+      "dgw": false,
+      "fdr": 4.3,
+      "mot": "Kalmar FF",
+      "hemma": false
     }
   ]
 }
