@@ -1,8 +1,8 @@
 {
-  "antal_omgangar": 5,
+  "antal_omgangar": 6,
   "kaptenstips": {
-    "treff": 2,
-    "totalt": 6,
+    "treff": 4,
+    "totalt": 9,
     "historia": [
       {
         "gw": 10,
@@ -41,12 +41,22 @@
           "Heintz": 4,
           "Hegland": 15
         }
+      },
+      {
+        "gw": 13,
+        "treff": 2,
+        "totalt": 3,
+        "poang": {
+          "Ure": 14,
+          "Abraham": 13,
+          "Besara": 3
+        }
       }
     ]
   },
   "differentials": {
-    "treff": 2,
-    "totalt": 6,
+    "treff": 4,
+    "totalt": 9,
     "historia": [
       {
         "gw": 10,
@@ -84,6 +94,16 @@
           "Åslund: 5p (✓ vs snitt 3.2)",
           "Thorkelsson: saknasp (✗ vs snitt 3.2)",
           "Lindberg: 0p (✗ vs snitt 3.2)"
+        ]
+      },
+      {
+        "gw": 13,
+        "treff": 2,
+        "totalt": 3,
+        "detaljer": [
+          "Lindberg: 0p (✗ vs snitt 3.3)",
+          "Heintz: 7p (✓ vs snitt 3.3)",
+          "Lind: 10p (✓ vs snitt 3.3)"
         ]
       }
     ]
@@ -107,8 +127,8 @@
     ]
   },
   "varningar": {
-    "treff": 6,
-    "totalt": 6,
+    "treff": 7,
+    "totalt": 9,
     "historia": [
       {
         "gw": 12,
@@ -134,6 +154,16 @@
           "Hult": 0,
           "Eriksson": 0,
           "Isherwood": 3
+        }
+      },
+      {
+        "gw": 13,
+        "treff": 1,
+        "totalt": 3,
+        "poang": {
+          "Norén": 7,
+          "Wallinder": 8,
+          "Hult": 2
         }
       }
     ]

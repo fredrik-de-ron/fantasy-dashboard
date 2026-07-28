@@ -1,0 +1,172 @@
+{
+  "omgang": 13,
+  "skapad": "2026-07-28T12:37:59.183396",
+  "facit": "# Facitanalys GW13 — Kvantitativ genomgång\n\n---\n\n## Kaptenstips — Träffade vi rätt?\n\n**Omgångssnitt: 3.3p**\n\n### Robbie Ure (IK Sirius) — Rekommendation #1 (Risk-kap, Stark konfidens)\n**Faktiskt utfall: 14p (2 mål, 90 min)**\n\nKlassificering: **Varians (positiv) + Modell korrekt**\n\nModellen identifierade rätt spelare av rätt anledning — bäst på alla tre nyckelvariabler, FDR 3.1 acceptabel. Utfallet bekräftar GW11-lärdomen: Ure är explosiv och ska inte nedgraderas på svaga FDR-argument. 14p är starkt men inte anomalt givet 2 mål. Ingen straff behövdes för att nå detta tak — det är en viktig notering mot motargumentet om straffberoendet.\n\n**Avvikelsetyp:** Rätt rekommendation, utfallet inom rimlig variationsbredd för en 2-målsscorar.\n\n---\n\n### Paulos Abraham (Hammarby) — Rekommendation #2 (Risk-kap, Rimlig konfidens)\n**Faktiskt utfall: 13p (1 mål, 1 assist, 76 min)**\n\nKlassificering: **Modell korrekt**\n\nFDR 1.6 hemma levererade exakt vad modellen förutspådde. Abraham producerade direkt involvering i mål (1+1) och landade på 13p — klart över genomsnittet och inom takvärdesintervallet för en anfallare med hög xG. Motargumentet om avsaknad av fasta situationsroller var irrelevant denna omgång. Det som är värt att notera: Madjed (14p) slog Abraham marginellt, vilket innebär att alternativkostnadsbedömningen i differentials-dokumentet (Madjed som tredjeval) var en underskattning.\n\n**Avvikelsetyp:** Ingen materiell avvikelse. Modellen och utfallet är i linje.\n\n---\n\n### Nahir Besara (Hammarby) — Rekommendation #3 (Säkert kap, Rimlig konfidens)\n**Faktiskt utfall: 3p**\n\nKlassificering: **Modell korrekt (varning infriades)**\n\nBesara klassificerades explicit som svagast i topp-3 med motargumentet \"form 3.7 är den svagaste med bred marginal\" och \"kostbart 2–4p-utfall helt realistiskt.\" 3p är exakt det utfallet. Det är inte ett modellfel — det är en bekräftad nedsidesrisk. Problemet är att 54% ägarskap på en spelare som landar på 3p skapar massivt differentialunderskott mot de som kaptenssatte Ure eller Abraham. Det \"säkra\" kaptensalternativet var alltså inte säkert i relativa termer.\n\n**Avvikelsetyp:** Varians (negativ inom känt riskintervall). Modellen flaggade risken korrekt men \"säkert kap\"-etiketten var missvisande givet formdatan.\n\n---\n\n## Differentials — Levererade de?\n\n**Tröskel: >3.3p för att klassificeras som \"levererat\"**\n\n### Julius Lindberg (BK Häcken) — Ägarskap 4.3%, Stark konfidens\n**Faktiskt utfall: 0p**\n\nKlassificering: **Varians (extrem negativ) eller Okänd okänd (startade ej / skada)**\n\nDetta är omgångens tydligaste fiasko. 0p trots stark konfidens och explicit \"köp nu\"-signal. Utan mer information om orsaken (spelade han ej? skada? kortare inhopp?) är det svårt att skilja mellan:\n- **Okänd okänd:** Lindberg startade inte av taktiska skäl som inte var synliga i datan\n- **Varians:** Startade men bidrog med noll\n\nOavsett orsak är utfallet ett direkt falsifierat rekommendationsutfall. Modellens svagheten här är att 11p förra omgången skapade en form-illusion (10.7) som inte återspeglade startplatssäkerhet eller omgångsspecifik matchningsrisk. **Det är ett modelfel i form av att startplatsstatus inte vägdes tillräckligt tungt.**\n\nNotera: Lindgren (BK Häcken) tog 13p samma omgång — Häcken levererade som lag, men Lindberg bidrog inte. Det stärker hypotesen om startplatsproblematik snarare än lagprestationsrisk.\n\n---\n\n### Tobias Heintz (IFK Göteborg) — Ägarskap 8.7%, Rimlig konfidens\n**Faktiskt utfall: 7p (1 assist, 90 min)**\n\nKlassificering: **Modell korrekt, varians neutral**\n\n7p är mer än dubbla genomsnittet (3.3p) och levererar differentialvärde. Heintz producerade via assist — precis det set piece-kanalen förväntades bidra med. Motargumentet om \"missade förra omgången\" bekräftades inte. Solid leverans.\n\n---\n\n### Victor Lind (Hammarby) — Ägarskap 11.1%, Rimlig konfidens\n**Faktiskt utfall: 10p (2 assists, 75 min)**\n\nKlassificering: **Modell korrekt**\n\nFDR 1.6 hemma levererade som förväntat. Lind producerade 2 assists och landade på 10p — klart över genomsnittet och motiverar \"köp nu\"-signalen. Hammarby generellt levererade starkt (Abraham 13p, Lind 10p, Madjed 14p) vilket bekräftar att FDR 1.6 hemma var rätt att prioritera.\n\n---\n\n## Spelarvarningar — Bekräftades varningarna?\n\n### Axel Norén (Mjällby) — Varning utfärdad\n**Faktiskt utfall: 7p**\n\nKlassificering: **Varning bekräftad delvis**\n\n7p är över genomsnittet (3.3p), vilket tekniskt innebär att varningen *inte* bekräftades i absoluta termer. Norén levererade en okej omgång. Dock: varningen handlade primärt om det strukturella argumentet (blank GW15, svag form 2.0) snarare än GW13 specifikt. Som enpunktsanalys är varningen felaktig; som fönsteranalys är argumentet fortfarande giltigt.\n\n**Avvikelsetyp:** Modelfel (kortsiktig träffsäkerhet misslyckades), strukturellt argument kvarstår.\n\n---\n\n### Robin Wallinder (Mjällby) — Varning utfärdad\n**Faktiskt utfall: 8p**\n\nKlassificering: **Varning ej bekräftad**\n\n8p är klart över genomsnittet. Wallinder levererade — troligen via clean sheet och spelminutbonus. Motargumentet i analysen (GW16 FDR 2.1 hemma är ett starkt matchup som Wallinder garanterat spelar) var korrekt, men GW13-specifikt var varningen felaktig. Det underliggande argumentet (blank GW15 motiverar byte) är fortfarande strukturellt hållbart, men GW13-träffsäkerheten var dålig för denna varning.\n\n**",
+  "topp15": [
+    {
+      "id": 38,
+      "namn": "Madjed",
+      "lag": "Hammarby",
+      "poang": 14,
+      "minuter": 90,
+      "mal": 2,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 69,
+      "namn": "Ure",
+      "lag": "IK Sirius",
+      "poang": 14,
+      "minuter": 90,
+      "mal": 2,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 47,
+      "namn": "Abraham",
+      "lag": "Hammarby",
+      "poang": 13,
+      "minuter": 76,
+      "mal": 1,
+      "assist": 1,
+      "nollor": 1
+    },
+    {
+      "id": 151,
+      "namn": "Lindgren",
+      "lag": "BK Häcken",
+      "poang": 13,
+      "minuter": 85,
+      "mal": 2,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 204,
+      "namn": "Bergquist",
+      "lag": "AIK",
+      "poang": 11,
+      "minuter": 71,
+      "mal": 0,
+      "assist": 1,
+      "nollor": 1
+    },
+    {
+      "id": 229,
+      "namn": "Filling",
+      "lag": "AIK",
+      "poang": 11,
+      "minuter": 76,
+      "mal": 1,
+      "assist": 1,
+      "nollor": 1
+    },
+    {
+      "id": 37,
+      "namn": "Lind",
+      "lag": "Hammarby",
+      "poang": 10,
+      "minuter": 75,
+      "mal": 0,
+      "assist": 2,
+      "nollor": 1
+    },
+    {
+      "id": 79,
+      "namn": "Yeboah",
+      "lag": "IFK Göteborg",
+      "poang": 10,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 218,
+      "namn": "Ayari",
+      "lag": "AIK",
+      "poang": 10,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 124,
+      "namn": "Linde",
+      "lag": "BK Häcken",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 128,
+      "namn": "Wembangomo",
+      "lag": "BK Häcken",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 1,
+      "nollor": 1
+    },
+    {
+      "id": 191,
+      "namn": "Gustafsson",
+      "lag": "Kalmar FF",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 53,
+      "namn": "Soumah",
+      "lag": "IK Sirius",
+      "poang": 8,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 61,
+      "namn": "Bjerkebo",
+      "lag": "IK Sirius",
+      "poang": 8,
+      "minuter": 88,
+      "mal": 0,
+      "assist": 2,
+      "nollor": 0
+    },
+    {
+      "id": 96,
+      "namn": "Clemmensen",
+      "lag": "IFK Göteborg",
+      "poang": 8,
+      "minuter": 45,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    }
+  ],
+  "genomsnitt": 3.3,
+  "traffsakerhet": {
+    "kaptenstips": {
+      "treff": 2,
+      "totalt": 3
+    },
+    "differentials": {
+      "treff": 2,
+      "totalt": 3
+    },
+    "varningar": {
+      "treff": 1,
+      "totalt": 3
+    }
+  }
+}
