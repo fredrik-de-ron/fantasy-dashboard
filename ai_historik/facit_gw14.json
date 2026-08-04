@@ -1,0 +1,172 @@
+{
+  "omgang": 14,
+  "skapad": "2026-08-04T08:46:12.515673",
+  "facit": "# Facit-analys GW14 — Kvantitativ genomgång\n\n---\n\n## Kaptenstips — Träffade vi rätt?\n\n**Genomsnitt att slå: 3.1p**\n\n| Spelare | Rekommendation | Faktiska poäng | Avvikelse från snitt | Klassificering |\n|---|---|---|---|---|\n| Botheim (MFF) | 🥇 Säkert kap / Stark konfidens | **2p** | −1.1p | **Modellfel** |\n| Ure (Sirius) | 🥈 Risk-kap / Rimlig konfidens | **9p** | +5.9p | **Varians (positiv) — delvis modellfel** |\n| Hegland (DIF) | 🥉 Differential-kap / Rimlig konfidens | **8p** | +4.9p | **Varians (positiv)** |\n\n**Sammantagen bedömning: 0/3 i topp 3 (träffsäkerhet kaptenstips: misslyckad)**\n\n### Botheim — 2p | Modellfel\nDet mest allvarliga felet denna omgång. Botheim fick \"Stark konfidens\" och rankades #1 med motiveringen FDR 1.6H + form + straffkontroll. Utfallet 2p är inte bara under genomsnittet — det är en total kollaps av kaptensrekommendationen.\n\nKlassificeras som **modellfel** snarare än varians av följande skäl:\n- FDR-override-regeln tillämpades mekaniskt utan tillräcklig viktning av motargumentet som explicit formulerades i analysen (\"om Malmö vinner komfortabelt utan straff och Botheim inte hittar nätet, är 2p ett realistiskt utfall\")\n- Modellen identifierade rätt riskscenario men övervägde det inte tillräckligt i den slutliga rangordningen\n- xG-underlag som strukturellt argument för \"högt poängtak\" maskerade ett relativt smalt poänggolv\n\n**Läxa:** Stark konfidens-klassificering ska kräva att golvet (inte bara taket) är högt. Botheim hade ett högt tak men ett dokumenterat smalt golv — det är en risk-kap, inte ett säkert kap.\n\n---\n\n### Ure — 9p | Varians (positiv), delvis modellfel\nUre rankades #2 som Risk-kap och levererade omgångens femte bästa poäng (9p). Ironiskt nog var det \"fel\" alternativet som presterade bäst bland de tre rekommendationerna.\n\nKlassificeras som **delvis modellfel** eftersom:\n- Analysen nedgraderade Ure explicit på FDR 3.1 (\"inte gynnsamt nog för FDR-override\") och regressionshot\n- Utfallet visar att Ures formtrend (14.7p/3 matcher) var mer persistent än modellen antog\n- Retroaktivt var Ure den korrekta #1-rekommendationen givet faktisk informationsstruktur, men Sirius generellt hade en exceptionell omgång (Bjerkebo 11p, Soumah 10p, Lindberg 8p) — lagets matchutfall drev poäng snarare än enbart individuell form\n\n---\n\n### Hegland — 8p | Varians (positiv)\nHegland rankades #3 som differential-kap och levererade 8p med ett mål. Klassificeras som **varians** eftersom:\n- FDR-override-motiveringen (2.0B) var korrekt tillämpad\n- Poängen kom via mål snarare än assist-dominans som motargumentet förutsåg\n- Modellen hade rätt profil men låg rangordning — det är ett rimligt utfall\n\n---\n\n## Differentials — Levererade de?\n\n**Tröskel: >3.1p för att klassas som \"levererat\"**\n\n| Spelare | Konfidens | Faktiska poäng | Över snitt? | Utfall |\n|---|---|---|---|---|\n| Thorkelsson (GAIS) | Stark / Köp nu | Saknas | — | **Okänd okänd** |\n| Botheim (MFF) | Stark / Köp nu | **2p** | ❌ Nej | Underpresterade |\n| Petrovic (GAIS) | Rimlig / Spekulativt | Saknas | — | **Okänd okänd** |\n\n**Sammantagen bedömning: 0/3 över snitt (bekräftade differentials: 0)**\n\nThorkelsson och Petrovic saknar poängdata — det är i sig ett informativt signal. Sletsjøe (GAIS) noteras i topp 30 med 7p, vilket antyder att GAIS-matchen levererade poäng men möjligen till andra spelare i laget. Botheim-felet analyserat ovan.\n\n**Notering om GAIS-matchen:** FDR 1.5 hemma aktiverade FDR-override korrekt och laget verkar ha presterat (Sletsjøe 7p), men poängdata saknas för de specifikt rekommenderade spelarna — detta är ett datakvalitetsproblem som inte kan klassificeras som modell- eller variansfel utan mer information.\n\n---\n\n## Spelarvarningar — Bekräftades varningarna?\n\n**Tröskel: <3.1p för bekräftad varning**\n\n| Spelare | Varningsnivå | Faktiska poäng | Bekräftad? |\n|---|---|---|---|\n| Hult | 🔴 Sälj nu | **3p** | ✅ Under snitt (marginellt) |\n| Besara | 🔴 Sälj nu | **1p** | ✅ Starkt bekräftad |\n| Bergström | 🟠 Överväg sälja | **2p** | ✅ Bekräftad |\n| Isherwood | 🟠 Överväg sälja | **3p** | ✅ Under snitt (marginellt) |\n| Rönnlöf Castegren | 🟡 Bevaka | Saknas | — |\n\n**Träffsäkerhet varningar: 4/4 bekräftade (med tillgänglig data)**\n\nVarningssektionen är omgångens starkaste prestation. Samtliga varnade spelare med tillgänglig data presterade under genomsnittet. Besara (1p med 51% ägarskap) är en direkt träff — detta är en av de mest kostsamma spelarna att äga relativt fältet denna omgång.\n\n**A. Zeneli (Elfsborg) med 10p är ett motargument** mot den generella Elfsborg-nedgraderingen (FDR 5.9 för Hult/Isherwood). Elfsborg-matchupen var tydligen inte lika svårt som FDR antydde, men Hult och Isherwood fick ändå rätt utfall — troligtvis positionsspecifikt (Zeneli är anfallare/mittfältare, inte back).\n\n---\n\n## Lärdomar\n\n**1. Säkert kap kräver högt golv, inte bara högt tak**\nBotheim-valet exponerar en systematisk modellbrist: FDR-override + formtopp + straffkontroll konstruerar ett argument för högt poängtak, men \"Stark konfidens\" ska reserveras för spelare där minimiutfallet också är acceptabelt (≥5–6p). Om det realistiska nerscenariot är 2p — vilket analysen explicit identifierade — är klassif",
+  "topp15": [
+    {
+      "id": 371,
+      "namn": "Taonsa",
+      "lag": "Västerås SK",
+      "poang": 16,
+      "minuter": 90,
+      "mal": 2,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 61,
+      "namn": "Bjerkebo",
+      "lag": "IK Sirius",
+      "poang": 11,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 3,
+      "nollor": 0
+    },
+    {
+      "id": 53,
+      "namn": "Soumah",
+      "lag": "IK Sirius",
+      "poang": 10,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 111,
+      "namn": "A. Zeneli",
+      "lag": "IF Elfsborg",
+      "poang": 10,
+      "minuter": 75,
+      "mal": 1,
+      "assist": 1,
+      "nollor": 0
+    },
+    {
+      "id": 69,
+      "namn": "Ure",
+      "lag": "IK Sirius",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 184,
+      "namn": "Keita",
+      "lag": "Kalmar FF",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 188,
+      "namn": "Sagoe Jr",
+      "lag": "Kalmar FF",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 201,
+      "namn": "Nordfeldt",
+      "lag": "AIK",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 309,
+      "namn": "Troelsen",
+      "lag": "BP",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 417,
+      "namn": "Kamara",
+      "lag": "IF Elfsborg",
+      "poang": 9,
+      "minuter": 84,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 37,
+      "namn": "Lind",
+      "lag": "Hammarby",
+      "poang": 8,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 66,
+      "namn": "Lindberg",
+      "lag": "IK Sirius",
+      "poang": 8,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 0
+    },
+    {
+      "id": 157,
+      "namn": "Ståhl",
+      "lag": "Djurgården",
+      "poang": 8,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 159,
+      "namn": "Tenho",
+      "lag": "Djurgården",
+      "poang": 8,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 162,
+      "namn": "Une",
+      "lag": "Djurgården",
+      "poang": 8,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 0,
+      "nollor": 1
+    }
+  ],
+  "genomsnitt": 3.1,
+  "traffsakerhet": {
+    "kaptenstips": {
+      "treff": 0,
+      "totalt": 3
+    },
+    "differentials": {
+      "treff": 0,
+      "totalt": 3
+    },
+    "varningar": {
+      "treff": 4,
+      "totalt": 5
+    }
+  }
+}
