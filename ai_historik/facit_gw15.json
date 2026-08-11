@@ -1,0 +1,172 @@
+{
+  "omgang": 15,
+  "skapad": "2026-08-11T07:14:13.526708",
+  "facit": "# Facit-analys GW15 — Kvantitativ genomgång\n\n---\n\n## Kaptenstips — Träffade vi rätt?\n\n**Robbie Ure — 5p** (rekommenderad #1, konfidens: Stark)\nAvvikelse: **Modellfel + Varians**\nUre levererade 5p mot förväntade ~10p baserat på bortatrend (10.3p/match). FDR 1.8 realiserades inte — Sirius vann matchen (givet att flera Sirius-spelare tog höga poäng: Anker 13p, Celic 9p, Bjerkebo 9p), men Ure själv underperformade personligen. Modellen fångade rätt lag och rätt match, men fel spelare inom laget — Anker (13p) var omgångens bästa Sirius-spelare och låg utanför kaptensanalysen. Klassificeras som modellfel i spelarurval kombinerat med intern varians.\n\n**Isak Bjerkebo — 9p** (rekommenderad #2, konfidens: Rimlig)\nAvvikelse: **Varians (inom acceptabel range)**\n9p är ett godkänt utfall — 1 mål, 90 min, och faktiskt över snitt (3.5p). Modellen flaggade korrekt för bortatrend-risk (6.6p snitt borta), och 9p landar strax över det. Inte ett toppresultat men inte ett misslyckande. Om Bjerkebo hade fått kaptensarmbandet hade det gett 18p — ett korrekt val relativt de andra kaptenskandidaterna denna omgång.\n\n**Erik Botheim — 0p** (rekommenderad #3, konfidens: Rimlig)\nAvvikelse: **Varians / Okänd okänd**\n0p är ett binärt utfall — antingen spelade han inte eller presterade extremt dåligt. Haksabanovic (11p) var Malmös bästa spelare, vilket bekräftar att Malmö levererade men att Botheim personligen inte bidrog. Modellen varnade explicit för att GW16 var hans optimala omgång, vilket stärker att detta delvis är ren varians snarare än ett fundamentalt modellfel. Dock: 0p är alltid ett signifikant utfall oavsett kontext.\n\n**Sammantaget kaptenstips:** 0/3 i topp 3. Bjerkebo var det bästa valet bland de tre (9p) och hade faktiskt kunnat ge ett godkänt kaptensresultat, men ingen av de tre nådde topp 3 i omgången (Lien 21p, Christoffersson 18p, Anker 13p).\n\n---\n\n## Differentials — Levererade de?\n\n| Spelare | Faktiska poäng | Vs. snitt (3.5p) | Utfall |\n|---|---|---|---|\n| Gustav Lindgren | 0p | −3.5p | ❌ Misslyckande |\n| Axel Taonsa | 3p | −0.5p | ❌ Under snitt |\n| Oliver Berg | 2p | −1.5p | ❌ Under snitt |\n\n**0/3 differentials** levererade över genomsnitt.\n\n**Lindgren (0p):** Stark konfidens-signal, xG 6.79, form 6.0 — ändå 0p. Detta är ett upprepat mönster (jfr Lindberg GW13). Modellen tenderar att övertro på xG-profiler för Häcken-spelare som inte konverterar när det väl gäller. Klassificeras som **modellfel** — startplatsstatus och matchdag-varians viktades för lågt mot xG-signalen.\n\n**Taonsa (3p):** Modellen flaggade explicit att GW15 bortamatch (FDR 5.7) var hans svaga miljö och rekommenderade \"Bevaka\" snarare än köp. 3p bekräftar exakt den varningen. **Modellkorrekt** — men inkluderingen i listan ändå kan ifrågasättas.\n\n**Berg (2p):** Spekulativt köp med låg konfidens — 2p är inom det förväntade spekulativa spannet. Inget strukturellt modellfel, ren **varians** kring ett lågt förväntat värde.\n\n---\n\n## Spelarvarningar — Bekräftades varningarna?\n\n| Spelare | Faktiska poäng | Vs. snitt | Varning bekräftad? |\n|---|---|---|---|\n| Nahir Besara | 0p | Under | ✅ Bekräftad |\n| Victor Eriksson | 9p | Över | ❌ Fel varning |\n| Niklas Hult | 0p | Under | ✅ Bekräftad (blank) |\n| Mikkel Ladefoged | 0p | Under | ✅ Bekräftad |\n| Rony Jansson | 0p | Under | ✅ Bekräftad |\n\n**4/5 varningar bekräftade.**\n\n**Eriksson (9p)** är det tydliga felet — modellen varnade för blank GW15 och svag form (2.3), men Eriksson levererade 9p (1 assist, 90 min, IFK Göteborg). Faktum att han spelade GW15 överhuvudtaget är antingen ett schema-fel i modellens data eller att \"blank GW15\" gällde Hammarby Eriksson (Victor Eriksson, Hammarby) och inte IFK Göteborg Eriksson. **Detta är ett datafel** — två spelare med liknande namn/position i olika lag, och varningen verkar ha applicerats på fel Eriksson. En allvarlig kategorifelklassificering.\n\nÖvriga fyra varningar träffade korrekt, inklusive Ladefoged som modellen flaggade för FDR 5.7 — bekräftat med 0p.\n\n---\n\n## Lärdomar — 4 konkreta punkter\n\n**1. Intern lagurvalsfel — Sirius-exemplet**\nModellen identifierade korrekt att Sirius hade omgångens bästa matchup (FDR 1.8) och att laget skulle leverera (Anker 13p, Celic 9p, Bjerkebo 9p, Krusnell 8p, Soumah 8p). Men kaptenstipset landade på Ure (5p) medan Anker (13p) ignorerades helt. Framöver behöver modellen explicit rangordna *alla* spelare inom ett matchup-lag, inte bara topphållarna från föregående omgångar. Bästa matchupen är ett lagindikatorn — inte en individgaranti.\n\n**2. xG-övertro utan konverteringsvalidering — Häcken/Lindgren-mönstret**\nDetta är tredje gången en Häcken- eller liknande spelare med stark xG-profil levererar 0p trots stark konfidens. xG mäter skottvolym och -kvalitet, inte konvertering. Modellen bör framöver kräva att en differential med \"Stark\" konfidens har minst 2 av 3: hög xG *och* recent goals converted *och* gynnsam FDR ≤3.5. Annars max \"Rimlig\" konfidens.\n\n**3. Namnkollisionsrisk i varningskategorin**\nEriksson-felet (9p, varnad) pekar på ett systematiskt dataproblem: när samma efternamn förekommer i olika lag må",
+  "topp15": [
+    {
+      "id": 174,
+      "namn": "Lien",
+      "lag": "Djurgården",
+      "poang": 21,
+      "minuter": 90,
+      "mal": 3,
+      "assist": 1,
+      "nollor": 1
+    },
+    {
+      "id": 354,
+      "namn": "Christoffersson",
+      "lag": "Örgryte IS",
+      "poang": 18,
+      "minuter": 79,
+      "mal": 3,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 54,
+      "namn": "Anker",
+      "lag": "IK Sirius",
+      "poang": 13,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 168,
+      "namn": "Åslund",
+      "lag": "Djurgården",
+      "poang": 13,
+      "minuter": 75,
+      "mal": 1,
+      "assist": 1,
+      "nollor": 1
+    },
+    {
+      "id": 153,
+      "namn": "Rinne",
+      "lag": "Djurgården",
+      "poang": 12,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 156,
+      "namn": "Larsson",
+      "lag": "Djurgården",
+      "poang": 12,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 1,
+      "nollor": 1
+    },
+    {
+      "id": 157,
+      "namn": "Ståhl",
+      "lag": "Djurgården",
+      "poang": 12,
+      "minuter": 60,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 159,
+      "namn": "Tenho",
+      "lag": "Djurgården",
+      "poang": 12,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 350,
+      "namn": "Parker-Price",
+      "lag": "Örgryte IS",
+      "poang": 12,
+      "minuter": 89,
+      "mal": 0,
+      "assist": 2,
+      "nollor": 1
+    },
+    {
+      "id": 11,
+      "namn": "Haksabanovic",
+      "lag": "Malmö FF",
+      "poang": 11,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 1,
+      "nollor": 0
+    },
+    {
+      "id": 167,
+      "namn": "Hegland",
+      "lag": "Djurgården",
+      "poang": 10,
+      "minuter": 75,
+      "mal": 0,
+      "assist": 2,
+      "nollor": 1
+    },
+    {
+      "id": 50,
+      "namn": "Celic",
+      "lag": "IK Sirius",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 61,
+      "namn": "Bjerkebo",
+      "lag": "IK Sirius",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 1,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 74,
+      "namn": "V. Andersson",
+      "lag": "IFK Göteborg",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 0,
+      "nollor": 1
+    },
+    {
+      "id": 80,
+      "namn": "Eriksson",
+      "lag": "IFK Göteborg",
+      "poang": 9,
+      "minuter": 90,
+      "mal": 0,
+      "assist": 1,
+      "nollor": 1
+    }
+  ],
+  "genomsnitt": 3.5,
+  "traffsakerhet": {
+    "kaptenstips": {
+      "treff": 0,
+      "totalt": 3
+    },
+    "differentials": {
+      "treff": 0,
+      "totalt": 3
+    },
+    "varningar": {
+      "treff": 4,
+      "totalt": 5
+    }
+  }
+}

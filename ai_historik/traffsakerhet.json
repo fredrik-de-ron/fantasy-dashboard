@@ -1,8 +1,8 @@
 {
-  "antal_omgangar": 7,
+  "antal_omgangar": 8,
   "kaptenstips": {
     "treff": 4,
-    "totalt": 12,
+    "totalt": 15,
     "historia": [
       {
         "gw": 10,
@@ -61,12 +61,22 @@
           "Ure": 9,
           "Hegland": 8
         }
+      },
+      {
+        "gw": 15,
+        "treff": 0,
+        "totalt": 3,
+        "poang": {
+          "Ure": 5,
+          "Bjerkebo": 9,
+          "Botheim": 0
+        }
       }
     ]
   },
   "differentials": {
     "treff": 4,
-    "totalt": 12,
+    "totalt": 15,
     "historia": [
       {
         "gw": 10,
@@ -125,6 +135,16 @@
           "Botheim: 2p (✗ vs snitt 3.1)",
           "Petrovic: saknasp (✗ vs snitt 3.1)"
         ]
+      },
+      {
+        "gw": 15,
+        "treff": 0,
+        "totalt": 3,
+        "detaljer": [
+          "Lindgren: 0p (✗ vs snitt 3.5)",
+          "Taonsa: 3p (✗ vs snitt 3.5)",
+          "Berg: 2p (✗ vs snitt 3.5)"
+        ]
       }
     ]
   },
@@ -147,8 +167,8 @@
     ]
   },
   "varningar": {
-    "treff": 11,
-    "totalt": 14,
+    "treff": 15,
+    "totalt": 19,
     "historia": [
       {
         "gw": 12,
@@ -196,6 +216,18 @@
           "Bergström": 2,
           "Isherwood": 3,
           "Rönnlöf Castegren": "saknas"
+        }
+      },
+      {
+        "gw": 15,
+        "treff": 4,
+        "totalt": 5,
+        "poang": {
+          "Besara": 0,
+          "Eriksson": 9,
+          "Hult": 0,
+          "Ladefoged": 0,
+          "Jansson": 0
         }
       }
     ]
